@@ -1,3 +1,4 @@
+import { getTranslations } from 'next-intl/server';
 import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
 
 import {
@@ -11,31 +12,28 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 
+const t = await getTranslations('Global');
+
 // Menu items.
 const items = [
   {
-    title: "Home",
-    url: "#",
+    title: t("home"),
+    url: "home",
     icon: Home,
   },
   {
-    title: "Inbox",
-    url: "#",
+    title: t("messages"),
+    url: "messages",
     icon: Inbox,
   },
   {
-    title: "Calendar",
-    url: "#",
+    title: t("schedule"),
+    url: "schedule",
     icon: Calendar,
   },
   {
-    title: "Search",
-    url: "#",
-    icon: Search,
-  },
-  {
-    title: "Settings",
-    url: "#",
+    title: t("settings"),
+    url: "settings",
     icon: Settings,
   },
 ]

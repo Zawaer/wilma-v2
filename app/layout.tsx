@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { NextIntlClientProvider } from 'next-intl';
 import { ThemeProvider } from "@/components/theme-provider"
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
@@ -28,13 +29,14 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <SidebarProvider>
-            <AppSidebar />
-            <SidebarTrigger />
-            {children}
-          </SidebarProvider>
-        </ThemeProvider>
+        <NextIntlClientProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <SidebarProvider>
+              <AppSidebar />
+              {children}
+            </SidebarProvider>
+          </ThemeProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

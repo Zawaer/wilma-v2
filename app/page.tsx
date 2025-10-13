@@ -1,7 +1,8 @@
 "use client";
 
-import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
+import { useTranslations, useLocale } from 'next-intl';
+import { Moon, Sun } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -12,7 +13,8 @@ import {
 
 export default function Home() {
   const { setTheme } = useTheme()
-  
+  const t = useTranslations('Global');
+
   return (
     <div className="flex w-screen h-screen items-center justify-center">
       <DropdownMenu>
