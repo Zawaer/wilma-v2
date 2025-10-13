@@ -4,5 +4,10 @@
     "messages": "Viestit",
     "schedule": "Lukujärjestys",
     "settings": "Asetukset"
+  },
+  "Settings" : {
+    "ligth": "Vaalea",
+    "dark": "Tumma",
+    "system": "Järjestelmä"
   }
 }

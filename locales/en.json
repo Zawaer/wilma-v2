@@ -1,8 +1,13 @@
 {
-  "Global" : {
+  "Sidebar" : {
     "home": "Home",
     "messages": "Messages",
     "schedule": "Schedule",
     "settings": "Settings"
+  },
+  "Settings" : {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
   }
 }

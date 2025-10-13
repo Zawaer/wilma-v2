@@ -7,12 +7,13 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
+  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 
-const t = await getTranslations('Global');
+const t = await getTranslations('Sidebar');
 
 // Menu items.
 const items = [
@@ -40,10 +41,13 @@ const items = [
 
 export function AppSidebar() {
   return (
-    <Sidebar>
+    <Sidebar collapsible='icon'>
+      <SidebarHeader className="gap-0 mt-2 ml-2">
+        <span className='text-2xl font-semibold'>Toivo Kallio</span>
+        <span className='text-sm text-zinc-700 dark:text-zinc-400'>Otaniemen lukio</span>
+      </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
