@@ -6,17 +6,13 @@ import {
   SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarSeparator,
 } from "@/components/ui/sidebar"
 import { NavUser } from "@/components/nav-user"
-import { Separator } from "@/components/ui/separator"
 
-export async function AppSidebar(request: Request) {
+export async function AppSidebar() {
   const t = await getTranslations('Sidebar');
   
   const items = [
