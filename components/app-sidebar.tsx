@@ -1,9 +1,9 @@
 import { getTranslations } from 'next-intl/server';
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
-
+import { Calendar, Home, Inbox, Settings } from "lucide-react"
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -11,11 +11,14 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarSeparator,
 } from "@/components/ui/sidebar"
+import { NavUser } from "@/components/nav-user"
+import { Separator } from "@/components/ui/separator"
 
-export async function AppSidebar() {
+export async function AppSidebar(request: Request) {
   const t = await getTranslations('Sidebar');
-
+  
   const items = [
     {
       title: t("home"),
@@ -41,11 +44,7 @@ export async function AppSidebar() {
 
   return (
     <Sidebar>
-      <SidebarHeader className="gap-0 mt-2 ml-2">
-        <span className='text-2xl font-semibold'>Toivo Kallio</span>
-        <span className='text-sm text-zinc-700 dark:text-zinc-400'>Otaniemen lukio</span>
-      </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className='p-2'>
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -63,6 +62,13 @@ export async function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter>
+        <NavUser user={{
+    name: "Toivo Kallio",
+    email: "Otaniemen lukio",
+    avatar: "TK",
+        }}/>
+      </SidebarFooter>
     </Sidebar>
   )
 }
