@@ -1,10 +1,8 @@
-import "./globals.css";
+import "../globals.css";
 import { Geist, Geist_Mono } from "next/font/google";
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocaleFromCookies } from "@/lib/locale";
 import { ThemeProvider } from "@/components/theme-provider"
-import { SidebarProvider } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/app-sidebar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,7 +20,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const locale = await getLocaleFromCookies();
-  const messages = (await import(`../locales/${locale}.json`)).default;
+  const messages = (await import(`../../locales/${locale}.json`)).default;
   const description = messages.Layout?.metadata;
 
   return (
@@ -34,10 +32,7 @@ export default async function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <NextIntlClientProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <SidebarProvider>
-              <AppSidebar />
-              {children}
-            </SidebarProvider>
+            {children}
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

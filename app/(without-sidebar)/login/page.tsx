@@ -1,9 +1,7 @@
-"use client";
-
 export default function LoginPage() {
   return (
     <div>
-      this is messages
+      this is login
     </div>
   )
 }
