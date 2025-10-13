@@ -14,8 +14,7 @@ export default function Home() {
   const { setTheme } = useTheme()
   
   return (
-    <div className="flex dark:bg-slate-700 bg-slate-100 w-screen h-screen items-center justify-center">
-      <Button className="bg-amber-200 dark:bg-amber-700" onClick={() => alert(1)}>test</Button>
+    <div className="flex w-screen h-screen items-center justify-center">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" size="icon">
