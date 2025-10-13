@@ -14,5 +14,8 @@
     "system": "System",
     "english": "English",
     "finnish": "Finnish"
+  },
+  "Layout": {
+    "metadata": "A better wilma client"
   }
 }

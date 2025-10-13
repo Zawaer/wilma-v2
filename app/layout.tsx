@@ -1,6 +1,5 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Geist, Geist_Mono } from "next/font/google";
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocaleFromCookies } from "@/lib/locale";
 import { ThemeProvider } from "@/components/theme-provider"
@@ -17,20 +16,21 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Wilma V2",
-  description: "A better Wilma client",
-};
-
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   const locale = await getLocaleFromCookies();
-  
+  const messages = (await import(`../locales/${locale}.json`)).default;
+  const description = messages.Layout?.metadata;
+
   return (
     <html lang={locale} suppressHydrationWarning>
+      <head>
+        <title>Wilma V2</title>
+        <meta name="description" content={description} />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <NextIntlClientProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
