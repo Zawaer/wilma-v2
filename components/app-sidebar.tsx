@@ -13,35 +13,34 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 
-const t = await getTranslations('Sidebar');
+export async function AppSidebar() {
+  const t = await getTranslations('Sidebar');
 
-// Menu items.
-const items = [
-  {
-    title: t("home"),
-    url: "home",
-    icon: Home,
-  },
-  {
-    title: t("messages"),
-    url: "messages",
-    icon: Inbox,
-  },
-  {
-    title: t("schedule"),
-    url: "schedule",
-    icon: Calendar,
-  },
-  {
-    title: t("settings"),
-    url: "settings",
-    icon: Settings,
-  },
-]
+  const items = [
+    {
+      title: t("home"),
+      url: "home",
+      icon: Home,
+    },
+    {
+      title: t("messages"),
+      url: "messages",
+      icon: Inbox,
+    },
+    {
+      title: t("schedule"),
+      url: "schedule",
+      icon: Calendar,
+    },
+    {
+      title: t("settings"),
+      url: "settings",
+      icon: Settings,
+    },
+  ]
 
-export function AppSidebar() {
   return (
-    <Sidebar collapsible='icon'>
+    <Sidebar>
       <SidebarHeader className="gap-0 mt-2 ml-2">
         <span className='text-2xl font-semibold'>Toivo Kallio</span>
         <span className='text-sm text-zinc-700 dark:text-zinc-400'>Otaniemen lukio</span>

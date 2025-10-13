@@ -1,13 +1,18 @@
 {
-  "Global" : {
+  "Sidebar": {
     "home": "Etusivu",
     "messages": "Viestit",
     "schedule": "Lukujärjestys",
     "settings": "Asetukset"
   },
-  "Settings" : {
-    "ligth": "Vaalea",
+  "Settings": {
+    "settings": "Asetukset",
+    "interface_theme": "Käyttöliittymän teema",
+    "customize_theme": "Mukauta käyttöliittymän teemaa",
+    "light": "Vaalea",
     "dark": "Tumma",
-    "system": "Järjestelmä"
+    "system": "Järjestelmä",
+    "english": "Englanti",
+    "finnish": "Suomi"
   }
 }

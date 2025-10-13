@@ -6,8 +6,13 @@
     "settings": "Settings"
   },
   "Settings" : {
+    "settings": "Settings",
+    "interface_theme": "Interface theme",
+    "customize_theme": "Customize your UI theme",
     "light": "Light",
     "dark": "Dark",
-    "system": "System"
+    "system": "System",
+    "english": "English",
+    "finnish": "Finnish"
   }
 }
