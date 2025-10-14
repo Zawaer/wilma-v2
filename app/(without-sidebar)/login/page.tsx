@@ -1,11 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
@@ -16,12 +15,18 @@ import {
   FieldLabel,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import { PasswordInput } from "@/components/password-input"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+} from "@/components/ui/input-group"
+import { EyeIcon, EyeOffIcon } from 'lucide-react'
 import { Button } from "@/components/ui/button"
-import { useEffect } from "react";
-import { WilmaSession } from "@/lib/wilma_api"
 
 export default function LoginPage() {
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     // prevent the default form submission behavior
     e.preventDefault();
@@ -78,12 +83,18 @@ export default function LoginPage() {
                     Forgot your password?
                   </a>
                 </div>
-                <PasswordInput
-                  id="password"
-                  type="password"
-                  name="password"
-                  required
-                />
+                <InputGroup>
+                  <InputGroupInput
+                    id="password"
+                    type={isPasswordVisible ? "" : "password"}
+                    name="password"
+                  />
+                  <InputGroupAddon align="inline-end">
+                    <InputGroupButton variant="ghost" className="rounded-full" size="icon-xs" onClick={() => { setIsPasswordVisible(!isPasswordVisible) }}>
+                      {isPasswordVisible ? <EyeOffIcon /> : <EyeIcon />}
+                    </InputGroupButton>
+                  </InputGroupAddon>
+                </InputGroup>
               </Field>
               <Field>
                 <Button type="submit">Log in</Button>
