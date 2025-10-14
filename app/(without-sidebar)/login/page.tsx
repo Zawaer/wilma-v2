@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Card,
   CardAction,
@@ -16,8 +18,31 @@ import {
 import { Input } from "@/components/ui/input"
 import { PasswordInput } from "@/components/password-input"
 import { Button } from "@/components/ui/button"
+import { useEffect } from "react";
+import { WilmaSession } from "@/lib/wilma_api"
 
 export default function LoginPage() {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const username = formData.get("username")?.toString() ?? "";
+    const password = formData.get("password")?.toString() ?? "";
+
+    const res = await fetch("/api/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password })
+    });
+
+    const data = await res.json();
+    if (data.success) {
+      console.log("Logged in!", data);
+    } else {
+      console.error("Login failed", data.message);
+      console.log(data);
+    }
+  };
+
   return (
     <div className="flex flex-col gap-4 w-screen h-screen items-center justify-center break-words">
       <Card className="min-w-[25rem]">
@@ -26,17 +51,19 @@ export default function LoginPage() {
           <CardDescription>Log in with your Wilma account</CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
+          <form onSubmit={handleSubmit}>
             <FieldGroup>
               <Field>
                 <FieldLabel htmlFor="username">
                   Username
                 </FieldLabel>
                 <Input
-                id="username"
-                type="username"
-                placeholder="matti.heikkinen"
-                required />
+                  id="username"
+                  type="username"
+                  name="username"
+                  placeholder="matti.heikkinen"
+                  required
+                />
               </Field>
               <Field>
                 <div className="flex items-center">
@@ -48,7 +75,12 @@ export default function LoginPage() {
                     Forgot your password?
                   </a>
                 </div>
-                <PasswordInput id="password" required />
+                <PasswordInput
+                  id="password"
+                  type="password"
+                  name="password"
+                  required
+                />
               </Field>
               <Field>
                 <Button type="submit">Log in</Button>
