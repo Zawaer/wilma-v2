@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { getSchools } from "@/lib/wilma_api";
 import {
   Card,
@@ -49,15 +49,45 @@ export default function LoginPage() {
   const [schools, setSchools] = useState<{ label: string; value: string }[]>([]);
   const [loading, setLoading] = useState(true);
 
+  const [search, setSearch] = useState("");
+  const listRef = useRef<HTMLDivElement>(null);
+
+  const filteredSchools = schools
+  .filter((s) => s.label.toLowerCase().includes(search.toLowerCase()))
+  .sort((a, b) => {
+    const aLabel = a.label.toLowerCase();
+    const bLabel = b.label.toLowerCase();
+    const searchLower = search.toLowerCase();
+
+    const aStarts = aLabel.startsWith(searchLower);
+    const bStarts = bLabel.startsWith(searchLower);
+
+    // If one starts with search and the other doesn't, the one that starts comes first
+    if (aStarts && !bStarts) return -1;
+    if (!aStarts && bStarts) return 1;
+
+    // Otherwise sort alphabetically
+    return aLabel.localeCompare(bLabel);
+  });
+
+  useEffect(() => {
+    if (listRef.current) {
+      listRef.current.scrollTop = 0;
+    }
+  }, [search]);
+
+
   useEffect(() => {
     async function loadWilmas() {
       try {
         const urls = await getSchools();
         const mapped = urls.map((url: string) => ({
-          label: url,
+          label: url.replace("https://", ""), // remove https:// prefix
           value: url,
         }));
-        setSchools(mapped);
+        setSchools(
+          mapped.sort((a: { label: string; value: string }, b: { label: string; value: string }) => a.label.toLowerCase().localeCompare(b.label.toLowerCase()))
+        );
       } catch (err) {
         console.error("Failed to fetch Wilmas", err);
       } finally {
@@ -113,7 +143,7 @@ export default function LoginPage() {
                       variant="outline"
                       role="combobox"
                       aria-expanded={open}
-                      className="w-[20rem] justify-between"
+                      className="w-[15rem] justify-between"
                     >
                       {value
                         ? schools.find((schools) => schools.value === value)?.label
@@ -121,26 +151,26 @@ export default function LoginPage() {
                       <ChevronsUpDownIcon className="opacity-50" />
                     </Button>
                   </PopoverTrigger>
-                  <PopoverContent className="w-[20rem] p-0">
+                  <PopoverContent className="w-[15rem] p-0">
                     <Command>
-                      <CommandInput placeholder="Search schools..." className="h-9" />
-                      <CommandList>
+                      <CommandInput placeholder="Search schools..." className="h-9" onValueChange={(val) => setSearch(val)} />
+                      <CommandList ref={listRef}>
                         <CommandEmpty>No schools found.</CommandEmpty>
                         <CommandGroup>
-                          {schools.map((schools) => (
+                          {filteredSchools.map((school) => (
                             <CommandItem
-                              key={schools.value}
-                              value={schools.value}
+                              key={school.value}
+                              value={school.value}
                               onSelect={(currentValue) => {
                                 setValue(currentValue === value ? "" : currentValue)
                                 setOpen(false)
                               }}
                             >
-                              {schools.label}
+                              {school.label}
                               <CheckIcon
                                 className={cn(
                                   "ml-auto",
-                                  value === schools.value ? "opacity-100" : "opacity-0"
+                                  value === school.value ? "opacity-100" : "opacity-0"
                                 )}
                               />
                             </CommandItem>
@@ -159,7 +189,7 @@ export default function LoginPage() {
                   id="username"
                   type="username"
                   name="username"
-                  placeholder="matti.heikkinen"
+                  placeholder="firstname.lastname"
                   required
                 />
               </Field>
