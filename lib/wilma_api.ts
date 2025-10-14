@@ -1,20 +1,13 @@
-import fetch, { RequestInit, Response } from "node-fetch";
-import { JSDOM } from "jsdom";
+import * as cheerio from 'cheerio';
 
 export class WilmaSession {
   wilmaUrl: string;
-  studentId: string = "";
   wilma2SID: string = "";
+  studentID: string = "";
   username: string = "";
-  cookies: string = ""; // store cookies here
 
   constructor(wilmaUrl: string) {
     this.wilmaUrl = wilmaUrl;
-  }
-
-  private parseCookies(setCookie: string | null) {
-    if (!setCookie) return "";
-    return setCookie.split(",").map(c => c.split(";")[0]).join("; ");
   }
 
   async getWilma2LoginID(): Promise<string> {
@@ -32,16 +25,46 @@ export class WilmaSession {
       return "";
     }
 
-    console.log(wilma2LoginID)
-    this.cookies = `Wilma2LoginID=${wilma2LoginID}`;
     return wilma2LoginID;
   }
 
+  async getStudentID(): Promise<string> {
+    const res: Response = await fetch(`${this.wilmaUrl}/schedule`, {
+      method: "GET",
+      headers: {
+        "Cookie": `Wilma2SID=${this.wilma2SID}`
+      }
+    });
+    
+    if (!res.ok) {
+      console.error(`${res.status} Failed to get StudentID`);
+      return "";
+    }
+
+    const html = await res.text();
+    const $ = cheerio.load(html);
+    const studentID = $('#formid').attr('value') ?? "";
+
+    console.log($('#formid'));
+    console.log(html);
+
+    if (!studentID || studentID.length !== 47) {
+      console.error(`Invalid StudentID: ${studentID}`);
+      return "";
+    }
+
+    return studentID;
+  }
+
   async login(username: string, password: string): Promise<boolean> {
+    // save username
     this.username = username;
 
+    // get Wilma2LoginID
     const wilma2LoginID = await this.getWilma2LoginID();
-    if (!wilma2LoginID) return false;
+    if (!wilma2LoginID) {
+      return false;
+    }
 
     const body = new URLSearchParams({
       Login: username,
@@ -50,44 +73,42 @@ export class WilmaSession {
       SESSIONID: wilma2LoginID
     }).toString();
 
+    // send the login request
     const res = await fetch(`${this.wilmaUrl}/login`, {
       method: "POST",
       headers: {
-        "Cookie": this.cookies,
+        "Cookie": `Wilma2LoginID=${wilma2LoginID}`,
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      body,
-      redirect: "manual"
+      body: body,
+      redirect: "manual" // this is essential to get the cookies needed because without this the request just gets redirected
     });
     
-    // save session cookies
-    const setCookie = res.headers.get("set-cookie");
-    this.cookies = this.parseCookies(setCookie);
-    
-    console.log("hmm:");
-    console.log(setCookie);
-
     if (res.status != 303) {
       console.error(`${res.status} Failed to log in`);
       return false;
     }
 
-    // parse HTML to check for errors and get studentId
+    // check that username and password are correct
     const html = await res.text();
-    const dom = new JSDOM(html);
-    const error = dom.window.document.querySelector(".alert-error");
-    if (error && error.textContent?.toLowerCase().includes("käyttäjätunnusta ei löydy tai salasana on väärä")) {
+    const $ = cheerio.load(html);
+    const errorText = $('.alert-error').text().toLowerCase();
+
+    if (errorText.includes("käyttäjätunnusta ei löydy tai salasana on väärä")) {
       console.error("Invalid username or password");
       return false;
     }
 
     // get Wilma2SID from cookies
-    const sidMatch = this.cookies.match(/Wilma2SID=([a-f0-9]{32})/);
-    if (!sidMatch) {
-      console.error("Failed to get Wilma2SID from cookies");
+    const setCookie = res.headers.get("set-cookie");
+    const sidMatch = setCookie?.match(/Wilma2SID=([a-f0-9]{32})/);
+    this.wilma2SID = sidMatch ? sidMatch[1] : "";
+
+    // get student ID
+    this.studentID = await this.getStudentID();
+    if (!this.studentID) {
       return false;
     }
-    this.wilma2SID = sidMatch[1];
 
     return true;
   }

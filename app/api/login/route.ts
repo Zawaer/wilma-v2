@@ -13,9 +13,8 @@ export async function POST(req: NextRequest) {
 
   return NextResponse.json({
     success: true,
-    username: wilma.username,
-    studentId: wilma.studentId,
     wilma2SID: wilma.wilma2SID,
-    cookies: wilma.cookies
+    studentID: wilma.studentID,
+    username: wilma.username,
   });
 }

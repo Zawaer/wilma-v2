@@ -23,11 +23,15 @@ import { WilmaSession } from "@/lib/wilma_api"
 
 export default function LoginPage() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    // prevent the default form submission behavior
     e.preventDefault();
+
+    // get the data from the input fields
     const formData = new FormData(e.currentTarget);
     const username = formData.get("username")?.toString() ?? "";
     const password = formData.get("password")?.toString() ?? "";
 
+    // send the login request through the internal API
     const res = await fetch("/api/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
