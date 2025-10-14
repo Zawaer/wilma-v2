@@ -1,4 +1,5 @@
 import * as cheerio from 'cheerio';
+import { redirect } from 'next/dist/server/api-utils';
 
 export class WilmaSession {
   wilmaUrl: string;
@@ -90,13 +91,15 @@ export class WilmaSession {
       return false;
     }
 
-    // check that username and password are correct
-    const html = await res.text();
-    const $ = cheerio.load(html);
-    const errorText = $('.alert-error').text().toLowerCase();
+    const redirect = res.headers.get("location");
 
-    if (errorText.includes("käyttäjätunnusta ei löydy tai salasana on väärä")) {
+    if (redirect === "https://espoo.inschool.fi/?loginfailed") {
       console.error("Invalid username or password");
+      return false;
+    }
+
+    if (redirect !== "https://espoo.inschool.fi/?checkcookie") {
+      console.error("Login redirects to wrong place:", redirect);
       return false;
     }
 
@@ -112,5 +115,9 @@ export class WilmaSession {
     }
 
     return true;
+  }
+
+  async getWilmaList() {
+    const url = "https://wilmahub.service.inschool.fi/wilmat";
   }
 }
