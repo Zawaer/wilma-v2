@@ -113,7 +113,7 @@ export default function LoginPage() {
                       variant="outline"
                       role="combobox"
                       aria-expanded={open}
-                      className="w-[14rem] justify-between"
+                      className="w-[20rem] justify-between"
                     >
                       {value
                         ? schools.find((schools) => schools.value === value)?.label
@@ -121,7 +121,7 @@ export default function LoginPage() {
                       <ChevronsUpDownIcon className="opacity-50" />
                     </Button>
                   </PopoverTrigger>
-                  <PopoverContent className="w-[14rem] p-0">
+                  <PopoverContent className="w-[20rem] p-0">
                     <Command>
                       <CommandInput placeholder="Search schools..." className="h-9" />
                       <CommandList>
