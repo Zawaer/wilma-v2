@@ -40,35 +40,32 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import { Separator } from "@radix-ui/react-separator";
 
 export default function LoginPage() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [open, setOpen] = useState(false)
   const [value, setValue] = useState("")
   const [schools, setSchools] = useState<{ label: string; value: string }[]>([]);
-  const [loading, setLoading] = useState(true);
 
   const [search, setSearch] = useState("");
   const listRef = useRef<HTMLDivElement>(null);
 
+  // complex search functionality to first show results that start with the search and then show results that include the search
   const filteredSchools = schools
-  .filter((s) => s.label.toLowerCase().includes(search.toLowerCase()))
-  .sort((a, b) => {
-    const aLabel = a.label.toLowerCase();
-    const bLabel = b.label.toLowerCase();
-    const searchLower = search.toLowerCase();
+    .filter((s) => s.label.toLowerCase().includes(search.toLowerCase()))
+    .sort((a, b) => {
+      const aLabel = a.label.toLowerCase();
+      const bLabel = b.label.toLowerCase();
+      const searchLower = search.toLowerCase();
 
-    const aStarts = aLabel.startsWith(searchLower);
-    const bStarts = bLabel.startsWith(searchLower);
+      const aStarts = aLabel.startsWith(searchLower);
+      const bStarts = bLabel.startsWith(searchLower);
 
-    // If one starts with search and the other doesn't, the one that starts comes first
-    if (aStarts && !bStarts) return -1;
-    if (!aStarts && bStarts) return 1;
+      if (aStarts && !bStarts) return -1;
+      if (!aStarts && bStarts) return 1;
 
-    // Otherwise sort alphabetically
-    return aLabel.localeCompare(bLabel);
-  });
+      return aLabel.localeCompare(bLabel);
+    });
 
   useEffect(() => {
     if (listRef.current) {
@@ -90,8 +87,6 @@ export default function LoginPage() {
         );
       } catch (err) {
         console.error("Failed to fetch Wilmas", err);
-      } finally {
-        setLoading(false);
       }
     }
 
