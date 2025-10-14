@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getSchools } from "@/lib/wilma_api";
 import {
   Card,
   CardContent,
@@ -13,6 +14,7 @@ import {
   FieldDescription,
   FieldGroup,
   FieldLabel,
+  FieldSeparator,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import {
@@ -23,9 +25,48 @@ import {
 } from "@/components/ui/input-group"
 import { EyeIcon, EyeOffIcon } from 'lucide-react'
 import { Button } from "@/components/ui/button"
+import { CheckIcon, ChevronsUpDownIcon } from "lucide-react"
+import { cn } from "@/lib/utils"
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
+import { Separator } from "@radix-ui/react-separator";
 
 export default function LoginPage() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [open, setOpen] = useState(false)
+  const [value, setValue] = useState("")
+  const [schools, setSchools] = useState<{ label: string; value: string }[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadWilmas() {
+      try {
+        const urls = await getSchools();
+        const mapped = urls.map((url: string) => ({
+          label: url,
+          value: url,
+        }));
+        setSchools(mapped);
+      } catch (err) {
+        console.error("Failed to fetch Wilmas", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadWilmas();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     // prevent the default form submission behavior
@@ -58,9 +99,58 @@ export default function LoginPage() {
           <CardTitle className="text-2xl font-bold">Welcome back</CardTitle>
           <CardDescription>Log in with your Wilma account</CardDescription>
         </CardHeader>
+        <FieldSeparator/>
         <CardContent>
           <form onSubmit={handleSubmit}>
             <FieldGroup>
+              <Field>
+                <FieldLabel>
+                  School
+                </FieldLabel>
+                <Popover open={open} onOpenChange={setOpen}>
+                  <PopoverTrigger asChild>
+                    <Button
+                      variant="outline"
+                      role="combobox"
+                      aria-expanded={open}
+                      className="w-[14rem] justify-between"
+                    >
+                      {value
+                        ? schools.find((schools) => schools.value === value)?.label
+                        : "Select school..."}
+                      <ChevronsUpDownIcon className="opacity-50" />
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-[14rem] p-0">
+                    <Command>
+                      <CommandInput placeholder="Search schools..." className="h-9" />
+                      <CommandList>
+                        <CommandEmpty>No schools found.</CommandEmpty>
+                        <CommandGroup>
+                          {schools.map((schools) => (
+                            <CommandItem
+                              key={schools.value}
+                              value={schools.value}
+                              onSelect={(currentValue) => {
+                                setValue(currentValue === value ? "" : currentValue)
+                                setOpen(false)
+                              }}
+                            >
+                              {schools.label}
+                              <CheckIcon
+                                className={cn(
+                                  "ml-auto",
+                                  value === schools.value ? "opacity-100" : "opacity-0"
+                                )}
+                              />
+                            </CommandItem>
+                          ))}
+                        </CommandGroup>
+                      </CommandList>
+                    </Command>
+                  </PopoverContent>
+                </Popover>
+              </Field>
               <Field>
                 <FieldLabel htmlFor="username">
                   Username
