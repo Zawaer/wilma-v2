@@ -11,7 +11,9 @@ export class WilmaSession {
   }
 
   async getWilma2LoginID(): Promise<string> {
-    const res: Response = await fetch(`${this.wilmaUrl}/token`, { method: "GET" });
+    const res: Response = await fetch(`${this.wilmaUrl}/token`, {
+      method: "GET"
+    });
     if (!res.ok) {
       console.error(`${res.status} Failed to get Wilma2LoginID`);
       return "";
@@ -33,7 +35,8 @@ export class WilmaSession {
       method: "GET",
       headers: {
         "Cookie": `Wilma2SID=${this.wilma2SID}`
-      }
+      },
+      redirect: "manual"
     });
     
     if (!res.ok) {
@@ -45,8 +48,6 @@ export class WilmaSession {
     const $ = cheerio.load(html);
     const studentID = $('#formid').attr('value') ?? "";
 
-    console.log($('#formid'));
-    console.log(html);
 
     if (!studentID || studentID.length !== 47) {
       console.error(`Invalid StudentID: ${studentID}`);

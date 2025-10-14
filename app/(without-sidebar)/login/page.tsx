@@ -43,7 +43,6 @@ export default function LoginPage() {
       console.log("Logged in!", data);
     } else {
       console.error("Login failed", data.message);
-      console.log(data);
     }
   };
 
