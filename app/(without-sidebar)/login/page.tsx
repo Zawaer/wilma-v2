@@ -22,8 +22,8 @@ export default function LoginPage() {
     <div className="flex flex-col gap-4 w-screen h-screen items-center justify-center break-words">
       <Card className="min-w-[25rem]">
         <CardHeader className="flex flex-col items-center">
-          <CardTitle className="text-2xl font-bold">Log in to your account</CardTitle>
-          <CardDescription>Enter your Wilma credentials below to log in</CardDescription>
+          <CardTitle className="text-2xl font-bold">Welcome back</CardTitle>
+          <CardDescription>Log in with your Wilma account</CardDescription>
         </CardHeader>
         <CardContent>
           <form>

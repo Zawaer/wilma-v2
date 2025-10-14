@@ -23,13 +23,13 @@ const PasswordInput = React.forwardRef<HTMLInputElement, React.ComponentPropsWit
                     type="button"
                     variant="ghost"
                     size="sm"
-                    className="absolute w-4 h-4 right-2 top-2.5 hover:bg-transparent cursor-hand"
+                    className="absolute w-4 h-4 right-2 top-2.5 hover:bg-transparent"
                     onClick={() => setShowPassword((prev) => !prev)}
                 >
                     {showPassword ? (
-                        <EyeOffIcon className="h-4 w-4" aria-hidden="true" />
+                        <EyeOffIcon className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
                     ) : (
-                        <EyeIcon className="h-4 w-4" aria-hidden="true" />
+                        <EyeIcon className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
                     )}
                     <span className="sr-only">{showPassword ? 'Hide password' : 'Show password'}</span>
 			    </Button>
