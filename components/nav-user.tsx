@@ -1,11 +1,11 @@
 "use client"
 
+import { useTranslations } from 'next-intl';
 import {
   IconDotsVertical,
   IconLogout,
   IconUserCircle,
 } from "@tabler/icons-react"
-
 import {
   Avatar,
   AvatarFallback,
@@ -36,7 +36,8 @@ export function NavUser({
     avatar: string
   }
 }) {
-  const { isMobile } = useSidebar()
+  const { isMobile } = useSidebar();
+  const t = useTranslations("Sidebar");
 
   return (
     <SidebarMenu>
@@ -70,7 +71,7 @@ export function NavUser({
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 <Avatar className="h-8 w-8 rounded-lg">
                   <AvatarImage src={user.avatar} alt={user.name} />
-                  <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                  <AvatarFallback className="rounded-lg">TK</AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-medium">{user.name}</span>
@@ -84,11 +85,11 @@ export function NavUser({
             <DropdownMenuGroup>
               <DropdownMenuItem>
                 <IconUserCircle />
-                Account
+                {t("account")}
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <IconLogout />
-                Log out
+                {t("logout")}
               </DropdownMenuItem>
             </DropdownMenuGroup>
           </DropdownMenuContent>

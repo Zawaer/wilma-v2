@@ -3,7 +3,26 @@
     "home": "Etusivu",
     "messages": "Viestit",
     "schedule": "Lukujärjestys",
-    "settings": "Asetukset"
+    "settings": "Asetukset",
+    "account": "Tili",
+    "logout": "Kirjaudu ulos"
+  },
+  "Login": {
+    "welcome_back": "Tervetuloa takaisin",
+    "log_in_with_your_wilma_account": "Kirjaudu sisään Wilma-tililläsi",
+    "school": "Koulu",
+    "select_school": "Valitse koulu...",
+    "search_schools": "Etsi kouluja...",
+    "no_schools_found": "Kouluja ei löytynyt.",
+    "username": "Käyttäjätunnus",
+    "password": "Salasana",
+    "example_username": "matti.heikkinen",
+    "forgot_password": "Unohditko salasanasi?",
+    "login": "Kirjaudu sisään",
+    "privacy_notice_1": "Jatkamalla hyväksyt",
+    "privacy_notice_2": "Palveluehdot",
+    "privacy_notice_3": "sekä",
+    "privacy_notice_4": "Tietosuojaselosteen"
   },
   "Settings": {
     "settings": "Asetukset",
@@ -12,6 +31,8 @@
     "light": "Vaalea",
     "dark": "Tumma",
     "system": "Järjestelmä",
+    "language": "Kieli",
+    "change_display_language": "Muuta käyttöliittymän kieli",
     "english": "Englanti",
     "finnish": "Suomi"
   },

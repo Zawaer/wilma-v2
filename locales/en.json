@@ -1,21 +1,42 @@
 {
-  "Sidebar" : {
+  "Sidebar": {
     "home": "Home",
     "messages": "Messages",
     "schedule": "Schedule",
-    "settings": "Settings"
+    "settings": "Settings",
+    "account": "Account",
+    "logout": "Log out"
   },
-  "Settings" : {
+  "Login": {
+    "welcome_back": "Welcome back",
+    "log_in_with_your_wilma_account": "Log in with your Wilma account",
+    "school": "School",
+    "select_school": "Select school...",
+    "search_schools": "Search schools...",
+    "no_schools_found": "No schools found.",
+    "username": "Username",
+    "password": "Password",
+    "example_username": "john.doe",
+    "forgot_password": "Forgot password?",
+    "login": "Log in",
+    "privacy_notice_1": "By continuing, you agree to our",
+    "privacy_notice_2": "Terms of Service",
+    "privacy_notice_3": "and",
+    "privacy_notice_4": "Privacy Policy"
+  },
+  "Settings": {
     "settings": "Settings",
     "interface_theme": "Interface theme",
     "customize_theme": "Customize your UI theme",
     "light": "Light",
     "dark": "Dark",
     "system": "System",
+    "language": "Language",
+    "change_display_language": "Change display language",
     "english": "English",
     "finnish": "Finnish"
   },
   "Layout": {
-    "metadata": "A better wilma client"
+    "metadata": "A better Wilma client"
   }
 }

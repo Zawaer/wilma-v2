@@ -58,7 +58,7 @@ export default function SettingsPage() {
           </div>
           <div className="flex w-3/4">
             <Select value={themeSelectValue} onValueChange={handleThemeChange}>
-              <SelectTrigger className="w-[180px]">
+              <SelectTrigger className="w-[12rem]">
                 <SelectValue defaultValue="system" />
               </SelectTrigger>
               <SelectContent>
@@ -72,12 +72,12 @@ export default function SettingsPage() {
         <Separator />
         <div className="flex w-full items-center p-4">
           <div className="flex flex-col w-1/4">
-            <span className="font-semibold">Language</span>
-            <span className="text-sm">Change display language</span>
+            <span className="font-semibold">{t("language")}</span>
+            <span className="text-sm">{t("change_display_language")}</span>
           </div>
           <div className="flex w-3/4">
             <Select value={locale} onValueChange={handleLanguageChange}>
-              <SelectTrigger className="w-[180px]">
+              <SelectTrigger className="w-[12rem]">
                 <SelectValue defaultValue="system" />
               </SelectTrigger>
               <SelectContent>

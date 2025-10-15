@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useTranslations } from 'next-intl';
 import { getSchools } from "@/lib/wilma_api";
 import {
   Card,
@@ -46,9 +47,9 @@ export default function LoginPage() {
   const [open, setOpen] = useState(false)
   const [value, setValue] = useState("")
   const [schools, setSchools] = useState<{ label: string; value: string }[]>([]);
-
   const [search, setSearch] = useState("");
   const listRef = useRef<HTMLDivElement>(null);
+  const t = useTranslations("Login");
 
   // complex search functionality to first show results that start with the search and then show results that include the search
   const filteredSchools = schools
@@ -121,8 +122,8 @@ export default function LoginPage() {
     <div className="flex flex-col gap-4 w-screen h-screen items-center justify-center break-words">
       <Card className="min-w-[25rem]">
         <CardHeader className="flex flex-col items-center">
-          <CardTitle className="text-2xl font-bold">Welcome back</CardTitle>
-          <CardDescription>Log in with your Wilma account</CardDescription>
+          <CardTitle className="text-2xl font-bold">{t("welcome_back")}</CardTitle>
+          <CardDescription>{t("log_in_with_your_wilma_account")}</CardDescription>
         </CardHeader>
         <FieldSeparator/>
         <CardContent>
@@ -130,7 +131,7 @@ export default function LoginPage() {
             <FieldGroup>
               <Field>
                 <FieldLabel>
-                  School
+                  {t("school")}
                 </FieldLabel>
                 <Popover open={open} onOpenChange={setOpen}>
                   <PopoverTrigger asChild>
@@ -142,15 +143,15 @@ export default function LoginPage() {
                     >
                       {value
                         ? schools.find((schools) => schools.value === value)?.label
-                        : "Select school..."}
+                        : t("select_school")}
                       <ChevronsUpDownIcon className="opacity-50" />
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent className="w-[15rem] p-0">
                     <Command>
-                      <CommandInput placeholder="Search schools..." className="h-9" onValueChange={(val) => setSearch(val)} />
+                      <CommandInput placeholder={t("search_schools")} className="h-9" onValueChange={(val) => setSearch(val)} />
                       <CommandList ref={listRef}>
-                        <CommandEmpty>No schools found.</CommandEmpty>
+                        <CommandEmpty>{t("no_schools_found")}</CommandEmpty>
                         <CommandGroup>
                           {filteredSchools.map((school) => (
                             <CommandItem
@@ -178,24 +179,26 @@ export default function LoginPage() {
               </Field>
               <Field>
                 <FieldLabel htmlFor="username">
-                  Username
+                  {t("username")}
                 </FieldLabel>
                 <Input
                   id="username"
                   type="username"
                   name="username"
-                  placeholder="firstname.lastname"
+                  placeholder={t("example_username")}
                   required
                 />
               </Field>
               <Field>
                 <div className="flex items-center">
-                  <FieldLabel htmlFor="password">Password</FieldLabel>
+                  <FieldLabel htmlFor="password">
+                    {t("password")}
+                  </FieldLabel>
                   <a
                     href="https://espoo.inschool.fi/forgotpasswd"
                     className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
                   >
-                    Forgot your password?
+                    {t("forgot_password")}
                   </a>
                 </div>
                 <InputGroup>
@@ -212,15 +215,17 @@ export default function LoginPage() {
                 </InputGroup>
               </Field>
               <Field>
-                <Button type="submit">Log in</Button>
+                <Button type="submit">
+                  {t("login")}
+                  </Button>
               </Field>
             </FieldGroup>
           </form>
         </CardContent>
       </Card>
       <FieldDescription className="px-6 text-center break-words max-w-[25rem]">
-        By clicking continue, you agree to our <a href="/terms-of-service">Terms of Service</a>{" "}
-        and <a href="/privacy-policy">Privacy Policy</a>.
+        {t("privacy_notice_1")} <a href="/terms-of-service">{t("privacy_notice_2")}</a>{" "}
+        {t("privacy_notice_3")} <a href="/privacy-policy">{t("privacy_notice_4")}</a>.
       </FieldDescription>
     </div>
   )
