@@ -22,7 +22,10 @@
     "privacy_notice_1": "By continuing, you agree to our",
     "privacy_notice_2": "Terms of Service",
     "privacy_notice_3": "and",
-    "privacy_notice_4": "Privacy Policy"
+    "privacy_notice_4": "Privacy Policy",
+    "school_required": "School is required",
+    "username_required": "Username is required",
+    "password_required": "Password is required"
   },
   "Settings": {
     "settings": "Settings",
