@@ -206,6 +206,7 @@ export default function LoginPage() {
                     id="password"
                     type={isPasswordVisible ? "" : "password"}
                     name="password"
+                    required
                   />
                   <InputGroupAddon align="inline-end">
                     <InputGroupButton variant="ghost" className="rounded-full" size="icon-xs" onClick={() => { setIsPasswordVisible(!isPasswordVisible) }}>
