@@ -58,6 +58,7 @@ export default function LoginPage() {
   const t = useTranslations("Login");
 
   const formSchema = z.object({
+    school: z.string().min(1, "Please select a school."),
     username: z
       .string()
       .min(1, "Username is required"),
@@ -136,6 +137,7 @@ export default function LoginPage() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      school: "",
       username: "",
       password: "",
     },
@@ -156,55 +158,67 @@ export default function LoginPage() {
         <CardContent>
           <form id="login-form" onSubmit={form.handleSubmit(onSubmit)}>
             <FieldGroup>
-              <Field>
-                <FieldLabel>
-                  {t("school")}
-                </FieldLabel>
-                <Popover open={open} onOpenChange={setOpen}>
-                  <PopoverTrigger asChild>
-                    <Button
-                      variant="outline"
-                      role="combobox"
-                      aria-expanded={open}
-                      className="w-[15rem] justify-between"
-                    >
-                      {value
-                        ? schools.find((schools) => schools.value === value)?.label
-                        : t("select_school")}
-                      <ChevronsUpDownIcon className="opacity-50" />
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-[15rem] p-0">
-                    <Command>
-                      <CommandInput placeholder={t("search_schools")} className="h-9" onValueChange={(val) => setSearch(val)} />
-                      <CommandList ref={listRef}>
-                        <CommandEmpty>{t("no_schools_found")}</CommandEmpty>
-                        <CommandGroup>
-                          {filteredSchools.map((school) => (
-                            <CommandItem
-                              key={school.value}
-                              value={school.value}
-                              onSelect={(currentValue) => {
-                                setValue(currentValue);
-                                setOpen(false);
-                                setSearch("");
-                              }}
-                            >
-                              {school.label}
-                              <CheckIcon
-                                className={cn(
-                                  "ml-auto",
-                                  value === school.value ? "opacity-100" : "opacity-0"
-                                )}
-                              />
-                            </CommandItem>
-                          ))}
-                        </CommandGroup>
-                      </CommandList>
-                    </Command>
-                  </PopoverContent>
-                </Popover>
-              </Field>
+              <Controller
+                name="school"
+                control={form.control}
+                render={({ field, fieldState}) => (
+                  <Field data-invalid={fieldState.invalid}>
+                    <FieldLabel htmlFor="login-form-school">
+                      {t("school")}
+                    </FieldLabel>
+                    <Popover open={open} onOpenChange={setOpen}>
+                      <PopoverTrigger asChild>
+                        <Button
+                          variant="outline"
+                          role="combobox"
+                          aria-expanded={open}
+                          className="w-[15rem] justify-between"
+                        >
+                          {value
+                            ? schools.find((schools) => schools.value === value)?.label
+                            : t("select_school")}
+                          <ChevronsUpDownIcon className="opacity-50" />
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-[15rem] p-0">
+                        <Command>
+                          <CommandInput placeholder={t("search_schools")} className="h-9" onValueChange={(val) => setSearch(val)} />
+                          <CommandList ref={listRef}>
+                            <CommandEmpty>{t("no_schools_found")}</CommandEmpty>
+                            <CommandGroup>
+                              {filteredSchools.map((school) => (
+                                <CommandItem
+                                  {...field}
+                                  id="login-form-school"
+                                  key={school.value}
+                                  value={school.value}
+                                  onSelect={(currentValue) => {
+                                    setValue(currentValue);
+                                    setOpen(false);
+                                    setSearch("");
+                                  }}
+                                  aria-invalid={fieldState.invalid}
+                                >
+                                  {school.label}
+                                  <CheckIcon
+                                    className={cn(
+                                      "ml-auto",
+                                      value === school.value ? "opacity-100" : "opacity-0"
+                                    )}
+                                  />
+                                </CommandItem>
+                              ))}
+                            </CommandGroup>
+                          </CommandList>
+                        </Command>
+                      </PopoverContent>
+                    </Popover>
+                    {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
+                  </Field>
+                )}
+              />
               <Controller
                 name="username"
                 control={form.control}
@@ -229,7 +243,7 @@ export default function LoginPage() {
                 name="password"
                 control={form.control}
                 render={({ field, fieldState }) => (
-                  <Field>
+                  <Field data-invalid={fieldState.invalid}>
                     <div className="flex items-center">
                       <FieldLabel htmlFor="login-form-password">
                         {t("password")}
