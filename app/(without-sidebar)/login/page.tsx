@@ -62,10 +62,10 @@ export default function LoginPage() {
       .min(1, "School is required."),
     username: z
       .string()
-      .min(1, "Username is required"),
+      .min(1, "Username is required."),
     password: z
       .string()
-      .min(1, "Password is required"),
+      .min(1, "Password is required."),
   })
 
   // complex search functionality to first show results that start with the search and then show results that include the search
@@ -111,30 +111,6 @@ export default function LoginPage() {
     loadWilmas();
   }, []);
 
-  /*const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    // prevent the default form submission behavior
-    e.preventDefault();
-
-    // get the data from the input fields
-    const formData = new FormData(e.currentTarget);
-    const username = formData.get("username")?.toString() ?? "";
-    const password = formData.get("password")?.toString() ?? "";
-
-    // send the login request through the internal API
-    const res = await fetch("/api/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password })
-    });
-
-    const data = await res.json();
-    if (data.success) {
-      console.log("Logged in!", data);
-    } else {
-      console.error("Login failed", data.message);
-    }
-  };*/
-
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -142,11 +118,15 @@ export default function LoginPage() {
       username: "",
       password: "",
     },
+    shouldFocusError: false
   })
 
   function onSubmit(data: z.infer<typeof formSchema>) {
+    form.trigger("school"); // force re-rendering instantly to prevent unwanted delay before changing to red color on error
+    form.setError("root", { message: "Username or password is wrong."});
+    form.setError("username", { message: ""});
+    form.setError("password", { message: ""});
     console.log("You submitted the following values:", JSON.stringify(data, null, 2));
-    //form.setError
   }
 
   return (
@@ -174,7 +154,8 @@ export default function LoginPage() {
                           variant="outline"
                           role="combobox"
                           aria-expanded={open}
-                          className="w-[15rem] justify-between"
+                          className={`w-[15rem] justify-between ${fieldState.invalid ? "border-destructive ring-1 ring-destructive hover:text-destructive transition-none" : ""}`}
+
                         >
                           {field.value
                             ? schools.find((schools) => schools.value === field.value)?.label
@@ -197,6 +178,7 @@ export default function LoginPage() {
                                     setOpen(false);
                                     setSearch("");
                                     field.onChange(currentValue);
+                                    form.clearErrors();
                                   }}
                                   aria-invalid={fieldState.invalid}
                                 >
@@ -233,6 +215,11 @@ export default function LoginPage() {
                       id="login-form-username"
                       placeholder={t("example_username")}
                       aria-invalid={fieldState.invalid}
+                      autoComplete="username"
+                      onChange={(e) => {
+                        field.onChange(e);
+                        form.clearErrors();
+                      }}
                     />
                     {fieldState.invalid && (
                       <FieldError errors={[fieldState.error]} />
@@ -262,6 +249,11 @@ export default function LoginPage() {
                         id="login-form-password"
                         type={isPasswordVisible ? "" : "password"}
                         aria-invalid={fieldState.invalid}
+                        autoComplete="current-password"
+                        onChange={(e) => {
+                        field.onChange(e);
+                        form.clearErrors();
+                      }}
                       />
                       <InputGroupAddon align="inline-end">
                         <InputGroupButton variant="ghost" className="rounded-full" size="icon-xs" onClick={() => { setIsPasswordVisible(!isPasswordVisible) }}>
@@ -275,8 +267,14 @@ export default function LoginPage() {
                   </Field>
                 )}
               />
+              {form.formState.errors.root && (
+                <FieldError errors={[form.formState.errors.root]} />
+              )}
               <Field>
-                <Button type="submit" form="login-form" disabled={form.formState.isSubmitting}>
+                <Button
+                  type="submit" 
+                  form="login-form"
+                  disabled={form.formState.isSubmitting}>
                   {t("login")}
                   </Button>
               </Field>
