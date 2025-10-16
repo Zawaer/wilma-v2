@@ -13,6 +13,7 @@ import {
 import {
   Field,
   FieldDescription,
+  FieldError,
   FieldGroup,
   FieldLabel,
   FieldSeparator,
@@ -41,6 +42,11 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { Controller, Form, useForm } from "react-hook-form"
+import * as z from "zod"
+
+
 
 export default function LoginPage() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -50,6 +56,15 @@ export default function LoginPage() {
   const [search, setSearch] = useState("");
   const listRef = useRef<HTMLDivElement>(null);
   const t = useTranslations("Login");
+
+  const formSchema = z.object({
+    username: z
+      .string()
+      .min(1, "Username is required"),
+    password: z
+      .string()
+      .min(1, "Password is required"),
+  })
 
   // complex search functionality to first show results that start with the search and then show results that include the search
   const filteredSchools = schools
@@ -94,7 +109,7 @@ export default function LoginPage() {
     loadWilmas();
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  /*const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     // prevent the default form submission behavior
     e.preventDefault();
 
@@ -116,7 +131,19 @@ export default function LoginPage() {
     } else {
       console.error("Login failed", data.message);
     }
-  };
+  };*/
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      username: "",
+      password: "",
+    },
+  })
+
+  function onSubmit(data: z.infer<typeof formSchema>) {
+    console.log("You submitted the following values:", JSON.stringify(data, null, 2));
+  }
 
   return (
     <div className="flex flex-col gap-4 w-screen h-screen items-center justify-center break-words">
@@ -127,7 +154,7 @@ export default function LoginPage() {
         </CardHeader>
         <FieldSeparator/>
         <CardContent>
-          <form onSubmit={handleSubmit}>
+          <form id="login-form" onSubmit={form.handleSubmit(onSubmit)}>
             <FieldGroup>
               <Field>
                 <FieldLabel>
@@ -158,8 +185,9 @@ export default function LoginPage() {
                               key={school.value}
                               value={school.value}
                               onSelect={(currentValue) => {
-                                setValue(currentValue === value ? "" : currentValue)
-                                setOpen(false)
+                                setValue(currentValue);
+                                setOpen(false);
+                                setSearch("");
                               }}
                             >
                               {school.label}
@@ -177,46 +205,63 @@ export default function LoginPage() {
                   </PopoverContent>
                 </Popover>
               </Field>
+              <Controller
+                name="username"
+                control={form.control}
+                render={({ field, fieldState }) => (
+                  <Field data-invalid={fieldState.invalid}>
+                    <FieldLabel htmlFor="login-form-username">
+                      {t("username")}
+                    </FieldLabel>
+                    <Input
+                      {...field}
+                      id="login-form-username"
+                      placeholder={t("example_username")}
+                      aria-invalid={fieldState.invalid}
+                    />
+                    {fieldState.invalid && (
+                      <FieldError errors={[fieldState.error]} />
+                    )}
+                  </Field>
+                )}
+              />
+              <Controller
+                name="password"
+                control={form.control}
+                render={({ field, fieldState }) => (
+                  <Field>
+                    <div className="flex items-center">
+                      <FieldLabel htmlFor="login-form-password">
+                        {t("password")}
+                      </FieldLabel>
+                      <a
+                        href="https://espoo.inschool.fi/forgotpasswd"
+                        className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+                      >
+                        {t("forgot_password")}
+                      </a>
+                    </div>
+                    <InputGroup>
+                      <InputGroupInput
+                        {...field}
+                        id="login-form-password"
+                        type={isPasswordVisible ? "" : "password"}
+                        aria-invalid={fieldState.invalid}
+                      />
+                      <InputGroupAddon align="inline-end">
+                        <InputGroupButton variant="ghost" className="rounded-full" size="icon-xs" onClick={() => { setIsPasswordVisible(!isPasswordVisible) }}>
+                          {isPasswordVisible ? <EyeOffIcon /> : <EyeIcon />}
+                        </InputGroupButton>
+                      </InputGroupAddon>
+                    </InputGroup>
+                    {fieldState.invalid && (
+                      <FieldError errors={[fieldState.error]} />
+                    )}
+                  </Field>
+                )}
+              />
               <Field>
-                <FieldLabel htmlFor="username">
-                  {t("username")}
-                </FieldLabel>
-                <Input
-                  id="username"
-                  type="username"
-                  name="username"
-                  placeholder={t("example_username")}
-                  required
-                />
-              </Field>
-              <Field>
-                <div className="flex items-center">
-                  <FieldLabel htmlFor="password">
-                    {t("password")}
-                  </FieldLabel>
-                  <a
-                    href="https://espoo.inschool.fi/forgotpasswd"
-                    className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                  >
-                    {t("forgot_password")}
-                  </a>
-                </div>
-                <InputGroup>
-                  <InputGroupInput
-                    id="password"
-                    type={isPasswordVisible ? "" : "password"}
-                    name="password"
-                    required
-                  />
-                  <InputGroupAddon align="inline-end">
-                    <InputGroupButton variant="ghost" className="rounded-full" size="icon-xs" onClick={() => { setIsPasswordVisible(!isPasswordVisible) }}>
-                      {isPasswordVisible ? <EyeOffIcon /> : <EyeIcon />}
-                    </InputGroupButton>
-                  </InputGroupAddon>
-                </InputGroup>
-              </Field>
-              <Field>
-                <Button type="submit">
+                <Button type="submit" form="login-form">
                   {t("login")}
                   </Button>
               </Field>
