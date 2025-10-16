@@ -50,15 +50,16 @@ import * as z from "zod"
 
 export default function LoginPage() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [open, setOpen] = useState(false)
-  const [value, setValue] = useState("")
+  const [open, setOpen] = useState(false);
   const [schools, setSchools] = useState<{ label: string; value: string }[]>([]);
   const [search, setSearch] = useState("");
   const listRef = useRef<HTMLDivElement>(null);
   const t = useTranslations("Login");
 
   const formSchema = z.object({
-    school: z.string().min(1, "Please select a school."),
+    school: z
+      .string()
+      .min(1, "School is required."),
     username: z
       .string()
       .min(1, "Username is required"),
@@ -145,6 +146,7 @@ export default function LoginPage() {
 
   function onSubmit(data: z.infer<typeof formSchema>) {
     console.log("You submitted the following values:", JSON.stringify(data, null, 2));
+    //form.setError
   }
 
   return (
@@ -174,8 +176,8 @@ export default function LoginPage() {
                           aria-expanded={open}
                           className="w-[15rem] justify-between"
                         >
-                          {value
-                            ? schools.find((schools) => schools.value === value)?.label
+                          {field.value
+                            ? schools.find((schools) => schools.value === field.value)?.label
                             : t("select_school")}
                           <ChevronsUpDownIcon className="opacity-50" />
                         </Button>
@@ -188,14 +190,13 @@ export default function LoginPage() {
                             <CommandGroup>
                               {filteredSchools.map((school) => (
                                 <CommandItem
-                                  {...field}
                                   id="login-form-school"
                                   key={school.value}
                                   value={school.value}
                                   onSelect={(currentValue) => {
-                                    setValue(currentValue);
                                     setOpen(false);
                                     setSearch("");
+                                    field.onChange(currentValue);
                                   }}
                                   aria-invalid={fieldState.invalid}
                                 >
@@ -203,7 +204,7 @@ export default function LoginPage() {
                                   <CheckIcon
                                     className={cn(
                                       "ml-auto",
-                                      value === school.value ? "opacity-100" : "opacity-0"
+                                      field.value === school.value ? "opacity-100" : "opacity-0"
                                     )}
                                   />
                                 </CommandItem>
@@ -275,7 +276,7 @@ export default function LoginPage() {
                 )}
               />
               <Field>
-                <Button type="submit" form="login-form">
+                <Button type="submit" form="login-form" disabled={form.formState.isSubmitting}>
                   {t("login")}
                   </Button>
               </Field>
