@@ -1,4 +1,29 @@
 {
+  "Layout": {
+    "metadata": "Parempi Wilma-sovellus"
+  },
+  "Login": {
+    "welcomeBack": "Tervetuloa takaisin",
+    "logInWithYourWilmaAccount": "Kirjaudu sisään Wilma-tililläsi",
+    "school": "Koulu",
+    "selectSchool": "Valitse koulu...",
+    "searchSchools": "Etsi kouluja...",
+    "noSchoolsFound": "Kouluja ei löytynyt.",
+    "username": "Käyttäjätunnus",
+    "usernamePlaceholder": "matti.heikkinen",
+    "password": "Salasana",
+    "forgotPassword": "Unohditko salasanasi?",
+    "rememberSchool": "Muista koulu",
+    "login": "Kirjaudu sisään",
+    "schoolIsRequired": "Koulu vaaditaan.",
+    "usernameIsRequired": "Käyttäjätunnus vaaditaan.",
+    "passwordIsRequired": "Salasana vaaditaan.",
+    "usernameOrPasswordIsWrong": "Käyttäjätunnus tai salasana on virheellinen.",
+    "privacyPolicy1": "Jatkamalla hyväksyt",
+    "privacyPolicy2": "Palveluehdot",
+    "privacyPolicy3": "sekä",
+    "privacyPolicy4": "Tietosuojaselosteen"
+  },
   "Sidebar": {
     "home": "Etusivu",
     "messages": "Viestit",
@@ -7,36 +32,16 @@
     "account": "Tili",
     "logout": "Kirjaudu ulos"
   },
-  "Login": {
-    "welcome_back": "Tervetuloa takaisin",
-    "log_in_with_your_wilma_account": "Kirjaudu sisään Wilma-tililläsi",
-    "school": "Koulu",
-    "select_school": "Valitse koulu...",
-    "search_schools": "Etsi kouluja...",
-    "no_schools_found": "Kouluja ei löytynyt.",
-    "username": "Käyttäjätunnus",
-    "password": "Salasana",
-    "example_username": "matti.heikkinen",
-    "forgot_password": "Unohditko salasanasi?",
-    "login": "Kirjaudu sisään",
-    "privacy_notice_1": "Jatkamalla hyväksyt",
-    "privacy_notice_2": "Palveluehdot",
-    "privacy_notice_3": "sekä",
-    "privacy_notice_4": "Tietosuojaselosteen"
-  },
   "Settings": {
     "settings": "Asetukset",
-    "interface_theme": "Käyttöliittymän teema",
-    "customize_theme": "Mukauta käyttöliittymän teemaa",
+    "interfaceTheme": "Käyttöliittymän teema",
+    "customizeTheme": "Mukauta käyttöliittymän teemaa",
     "light": "Vaalea",
     "dark": "Tumma",
     "system": "Järjestelmä",
     "language": "Kieli",
-    "change_display_language": "Muuta käyttöliittymän kieli",
+    "changeDisplayLanguage": "Muuta käyttöliittymän kieli",
     "english": "Englanti",
     "finnish": "Suomi"
-  },
-  "Layout": {
-    "metadata": "Parempi Wilma-sovellus"
   }
 }

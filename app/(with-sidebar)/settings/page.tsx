@@ -53,8 +53,8 @@ export default function SettingsPage() {
       <div className="flex flex-col">
         <div className="flex w-full items-center p-4">
           <div className="flex flex-col w-1/4">
-            <span className="font-semibold">{t("interface_theme")}</span>
-            <span className="text-sm">{t("customize_theme")}</span>
+            <span className="font-semibold">{t("interfaceTheme")}</span>
+            <span className="text-sm">{t("customizeTheme")}</span>
           </div>
           <div className="flex w-3/4">
             <Select value={themeSelectValue} onValueChange={handleThemeChange}>
@@ -73,7 +73,7 @@ export default function SettingsPage() {
         <div className="flex w-full items-center p-4">
           <div className="flex flex-col w-1/4">
             <span className="font-semibold">{t("language")}</span>
-            <span className="text-sm">{t("change_display_language")}</span>
+            <span className="text-sm">{t("changeDisplayLanguage")}</span>
           </div>
           <div className="flex w-3/4">
             <Select value={locale} onValueChange={handleLanguageChange}>

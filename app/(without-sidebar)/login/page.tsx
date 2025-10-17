@@ -1,5 +1,6 @@
 "use client";
 
+import { redirect } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { useTranslations } from 'next-intl';
 import { getSchools } from "@/lib/wilma_api";
@@ -7,8 +8,6 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { Controller, useForm } from "react-hook-form"
 import * as z from "zod"
 import { cn } from "@/lib/utils"
-//import Skeleton from 'react-loading-skeleton'
-//import 'react-loading-skeleton/dist/skeleton.css'
 import { Skeleton } from "@/components/ui/skeleton"
 import { Checkbox } from "@/components/ui/checkbox"
 import {
@@ -49,7 +48,6 @@ import {
 } from "@/components/ui/popover"
 import { EyeIcon, EyeOffIcon } from 'lucide-react'
 import { CheckIcon, ChevronsUpDownIcon } from "lucide-react"
-import { Label } from "@radix-ui/react-dropdown-menu";
 
 export default function LoginPage() {
   const t = useTranslations("Login");
@@ -63,13 +61,13 @@ export default function LoginPage() {
   const formSchema = z.object({
     school: z
       .string()
-      .min(1, "School is required."),
+      .min(1, t("schoolIsRequired")),
     username: z
       .string()
-      .min(1, "Username is required."),
+      .min(1, t("usernameIsRequired")),
     password: z
       .string()
-      .min(1, "Password is required."),
+      .min(1, t("passwordIsRequired")),
     rememberSchool: z
       .boolean()
   })
@@ -148,21 +146,22 @@ export default function LoginPage() {
 
     const login_data = await res.json();
     if (login_data.success) {
-      console.log("Logged in!", login_data);
-
       // store the school if wanted, else delete it
       if (data.rememberSchool) {
         localStorage.setItem("school", data.school);
       } else {
         localStorage.removeItem("school");
       }
+
+      // redirect to home page
+      redirect("/home");
     } else {
       console.error("Login failed", login_data.message);
       // force re-rendering instantly to prevent unwanted delay before changing to red color on error
       form.trigger("school");
 
       // set errors to the fields
-      form.setError("root", { message: "Username or password is wrong."});
+      form.setError("root", { message: t("usernameOrPasswordIsWrong")});
       form.setError("username", { message: ""});
       form.setError("password", { message: ""});
     }
@@ -172,8 +171,8 @@ export default function LoginPage() {
     <div className="flex flex-col gap-4 w-screen h-screen items-center justify-center break-words">
       <Card className="min-w-[25rem]">
         <CardHeader className="flex flex-col items-center">
-          <CardTitle className="text-2xl font-bold">{t("welcome_back")}</CardTitle>
-          <CardDescription>{t("log_in_with_your_wilma_account")}</CardDescription>
+          <CardTitle className="text-2xl font-bold">{t("welcomeBack")}</CardTitle>
+          <CardDescription>{t("logInWithYourWilmaAccount")}</CardDescription>
         </CardHeader>
         <FieldSeparator/>
         <CardContent>
@@ -201,15 +200,15 @@ export default function LoginPage() {
                           >
                             {field.value
                               ? schools.find((schools) => schools.value === field.value)?.label
-                              : t("select_school")}
+                              : t("selectSchool")}
                             <ChevronsUpDownIcon className="opacity-50" />
                           </Button>
                         </PopoverTrigger>
                         <PopoverContent className="w-[15rem] p-0">
                           <Command>
-                            <CommandInput placeholder={t("search_schools")} className="h-9" onValueChange={(val) => setSearch(val)} />
+                            <CommandInput placeholder={t("searchSchools")} className="h-9" onValueChange={(val) => setSearch(val)} />
                             <CommandList ref={listRef}>
-                              <CommandEmpty>{t("no_schools_found")}</CommandEmpty>
+                              <CommandEmpty>{t("noSchoolsFound")}</CommandEmpty>
                               <CommandGroup>
                                 {filteredSchools.map((school) => (
                                   <CommandItem
@@ -256,7 +255,7 @@ export default function LoginPage() {
                     <Input
                       {...field}
                       id="login-form-username"
-                      placeholder={t("example_username")}
+                      placeholder={t("usernamePlaceholder")}
                       aria-invalid={fieldState.invalid}
                       autoComplete="username"
                       onChange={(e) => {
@@ -283,7 +282,7 @@ export default function LoginPage() {
                         href="https://espoo.inschool.fi/forgotpasswd"
                         className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
                       >
-                        {t("forgot_password")}
+                        {t("forgotPassword")}
                       </a>
                     </div>
                     <InputGroup>
@@ -310,10 +309,13 @@ export default function LoginPage() {
                   </Field>
                 )}
               />
+              {form.formState.errors.root && (
+                <FieldError errors={[form.formState.errors.root]} />
+              )}
               <Controller
                 name="rememberSchool"
                 control={form.control}
-                render={({ field, fieldState }) => (
+                render={({ field }) => (
                   <Field orientation="horizontal">
                     {loadingSchools ? (
                       <Skeleton className="h-[1rem] w-[1rem] rounded-[0.25rem]" />
@@ -325,14 +327,11 @@ export default function LoginPage() {
                     />
                     )}
                     <FieldLabel htmlFor="login-form-remember-school">
-                      Remember school
+                      {t("rememberSchool")}
                     </FieldLabel>
                   </Field>
                 )}
               />
-              {form.formState.errors.root && (
-                <FieldError errors={[form.formState.errors.root]} />
-              )}
               <Field>
                 <Button
                   type="submit" 
@@ -346,8 +345,8 @@ export default function LoginPage() {
         </CardContent>
       </Card>
       <FieldDescription className="px-6 text-center break-words max-w-[25rem]">
-        {t("privacy_notice_1")} <a href="/terms-of-service">{t("privacy_notice_2")}</a>{" "}
-        {t("privacy_notice_3")} <a href="/privacy-policy">{t("privacy_notice_4")}</a>.
+        {t("privacyPolicy1")} <a href="/terms-of-service">{t("privacyPolicy2")}</a>{" "}
+        {t("privacyPolicy3")} <a href="/privacy-policy">{t("privacyPolicy4")}</a>.
       </FieldDescription>
     </div>
   )

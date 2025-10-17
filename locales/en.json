@@ -1,4 +1,29 @@
 {
+  "Layout": {
+    "metadata": "A better Wilma client"
+  },
+  "Login": {
+    "welcomeBack": "Welcome back",
+    "logInWithYourWilmaAccount": "Log in with your Wilma account",
+    "school": "School",
+    "selectSchool": "Select school...",
+    "searchSchools": "Search schools...",
+    "noSchoolsFound": "No schools found.",
+    "username": "Username",
+    "usernamePlaceholder": "john.doe",
+    "password": "Password",
+    "forgotPassword": "Forgot password?",
+    "rememberSchool": "Remember school",
+    "login": "Log in",
+    "schoolIsRequired": "School is required.",
+    "usernameIsRequired": "Username is required.",
+    "passwordIsRequired": "Password is required.",
+    "usernameOrPasswordIsWrong": "Username or password is wrong.",
+    "privacyPolicy1": "By continuing, you agree to our",
+    "privacyPolicy2": "Terms of Service",
+    "privacyPolicy3": "and",
+    "privacyPolicy4": "Privacy Policy"
+  },
   "Sidebar": {
     "home": "Home",
     "messages": "Messages",
@@ -7,39 +32,16 @@
     "account": "Account",
     "logout": "Log out"
   },
-  "Login": {
-    "welcome_back": "Welcome back",
-    "log_in_with_your_wilma_account": "Log in with your Wilma account",
-    "school": "School",
-    "select_school": "Select school...",
-    "search_schools": "Search schools...",
-    "no_schools_found": "No schools found.",
-    "username": "Username",
-    "password": "Password",
-    "example_username": "john.doe",
-    "forgot_password": "Forgot password?",
-    "login": "Log in",
-    "privacy_notice_1": "By continuing, you agree to our",
-    "privacy_notice_2": "Terms of Service",
-    "privacy_notice_3": "and",
-    "privacy_notice_4": "Privacy Policy",
-    "school_required": "School is required",
-    "username_required": "Username is required",
-    "password_required": "Password is required"
-  },
   "Settings": {
     "settings": "Settings",
-    "interface_theme": "Interface theme",
-    "customize_theme": "Customize your UI theme",
+    "interfaceTheme": "Interface theme",
+    "customizeTheme": "Customize your UI theme",
     "light": "Light",
     "dark": "Dark",
     "system": "System",
     "language": "Language",
-    "change_display_language": "Change display language",
+    "changeDisplayLanguage": "Change display language",
     "english": "English",
     "finnish": "Finnish"
-  },
-  "Layout": {
-    "metadata": "A better Wilma client"
   }
 }
