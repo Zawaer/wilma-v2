@@ -7,6 +7,9 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { Controller, useForm } from "react-hook-form"
 import * as z from "zod"
 import { cn } from "@/lib/utils"
+//import Skeleton from 'react-loading-skeleton'
+//import 'react-loading-skeleton/dist/skeleton.css'
+import { Skeleton } from "@/components/ui/skeleton"
 import { Checkbox } from "@/components/ui/checkbox"
 import {
   Card,
@@ -49,12 +52,13 @@ import { CheckIcon, ChevronsUpDownIcon } from "lucide-react"
 import { Label } from "@radix-ui/react-dropdown-menu";
 
 export default function LoginPage() {
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [open, setOpen] = useState(false);
+  const t = useTranslations("Login");
+  const [loadingSchools, setLoadingSchools] = useState(true);
   const [schools, setSchools] = useState<{ label: string; value: string }[]>([]);
   const [search, setSearch] = useState("");
+  const [open, setOpen] = useState(false);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const listRef = useRef<HTMLDivElement>(null);
-  const t = useTranslations("Login");
 
   const formSchema = z.object({
     school: z
@@ -93,26 +97,6 @@ export default function LoginPage() {
     }
   }, [search]);
 
-
-  useEffect(() => {
-    async function loadWilmas() {
-      try {
-        const urls = await getSchools();
-        const mapped = urls.map((url: string) => ({
-          label: url.replace("https://", ""), // remove https:// prefix
-          value: url,
-        }));
-        setSchools(
-          mapped.sort((a: { label: string; value: string }, b: { label: string; value: string }) => a.label.toLowerCase().localeCompare(b.label.toLowerCase()))
-        );
-      } catch (err) {
-        console.error("Failed to fetch Wilmas", err);
-      }
-    }
-
-    loadWilmas();
-  }, []);
-
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -125,12 +109,33 @@ export default function LoginPage() {
   })
 
   useEffect(() => {
-    // on mount, load remembered school
-    const rememberedSchool = localStorage.getItem("school");
-    if (rememberedSchool) {
-      form.setValue("school", rememberedSchool);
-      form.setValue("rememberSchool", true);
+    async function loadWilmas() {
+      try {
+        setLoadingSchools(true);
+
+         // on mount, load remembered school
+        const rememberedSchool = localStorage.getItem("school");
+        if (rememberedSchool) {
+          form.setValue("school", rememberedSchool);
+          form.setValue("rememberSchool", true);
+        }
+
+        const urls = await getSchools();
+        const mapped = urls.map((url: string) => ({
+          label: url.replace("https://", ""), // remove https:// prefix
+          value: url,
+        }));
+        setSchools(
+          mapped.sort((a: { label: string; value: string }, b: { label: string; value: string }) => a.label.toLowerCase().localeCompare(b.label.toLowerCase()))
+        );
+      } catch (err) {
+        console.error("Failed to fetch Wilmas", err);
+      } finally {
+        setLoadingSchools(false);
+      }
     }
+
+    loadWilmas();
   }, [form]);
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
@@ -182,54 +187,58 @@ export default function LoginPage() {
                     <FieldLabel htmlFor="login-form-school">
                       {t("school")}
                     </FieldLabel>
-                    <Popover open={open} onOpenChange={setOpen}>
-                      <PopoverTrigger asChild>
-                        <Button
-                          variant="outline"
-                          role="combobox"
-                          aria-expanded={open}
-                          className={`w-[15rem] justify-between ${fieldState.invalid ? "border-destructive ring-1 ring-destructive hover:text-destructive transition-none" : ""}`}
+                    {loadingSchools ? (
+                      <Skeleton className="h-[2.25rem]" />
+                    ) : (
+                      <Popover open={open} onOpenChange={setOpen}>
+                        <PopoverTrigger asChild>
+                          <Button
+                            variant="outline"
+                            role="combobox"
+                            aria-expanded={open}
+                            className={`w-[15rem] justify-between ${fieldState.invalid ? "border-destructive ring-1 ring-destructive hover:text-destructive transition-none" : ""}`}
 
-                        >
-                          {field.value
-                            ? schools.find((schools) => schools.value === field.value)?.label
-                            : t("select_school")}
-                          <ChevronsUpDownIcon className="opacity-50" />
-                        </Button>
-                      </PopoverTrigger>
-                      <PopoverContent className="w-[15rem] p-0">
-                        <Command>
-                          <CommandInput placeholder={t("search_schools")} className="h-9" onValueChange={(val) => setSearch(val)} />
-                          <CommandList ref={listRef}>
-                            <CommandEmpty>{t("no_schools_found")}</CommandEmpty>
-                            <CommandGroup>
-                              {filteredSchools.map((school) => (
-                                <CommandItem
-                                  id="login-form-school"
-                                  key={school.value}
-                                  value={school.value}
-                                  onSelect={(currentValue) => {
-                                    setOpen(false);
-                                    setSearch("");
-                                    field.onChange(currentValue);
-                                    form.clearErrors();
-                                  }}
-                                  aria-invalid={fieldState.invalid}
-                                >
-                                  {school.label}
-                                  <CheckIcon
-                                    className={cn(
-                                      "ml-auto",
-                                      field.value === school.value ? "opacity-100" : "opacity-0"
-                                    )}
-                                  />
-                                </CommandItem>
-                              ))}
-                            </CommandGroup>
-                          </CommandList>
-                        </Command>
-                      </PopoverContent>
-                    </Popover>
+                          >
+                            {field.value
+                              ? schools.find((schools) => schools.value === field.value)?.label
+                              : t("select_school")}
+                            <ChevronsUpDownIcon className="opacity-50" />
+                          </Button>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-[15rem] p-0">
+                          <Command>
+                            <CommandInput placeholder={t("search_schools")} className="h-9" onValueChange={(val) => setSearch(val)} />
+                            <CommandList ref={listRef}>
+                              <CommandEmpty>{t("no_schools_found")}</CommandEmpty>
+                              <CommandGroup>
+                                {filteredSchools.map((school) => (
+                                  <CommandItem
+                                    id="login-form-school"
+                                    key={school.value}
+                                    value={school.value}
+                                    onSelect={(currentValue) => {
+                                      setOpen(false);
+                                      setSearch("");
+                                      field.onChange(currentValue);
+                                      form.clearErrors();
+                                    }}
+                                    aria-invalid={fieldState.invalid}
+                                  >
+                                    {school.label}
+                                    <CheckIcon
+                                      className={cn(
+                                        "ml-auto",
+                                        field.value === school.value ? "opacity-100" : "opacity-0"
+                                      )}
+                                    />
+                                  </CommandItem>
+                                ))}
+                              </CommandGroup>
+                            </CommandList>
+                          </Command>
+                        </PopoverContent>
+                      </Popover>
+                    )}
                     {fieldState.invalid && (
                     <FieldError errors={[fieldState.error]} />
                   )}
@@ -306,11 +315,15 @@ export default function LoginPage() {
                 control={form.control}
                 render={({ field, fieldState }) => (
                   <Field orientation="horizontal">
+                    {loadingSchools ? (
+                      <Skeleton className="h-[1rem] w-[1rem] rounded-[0.25rem]" />
+                    ): (
                     <Checkbox
                       id="login-form-remember-school"
                       checked={field.value}
                       onCheckedChange={field.onChange}
                     />
+                    )}
                     <FieldLabel htmlFor="login-form-remember-school">
                       Remember school
                     </FieldLabel>

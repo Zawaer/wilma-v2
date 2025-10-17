@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocaleFromCookies } from "@/lib/locale";
 import { ThemeProvider } from "@/components/theme-provider"
+import { SkeletonTheme } from 'react-loading-skeleton';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,7 +33,9 @@ export default async function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <NextIntlClientProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            {children}
+            <SkeletonTheme baseColor="#303030" highlightColor="#525252" height="2rem" borderRadius="0.5rem">
+              {children}
+            </SkeletonTheme>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
