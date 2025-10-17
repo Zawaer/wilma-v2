@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocaleFromCookies } from "@/lib/locale";
 import { ThemeProvider } from "@/components/theme-provider"
-import { SkeletonTheme } from 'react-loading-skeleton';
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 
@@ -35,12 +34,10 @@ export default async function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <NextIntlClientProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <SkeletonTheme baseColor="#171717" highlightColor="#4b5563" height="2rem" borderRadius="0.5rem">
-              <SidebarProvider>
-                <AppSidebar />
-                {children}
-              </SidebarProvider>
-            </SkeletonTheme>
+            <SidebarProvider>
+              <AppSidebar />
+              {children}
+            </SidebarProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
