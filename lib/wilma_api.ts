@@ -109,12 +109,12 @@ export class WilmaSession {
 
     const redirect = res.headers.get("location");
 
-    if (redirect === "https://espoo.inschool.fi/?loginfailed") {
+    if (redirect === `${this.wilmaUrl}/?loginfailed`) {
       console.error("Invalid username or password");
       return false;
     }
 
-    if (redirect !== "https://espoo.inschool.fi/?checkcookie") {
+    if (redirect !== `${this.wilmaUrl}/?checkcookie`) {
       console.error("Login redirects to wrong place:", redirect);
       return false;
     }

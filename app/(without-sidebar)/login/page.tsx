@@ -3,6 +3,11 @@
 import { useState, useEffect, useRef } from "react";
 import { useTranslations } from 'next-intl';
 import { getSchools } from "@/lib/wilma_api";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { Controller, useForm } from "react-hook-form"
+import * as z from "zod"
+import { cn } from "@/lib/utils"
+import { Checkbox } from "@/components/ui/checkbox"
 import {
   Card,
   CardContent,
@@ -18,6 +23,7 @@ import {
   FieldLabel,
   FieldSeparator,
 } from "@/components/ui/field"
+import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import {
   InputGroup,
@@ -25,10 +31,6 @@ import {
   InputGroupButton,
   InputGroupInput,
 } from "@/components/ui/input-group"
-import { EyeIcon, EyeOffIcon } from 'lucide-react'
-import { Button } from "@/components/ui/button"
-import { CheckIcon, ChevronsUpDownIcon } from "lucide-react"
-import { cn } from "@/lib/utils"
 import {
   Command,
   CommandEmpty,
@@ -42,11 +44,9 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { Controller, Form, useForm } from "react-hook-form"
-import * as z from "zod"
-
-
+import { EyeIcon, EyeOffIcon } from 'lucide-react'
+import { CheckIcon, ChevronsUpDownIcon } from "lucide-react"
+import { Label } from "@radix-ui/react-dropdown-menu";
 
 export default function LoginPage() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -66,6 +66,8 @@ export default function LoginPage() {
     password: z
       .string()
       .min(1, "Password is required."),
+    rememberSchool: z
+      .boolean()
   })
 
   // complex search functionality to first show results that start with the search and then show results that include the search
@@ -117,17 +119,49 @@ export default function LoginPage() {
       school: "",
       username: "",
       password: "",
+      rememberSchool: false
     },
     shouldFocusError: false
   })
 
-  function onSubmit(data: z.infer<typeof formSchema>) {
-    form.trigger("school"); // force re-rendering instantly to prevent unwanted delay before changing to red color on error
-    form.setError("root", { message: "Username or password is wrong."});
-    form.setError("username", { message: ""});
-    form.setError("password", { message: ""});
-    console.log("You submitted the following values:", JSON.stringify(data, null, 2));
-  }
+  useEffect(() => {
+    // on mount, load remembered school
+    const rememberedSchool = localStorage.getItem("school");
+    if (rememberedSchool) {
+      form.setValue("school", rememberedSchool);
+      form.setValue("rememberSchool", true);
+    }
+  }, [form]);
+
+  async function onSubmit(data: z.infer<typeof formSchema>) {
+    // send the login request through the internal API
+    const res = await fetch("/api/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ school: data.school, username: data.username, password: data.password })
+    });
+
+    const login_data = await res.json();
+    if (login_data.success) {
+      console.log("Logged in!", login_data);
+
+      // store the school if wanted, else delete it
+      if (data.rememberSchool) {
+        localStorage.setItem("school", data.school);
+      } else {
+        localStorage.removeItem("school");
+      }
+    } else {
+      console.error("Login failed", login_data.message);
+      // force re-rendering instantly to prevent unwanted delay before changing to red color on error
+      form.trigger("school");
+
+      // set errors to the fields
+      form.setError("root", { message: "Username or password is wrong."});
+      form.setError("username", { message: ""});
+      form.setError("password", { message: ""});
+    }
+    }
 
   return (
     <div className="flex flex-col gap-4 w-screen h-screen items-center justify-center break-words">
@@ -264,6 +298,22 @@ export default function LoginPage() {
                     {fieldState.invalid && (
                       <FieldError errors={[fieldState.error]} />
                     )}
+                  </Field>
+                )}
+              />
+              <Controller
+                name="rememberSchool"
+                control={form.control}
+                render={({ field, fieldState }) => (
+                  <Field orientation="horizontal">
+                    <Checkbox
+                      id="login-form-remember-school"
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                    />
+                    <FieldLabel htmlFor="login-form-remember-school">
+                      Remember school
+                    </FieldLabel>
                   </Field>
                 )}
               />

@@ -2,9 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { WilmaSession } from "@/lib/wilma_api";
 
 export async function POST(req: NextRequest) {
-  const { username, password } = await req.json();
+  const { school, username, password } = await req.json();
 
-  const wilma = new WilmaSession("https://espoo.inschool.fi");
+  const wilma = new WilmaSession(school);
   const success = await wilma.login(username, password);
 
   if (!success) {
