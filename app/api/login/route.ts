@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { cookies } from "next/headers";
 import { WilmaSession } from "@/lib/wilma_api";
 
 export async function POST(req: NextRequest) {
@@ -10,6 +11,16 @@ export async function POST(req: NextRequest) {
   if (!success) {
     return NextResponse.json({ success: false, message: "Login failed" }, { status: 401 });
   }
+
+  // store session ID securely
+  const cookieStore = await cookies();
+  cookieStore.set("Wilma2SID", wilma.wilma2SID, {
+    httpOnly: true,
+    secure: true,
+    sameSite: "strict",
+    path: "/",
+    maxAge: 60 * 60 * 24 * 7, // 7 days
+  });
 
   return NextResponse.json({
     success: true,
