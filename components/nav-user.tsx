@@ -1,5 +1,6 @@
 "use client"
 
+import { redirect } from "next/navigation";
 import { useTranslations } from 'next-intl';
 import {
   IconDotsVertical,
@@ -38,6 +39,12 @@ export function NavUser({
 }) {
   const { isMobile } = useSidebar();
   const t = useTranslations("Sidebar");
+
+  // make a POST request to delete the cookies to logout and redirect back to login page
+  async function handleLogout() {
+    await fetch("/api/logout", { method: "POST" });
+    redirect("/login");
+  }
 
   return (
     <SidebarMenu>
@@ -87,7 +94,7 @@ export function NavUser({
                 <IconUserCircle />
                 {t("account")}
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem onClick={handleLogout}>
                 <IconLogout />
                 {t("logout")}
               </DropdownMenuItem>
