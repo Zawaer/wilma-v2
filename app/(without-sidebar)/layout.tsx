@@ -20,7 +20,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const locale = await getLocaleFromCookies();
-  const messages = (await import(`../../locales/${locale}.json`)).default;
+  const messages = (await import(`../../lib/locales/${locale}.json`)).default;
   const description = messages.Layout?.metadata;
 
   return (
