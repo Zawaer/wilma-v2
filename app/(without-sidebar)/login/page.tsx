@@ -1,6 +1,7 @@
 "use client";
 
 import { redirect } from "next/navigation";
+import schoolList from "@/lib/schoolList";
 import { useState, useEffect, useRef } from "react";
 import { useTranslations } from 'next-intl';
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -106,35 +107,22 @@ export default function LoginPage() {
   })
 
   useEffect(() => {
-    async function loadWilmas() {
-      try {
-        setLoadingSchools(true);
+    setLoadingSchools(true);
 
-         // on mount, load remembered school
-        const rememberedSchool = localStorage.getItem("school");
-        if (rememberedSchool) {
-          form.setValue("school", rememberedSchool);
-          form.setValue("rememberSchool", true);
-        }
-
-        const res = await fetch("/schools.json");
-        const data = await res.json();
-
-        const mapped = data.map((subdomain: string) => ({
-          label: `${subdomain}.inschool.fi`,
-          value: `https://${subdomain}.inschool.fi`, // full URL
-        }));
-        setSchools(
-          mapped.sort((a: { label: string; value: string }, b: { label: string; value: string }) => a.label.toLowerCase().localeCompare(b.label.toLowerCase()))
-        );
-      } catch (err) {
-        console.error("Failed to fetch Wilmas", err);
-      } finally {
-        setLoadingSchools(false);
-      }
+    // load remembered school
+    const rememberedSchool = localStorage.getItem("school");
+    if (rememberedSchool) {
+      form.setValue("school", rememberedSchool);
+      form.setValue("rememberSchool", true);
     }
 
-    loadWilmas();
+    const mapped = schoolList.map(subdomain => ({
+      label: `${subdomain}.inschool.fi`,
+      value: `https://${subdomain}.inschool.fi`,
+    }));
+
+    setSchools(mapped.sort((a, b) => a.label.toLowerCase().localeCompare(b.label.toLowerCase())));
+    setLoadingSchools(false);
   }, [form]);
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
