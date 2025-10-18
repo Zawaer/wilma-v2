@@ -3,7 +3,6 @@
 import { redirect } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { useTranslations } from 'next-intl';
-import { getSchools } from "@/lib/wilma_api";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Controller, useForm } from "react-hook-form"
 import * as z from "zod"
@@ -118,10 +117,12 @@ export default function LoginPage() {
           form.setValue("rememberSchool", true);
         }
 
-        const urls = await getSchools();
-        const mapped = urls.map((url: string) => ({
-          label: url.replace("https://", ""), // remove https:// prefix
-          value: url,
+        const res = await fetch("/schools.json");
+        const data = await res.json();
+
+        const mapped = data.map((subdomain: string) => ({
+          label: `${subdomain}.inschool.fi`,
+          value: `https://${subdomain}.inschool.fi`, // full URL
         }));
         setSchools(
           mapped.sort((a: { label: string; value: string }, b: { label: string; value: string }) => a.label.toLowerCase().localeCompare(b.label.toLowerCase()))

@@ -1,22 +1,5 @@
 import * as cheerio from 'cheerio';
 
-export async function getSchools() {
-    // parse list of wilma URLs, for example espoo.inschool.fi"
-    const wilmasUrl = "https://wilmahub.service.inschool.fi/wilmat";
-
-    const res: Response = await fetch(wilmasUrl, {
-      method: "GET"
-    });
-
-    if (!res.ok) {
-      console.error(`${res.status} Failed to get list Wilmas`);
-      return "";
-    }
-
-    const data = await res.json();
-    const urls = data.wilmat.map((item: { url: string }) => item.url);
-    return urls;
-  }
 export class WilmaSession {
   wilmaUrl: string;
   wilma2SID: string = "";
