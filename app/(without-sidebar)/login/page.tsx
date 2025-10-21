@@ -1,7 +1,7 @@
 "use client";
 
 import { redirect } from "next/navigation";
-import schoolList from "@/lib/schoolList";
+import schoolList from "@/lib/school-list";
 import { useState, useEffect, useRef } from "react";
 import { useTranslations } from 'next-intl';
 import { zodResolver } from "@hookform/resolvers/zod"

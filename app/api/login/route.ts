@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import { WilmaSession } from "@/lib/wilma_api";
+import { WilmaSession } from "@/lib/wilma-api";
 
 export async function POST(req: NextRequest) {
   const { school, username, password } = await req.json();
