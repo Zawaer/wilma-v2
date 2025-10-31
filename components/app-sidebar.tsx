@@ -62,7 +62,7 @@ export async function AppSidebar() {
         <NavUser user={{
     name: "Toivo Kallio",
     email: "Otaniemen lukio",
-    avatar: "TK",
+    avatar: "TK"
         }}/>
       </SidebarFooter>
     </Sidebar>

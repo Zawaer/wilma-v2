@@ -37,6 +37,7 @@ const schoolList = [
   "epsteiner",
   "esedu",
   "espoo",
+  "espoondemo", // used for testing
   "espoonsteiner",
   "eura",
   "eurajoki",

@@ -49,7 +49,8 @@ export class WilmaSession {
     const studentID = $('#formid').attr('value') ?? "";
 
 
-    if (!studentID || studentID.length !== 47) {
+    // StudentID is usually something like "student:806:64043e5ade2a349d42a3e31b56a72331", its not exactly 40 chars long but it should be good enough to account for different student ID's
+    if (!studentID || studentID.length < 40) {
       console.error(`Invalid StudentID: ${studentID}`);
       return "";
     }
