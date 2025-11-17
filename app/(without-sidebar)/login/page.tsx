@@ -162,6 +162,7 @@ export default function LoginPage() {
         <CardHeader className="flex flex-col items-center">
           <CardTitle className="text-2xl font-bold">{t("welcomeBack")}</CardTitle>
           <CardDescription>{t("logInWithYourWilmaAccount")}</CardDescription>
+          <CardDescription className="text-yellow-400 text-xs">REVIEWER: login to school "espoondemo.inschool.fi", username "oppilas", password "oppilas"</CardDescription>
         </CardHeader>
         <FieldSeparator/>
         <CardContent>
