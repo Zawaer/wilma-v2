@@ -1,9 +1,16 @@
 "use client";
 
-export default function MessagesPage() {
+import { useTranslations } from "next-intl";
+
+export default function SchedulePage() {
+    const t = useTranslations("Sidebar");
+
     return (
-        <div>
-            this is messages
+        <div className="flex flex-col w-screen h-screen gap-4 p-8">
+            <span className="text-4xl font-semibold">{t("messages")}</span>
+            <div className="flex flex-col">
+                TODO
+            </div>
         </div>
-    )
+    );
 }
