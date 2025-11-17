@@ -17,9 +17,13 @@ export async function middleware(request: NextRequest) {
 
     // if no session (no Wilma2SID) and trying to access protected route, redirect to login
     if (!wilma2SID && !isPublicRoute) {
-        const returnPath = pathname !== "/" ? pathname : "/home";
         url.pathname = "/login";
-        url.searchParams.set("returnpath", returnPath);
+
+        if (pathname !== "/" && pathname !== "/home") {
+            // remove leading slash
+            url.searchParams.set("returnpath", pathname.slice(1));
+        }
+        
         return NextResponse.redirect(url);
     }
 
@@ -35,7 +39,7 @@ export async function middleware(request: NextRequest) {
 export const config = {
     matcher: [
         /*
-         * Match all request paths except:
+         * match all request paths except:
          * - _next/static (static files)
          * - _next/image (image optimization files)
          * - favicon.ico (favicon file)

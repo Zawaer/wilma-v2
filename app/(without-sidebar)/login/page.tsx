@@ -1,6 +1,6 @@
 "use client";
 
-import { redirect } from "next/navigation";
+import { redirect, useSearchParams } from "next/navigation";
 import schoolList from "@/lib/school-list";
 import { useState, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
@@ -51,6 +51,8 @@ import { CheckIcon, ChevronsUpDownIcon } from "lucide-react";
 
 export default function LoginPage() {
     const t = useTranslations("Login");
+    const searchParams = useSearchParams();
+    const returnPath = searchParams.get("returnpath");
     const [loadingSchools, setLoadingSchools] = useState(true);
     const [schools, setSchools] = useState<{ label: string; value: string }[]>(
         []
@@ -145,8 +147,8 @@ export default function LoginPage() {
                 localStorage.removeItem("school");
             }
 
-            // redirect to home page
-            redirect("/home");
+            // redirect to returnpath if provided, otherwise go to home page
+            redirect(returnPath ? `/${returnPath}` : "/home");
         } else {
             console.error("Login failed", login_data.message);
             // force re-rendering instantly to prevent unwanted delay before changing to red color on error
