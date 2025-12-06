@@ -12,7 +12,15 @@ import {
 } from "@/components/ui/sidebar";
 import { NavUser } from "@/components/nav-user";
 
-export async function AppSidebar() {
+interface AppSidebarProps {
+    user?: {
+        name: string;
+        email: string;
+        avatar: string;
+    };
+}
+
+export async function AppSidebar({ user }: AppSidebarProps) {
     const t = await getTranslations("Sidebar");
 
     const items = [
@@ -61,9 +69,9 @@ export async function AppSidebar() {
             <SidebarFooter>
                 <NavUser
                     user={{
-                        name: "Matti Teikäläinen",
-                        email: "Otaniemen lukio",
-                        avatar: "MT",
+                        name: user?.name || "No name",
+                        email: user?.email || "No school",
+                        avatar: user?.avatar || "-",
                     }}
                 />
             </SidebarFooter>

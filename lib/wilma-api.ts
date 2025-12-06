@@ -4,7 +4,9 @@ export class WilmaSession {
   wilmaUrl: string;
   wilma2SID: string = "";
   studentID: string = "";
-  username: string = "";
+  userName: string = "";
+  fullName: string = "";
+  schoolName: string = "";
 
   constructor(wilmaUrl: string) {
     this.wilmaUrl = wilmaUrl;
@@ -48,19 +50,29 @@ export class WilmaSession {
     const $ = cheerio.load(html);
     const studentID = $('#formid').attr('value') ?? "";
 
-
     // StudentID is usually something like "student:806:64043e5ade2a349d42a3e31b56a72331", its not exactly 40 chars long but it should be good enough to account for different student ID's
     if (!studentID || studentID.length < 40) {
       console.error(`Invalid StudentID: ${studentID}`);
       return "";
     }
 
+    // parse student's full name and school name
+    const fullName = $('span.teacher').text().trim();
+    const schoolName = $('span.school').text().trim();
+    
+    this.fullName = fullName;
+    this.schoolName = schoolName;
+
+    console.log("student name:");
+    console.log(fullName);
+    console.log($('span.teacher').text());
+
     return studentID;
   }
 
-  async login(username: string, password: string): Promise<boolean> {
+  async login(userName: string, password: string): Promise<boolean> {
     // save username
-    this.username = username;
+    this.userName = userName;
 
     // get Wilma2LoginID
     const wilma2LoginID = await this.getWilma2LoginID();
@@ -69,7 +81,7 @@ export class WilmaSession {
     }
 
     const body = new URLSearchParams({
-      Login: username,
+      Login: userName,
       Password: password,
       Submit: "Kirjaudu+sisään",
       SESSIONID: wilma2LoginID

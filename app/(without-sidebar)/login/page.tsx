@@ -173,7 +173,7 @@ export default function LoginPage() {
                     </CardDescription>
                     <CardDescription className="text-center text-yellow-400">
                         REVIEWER: login to school &quot;espoondemo.inschool.fi&quot;,
-                        username &quot;oppilas&quot;, password &quot;oppilas&quot;
+                        username &quot;akuli&quot;, password &quot;TestiSalasana&quot;
                     </CardDescription>
                 </CardHeader>
                 <FieldSeparator />
