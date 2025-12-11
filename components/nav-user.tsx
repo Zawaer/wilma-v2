@@ -82,7 +82,7 @@ export function NavUser({
                                         alt={user.name}
                                     />
                                     <AvatarFallback className="rounded-lg">
-                                        -
+                                        AA
                                     </AvatarFallback>
                                 </Avatar>
                                 <div className="grid flex-1 text-left text-sm leading-tight">

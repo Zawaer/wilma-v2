@@ -27,7 +27,5 @@ export async function POST(req: NextRequest) {
     wilma2SID: wilma.wilma2SID,
     studentID: wilma.studentID,
     username: wilma.userName,
-    fullName: wilma.fullName,
-    schoolName: wilma.schoolName,
   });
 }
