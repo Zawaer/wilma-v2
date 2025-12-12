@@ -1,0 +1,1426 @@
+[
+    {
+        "Id": "83969",
+        "ViikonPaiva": "",
+        "SijId": "86519",
+        "Tyyppi": "Teaching",
+        "Date": "",
+        "Start": 510,
+        "End": 585,
+        "Text": {
+            "0": "2: ÄI06.03"
+        },
+        "LongText": {
+            "0": "ÄI06 Kirjoittaminen 1"
+        },
+        "MinuuttiSij": "0",
+        "X1": 0,
+        "X2": 10000,
+        "Y1": 0,
+        "Y2": 74,
+        "ShowClasses": 0,
+        "Lk": "",
+        "Color": "#A6CAF0",
+        "AllowOverlap": 0,
+        "Lisatieto": {
+            "0": ""
+        },
+        "Muistiinpanot": {
+            "0": ""
+        },
+        "OppCount": {
+            "0": ""
+        },
+        "ArvKirjaNro": {
+            "0": 1755292
+        },
+        "Opet": {
+            "0": "O: ORR"
+        },
+        "OpeInfo": {
+            "0": {
+                "0": {
+                    "kortti": 9436,
+                    "tunniste": "850c001afa76265ec5297f1a5aeb2dc6",
+                    "lyhenne": "ORR",
+                    "nimi": "Orre Elisa",
+                    "sallittu": 1
+                }
+            }
+        },
+        "Henkilot": {
+            "0": ""
+        },
+        "HenkiloInfo": {
+            "0": {}
+        },
+        "Huoneet": {
+            "0": "H: 4270"
+        },
+        "HuoneInfo": {
+            "0": {
+                "0": {
+                    "kortti": 6384,
+                    "tunniste": "H6384#4270",
+                    "lyhenne": "4270",
+                    "nimi": "4270 Luokka",
+                    "sallittu": 1
+                }
+            }
+        },
+        "MuutRes": {},
+        "MuutResInfo": {},
+        "Vvt": "1 2/3 vvt",
+        "MuunGrid": "",
+        "MuunJakso": "",
+        "KouluId": "791831264",
+        "JJarjId": "50706",
+        "GridId": "14",
+        "ToisenKoulun": "Työjärjestys: Otaniemen lukio 2025-2026",
+        "Lisaaja": {
+            "KurreID": "4c2d56ba482e7241a6a29599ce2b3714",
+            "Nimi": "Varauksen tekijä: 09.04.2025 14:32  IIV Iivanainen Matti"
+        },
+        "Muokkaaja": {
+            "KurreID": "",
+            "Nimi": ""
+        },
+        "Lukittu": "",
+        "NotInGrid": 0
+    },
+    {
+        "Id": "84480",
+        "ViikonPaiva": "",
+        "SijId": "86522",
+        "Tyyppi": "Teaching",
+        "Date": "",
+        "Start": 600,
+        "End": 675,
+        "Text": {
+            "0": "3: MAA06.D2"
+        },
+        "LongText": {
+            "0": "MAA06 Derivaatta"
+        },
+        "MinuuttiSij": "0",
+        "X1": 0,
+        "X2": 10000,
+        "Y1": 89,
+        "Y2": 164,
+        "ShowClasses": 0,
+        "Lk": "",
+        "Color": "#A6CAF0",
+        "AllowOverlap": 0,
+        "Lisatieto": {
+            "0": ""
+        },
+        "Muistiinpanot": {
+            "0": ""
+        },
+        "OppCount": {
+            "0": ""
+        },
+        "ArvKirjaNro": {
+            "0": 1755265
+        },
+        "Opet": {
+            "0": "O: SAV"
+        },
+        "OpeInfo": {
+            "0": {
+                "0": {
+                    "kortti": 10655,
+                    "tunniste": "df9966fc0e794a68f7643dc0477be03c",
+                    "lyhenne": "SAV",
+                    "nimi": "Saarikivi Ville",
+                    "sallittu": 1
+                }
+            }
+        },
+        "Henkilot": {
+            "0": ""
+        },
+        "HenkiloInfo": {
+            "0": {}
+        },
+        "Huoneet": {
+            "0": "H: 1315"
+        },
+        "HuoneInfo": {
+            "0": {
+                "0": {
+                    "kortti": 5366,
+                    "tunniste": "H5366#1315",
+                    "lyhenne": "1315",
+                    "nimi": "1315 Fysiikka",
+                    "sallittu": 1
+                }
+            }
+        },
+        "MuutRes": {},
+        "MuutResInfo": {},
+        "Vvt": "1 2/3 vvt",
+        "MuunGrid": "",
+        "MuunJakso": "",
+        "KouluId": "791831264",
+        "JJarjId": "50706",
+        "GridId": "14",
+        "ToisenKoulun": "Työjärjestys: Otaniemen lukio 2025-2026",
+        "Lisaaja": {
+            "KurreID": "4c2d56ba482e7241a6a29599ce2b3714",
+            "Nimi": "Varauksen tekijä: 09.04.2025 14:32  IIV Iivanainen Matti"
+        },
+        "Muokkaaja": {
+            "KurreID": "",
+            "Nimi": ""
+        },
+        "Lukittu": "",
+        "NotInGrid": 0
+    },
+    {
+        "Id": "84192",
+        "ViikonPaiva": "",
+        "SijId": "86531",
+        "Tyyppi": "Teaching",
+        "Date": "",
+        "Start": 810,
+        "End": 885,
+        "Text": {
+            "0": "6: GE01.10"
+        },
+        "LongText": {
+            "0": "GE01 Maailma muutoksessa"
+        },
+        "MinuuttiSij": "0",
+        "X1": 0,
+        "X2": 10000,
+        "Y1": 299,
+        "Y2": 374,
+        "ShowClasses": 0,
+        "Lk": "",
+        "Color": "#A6CAF0",
+        "AllowOverlap": 0,
+        "Lisatieto": {
+            "0": ""
+        },
+        "Muistiinpanot": {
+            "0": ""
+        },
+        "OppCount": {
+            "0": ""
+        },
+        "ArvKirjaNro": {
+            "0": 1755340
+        },
+        "Opet": {
+            "0": "O: HAA"
+        },
+        "OpeInfo": {
+            "0": {
+                "0": {
+                    "kortti": 3951,
+                    "tunniste": "bc1d42e13764072fef93b020e38e2669",
+                    "lyhenne": "HAA",
+                    "nimi": "Haapamäki Kirsi",
+                    "sallittu": 1
+                }
+            }
+        },
+        "Henkilot": {
+            "0": ""
+        },
+        "HenkiloInfo": {
+            "0": {}
+        },
+        "Huoneet": {
+            "0": "H: 2240"
+        },
+        "HuoneInfo": {
+            "0": {
+                "0": {
+                    "kortti": 5373,
+                    "tunniste": "H5373#2240",
+                    "lyhenne": "2240",
+                    "nimi": "2240 Luokka Ge",
+                    "sallittu": 1
+                }
+            }
+        },
+        "MuutRes": {},
+        "MuutResInfo": {},
+        "Vvt": "1 2/3 vvt",
+        "MuunGrid": "",
+        "MuunJakso": "",
+        "KouluId": "791831264",
+        "JJarjId": "50706",
+        "GridId": "14",
+        "ToisenKoulun": "Työjärjestys: Otaniemen lukio 2025-2026",
+        "Lisaaja": {
+            "KurreID": "4c2d56ba482e7241a6a29599ce2b3714",
+            "Nimi": "Varauksen tekijä: 09.04.2025 14:32  IIV Iivanainen Matti"
+        },
+        "Muokkaaja": {
+            "KurreID": "",
+            "Nimi": ""
+        },
+        "Lukittu": "",
+        "NotInGrid": 0
+    },
+    {
+        "Id": "84662",
+        "ViikonPaiva": "",
+        "SijId": "86525",
+        "Tyyppi": "Teaching",
+        "Date": "",
+        "Start": 680,
+        "End": 795,
+        "Text": {
+            "0": "4: RAA05.01"
+        },
+        "LongText": {
+            "0": "RAA05 Kestävä tulevaisuus ja tiede"
+        },
+        "MinuuttiSij": "0",
+        "X1": 10000,
+        "X2": 15000,
+        "Y1": 169,
+        "Y2": 284,
+        "ShowClasses": 0,
+        "Lk": "",
+        "Color": "#A6CAF0",
+        "AllowOverlap": 0,
+        "Lisatieto": {
+            "0": ""
+        },
+        "Muistiinpanot": {
+            "0": ""
+        },
+        "OppCount": {
+            "0": ""
+        },
+        "ArvKirjaNro": {
+            "0": 1755405
+        },
+        "Opet": {
+            "0": "O: TEN"
+        },
+        "OpeInfo": {
+            "0": {
+                "0": {
+                    "kortti": 6912,
+                    "tunniste": "804f8cb753a2872c19998b56e119466f",
+                    "lyhenne": "TEN",
+                    "nimi": "Tenhunen Tytti",
+                    "sallittu": 1
+                }
+            }
+        },
+        "Henkilot": {
+            "0": ""
+        },
+        "HenkiloInfo": {
+            "0": {}
+        },
+        "Huoneet": {
+            "0": "H: 3147"
+        },
+        "HuoneInfo": {
+            "0": {
+                "0": {
+                    "kortti": 5391,
+                    "tunniste": "H5391#3147",
+                    "lyhenne": "3147",
+                    "nimi": "3147 Luokka",
+                    "sallittu": 1
+                }
+            }
+        },
+        "MuutRes": {},
+        "MuutResInfo": {},
+        "Vvt": "1 2/3 vvt",
+        "MuunGrid": "",
+        "MuunJakso": "",
+        "KouluId": "791831264",
+        "JJarjId": "50706",
+        "GridId": "14",
+        "ToisenKoulun": "Työjärjestys: Otaniemen lukio 2025-2026",
+        "Lisaaja": {
+            "KurreID": "4c2d56ba482e7241a6a29599ce2b3714",
+            "Nimi": "Varauksen tekijä: 09.04.2025 14:32  IIV Iivanainen Matti"
+        },
+        "Muokkaaja": {
+            "KurreID": "",
+            "Nimi": ""
+        },
+        "Lukittu": "",
+        "NotInGrid": 0
+    },
+    {
+        "Id": "88570",
+        "ViikonPaiva": "",
+        "SijId": "89886",
+        "Tyyppi": "Teaching",
+        "Date": "",
+        "Start": 780,
+        "End": 840,
+        "Text": {
+            "0": "1: RO01.24K"
+        },
+        "LongText": {
+            "0": "RO01 Ryhmänohjaus"
+        },
+        "MinuuttiSij": "1",
+        "X1": 15000,
+        "X2": 20000,
+        "Y1": 269,
+        "Y2": 329,
+        "ShowClasses": 0,
+        "Lk": "",
+        "Color": "#A6CAF0",
+        "AllowOverlap": 0,
+        "Lisatieto": {
+            "0": ""
+        },
+        "Muistiinpanot": {
+            "0": ""
+        },
+        "OppCount": {
+            "0": ""
+        },
+        "ArvKirjaNro": {
+            "0": 1743869
+        },
+        "Opet": {
+            "0": "O: PAV"
+        },
+        "OpeInfo": {
+            "0": {
+                "0": {
+                    "kortti": 11298,
+                    "tunniste": "f808a8308e1f646abc805993da975b18",
+                    "lyhenne": "PAV",
+                    "nimi": "Paavilainen Laura",
+                    "sallittu": 1
+                }
+            }
+        },
+        "Henkilot": {
+            "0": ""
+        },
+        "HenkiloInfo": {
+            "0": {}
+        },
+        "Huoneet": {
+            "0": "H: 2239"
+        },
+        "HuoneInfo": {
+            "0": {
+                "0": {
+                    "kortti": 5372,
+                    "tunniste": "H5372#2239",
+                    "lyhenne": "2239",
+                    "nimi": "2239 Biologia (labra)",
+                    "sallittu": 1
+                }
+            }
+        },
+        "MuutRes": {},
+        "MuutResInfo": {},
+        "Vvt": "1 1/3 vvt",
+        "MuunGrid": "",
+        "MuunJakso": "",
+        "KouluId": "791831264",
+        "JJarjId": "87410",
+        "GridId": "0",
+        "ToisenKoulun": "Työjärjestys: Otaniemen lukio 2025-2026",
+        "Lisaaja": {
+            "KurreID": "3feeb09d4476cb010051257ce59f381f",
+            "Nimi": "Varauksen tekijä: 30.06.2025 18:03  INK Inkeroinen Mikael"
+        },
+        "Muokkaaja": {
+            "KurreID": "",
+            "Nimi": ""
+        },
+        "Lukittu": "",
+        "NotInGrid": 0
+    },
+    {
+        "Id": "84134",
+        "ViikonPaiva": "",
+        "SijId": "86516",
+        "Tyyppi": "Teaching",
+        "Date": "",
+        "Start": 810,
+        "End": 885,
+        "Text": {
+            "0": "1: FY03.01"
+        },
+        "LongText": {
+            "0": "FY03 Energia ja lämpö"
+        },
+        "MinuuttiSij": "0",
+        "X1": 10000,
+        "X2": 15000,
+        "Y1": 299,
+        "Y2": 374,
+        "ShowClasses": 0,
+        "Lk": "",
+        "Color": "#A6CAF0",
+        "AllowOverlap": 0,
+        "Lisatieto": {
+            "0": ""
+        },
+        "Muistiinpanot": {
+            "0": ""
+        },
+        "OppCount": {
+            "0": ""
+        },
+        "ArvKirjaNro": {
+            "0": 1755326
+        },
+        "Opet": {
+            "0": "O: PIR"
+        },
+        "OpeInfo": {
+            "0": {
+                "0": {
+                    "kortti": 6185,
+                    "tunniste": "add6f31008536f877db9ebd6a7eb8f87",
+                    "lyhenne": "PIR",
+                    "nimi": "Pirkkalainen Sari",
+                    "sallittu": 1
+                }
+            }
+        },
+        "Henkilot": {
+            "0": ""
+        },
+        "HenkiloInfo": {
+            "0": {}
+        },
+        "Huoneet": {
+            "0": "H: 1317"
+        },
+        "HuoneInfo": {
+            "0": {
+                "0": {
+                    "kortti": 5367,
+                    "tunniste": "H5367#1317",
+                    "lyhenne": "1317",
+                    "nimi": "1317 Fysiikka",
+                    "sallittu": 1
+                }
+            }
+        },
+        "MuutRes": {},
+        "MuutResInfo": {},
+        "Vvt": "1 2/3 vvt",
+        "MuunGrid": "",
+        "MuunJakso": "",
+        "KouluId": "791831264",
+        "JJarjId": "50706",
+        "GridId": "14",
+        "ToisenKoulun": "Työjärjestys: Otaniemen lukio 2025-2026",
+        "Lisaaja": {
+            "KurreID": "4c2d56ba482e7241a6a29599ce2b3714",
+            "Nimi": "Varauksen tekijä: 09.04.2025 14:32  IIV Iivanainen Matti"
+        },
+        "Muokkaaja": {
+            "KurreID": "",
+            "Nimi": ""
+        },
+        "Lukittu": "",
+        "NotInGrid": 0
+    },
+    {
+        "Id": "84662",
+        "ViikonPaiva": "",
+        "SijId": "86526",
+        "Tyyppi": "Teaching",
+        "Date": "",
+        "Start": 510,
+        "End": 585,
+        "Text": {
+            "0": "4: RAA05.01"
+        },
+        "LongText": {
+            "0": "RAA05 Kestävä tulevaisuus ja tiede"
+        },
+        "MinuuttiSij": "0",
+        "X1": 20000,
+        "X2": 30000,
+        "Y1": 0,
+        "Y2": 74,
+        "ShowClasses": 0,
+        "Lk": "",
+        "Color": "#A6CAF0",
+        "AllowOverlap": 0,
+        "Lisatieto": {
+            "0": ""
+        },
+        "Muistiinpanot": {
+            "0": ""
+        },
+        "OppCount": {
+            "0": ""
+        },
+        "ArvKirjaNro": {
+            "0": 1755405
+        },
+        "Opet": {
+            "0": "O: TEN"
+        },
+        "OpeInfo": {
+            "0": {
+                "0": {
+                    "kortti": 6912,
+                    "tunniste": "804f8cb753a2872c19998b56e119466f",
+                    "lyhenne": "TEN",
+                    "nimi": "Tenhunen Tytti",
+                    "sallittu": 1
+                }
+            }
+        },
+        "Henkilot": {
+            "0": ""
+        },
+        "HenkiloInfo": {
+            "0": {}
+        },
+        "Huoneet": {
+            "0": "H: 3147"
+        },
+        "HuoneInfo": {
+            "0": {
+                "0": {
+                    "kortti": 5391,
+                    "tunniste": "H5391#3147",
+                    "lyhenne": "3147",
+                    "nimi": "3147 Luokka",
+                    "sallittu": 1
+                }
+            }
+        },
+        "MuutRes": {},
+        "MuutResInfo": {},
+        "Vvt": "1 2/3 vvt",
+        "MuunGrid": "",
+        "MuunJakso": "",
+        "KouluId": "791831264",
+        "JJarjId": "50706",
+        "GridId": "14",
+        "ToisenKoulun": "Työjärjestys: Otaniemen lukio 2025-2026",
+        "Lisaaja": {
+            "KurreID": "4c2d56ba482e7241a6a29599ce2b3714",
+            "Nimi": "Varauksen tekijä: 09.04.2025 14:32  IIV Iivanainen Matti"
+        },
+        "Muokkaaja": {
+            "KurreID": "",
+            "Nimi": ""
+        },
+        "Lukittu": "",
+        "NotInGrid": 0
+    },
+    {
+        "Id": "83969",
+        "ViikonPaiva": "",
+        "SijId": "86520",
+        "Tyyppi": "Teaching",
+        "Date": "",
+        "Start": 600,
+        "End": 675,
+        "Text": {
+            "0": "2: ÄI06.03"
+        },
+        "LongText": {
+            "0": "ÄI06 Kirjoittaminen 1"
+        },
+        "MinuuttiSij": "0",
+        "X1": 20000,
+        "X2": 30000,
+        "Y1": 89,
+        "Y2": 164,
+        "ShowClasses": 0,
+        "Lk": "",
+        "Color": "#A6CAF0",
+        "AllowOverlap": 0,
+        "Lisatieto": {
+            "0": ""
+        },
+        "Muistiinpanot": {
+            "0": ""
+        },
+        "OppCount": {
+            "0": ""
+        },
+        "ArvKirjaNro": {
+            "0": 1755292
+        },
+        "Opet": {
+            "0": "O: ORR"
+        },
+        "OpeInfo": {
+            "0": {
+                "0": {
+                    "kortti": 9436,
+                    "tunniste": "850c001afa76265ec5297f1a5aeb2dc6",
+                    "lyhenne": "ORR",
+                    "nimi": "Orre Elisa",
+                    "sallittu": 1
+                }
+            }
+        },
+        "Henkilot": {
+            "0": ""
+        },
+        "HenkiloInfo": {
+            "0": {}
+        },
+        "Huoneet": {
+            "0": "H: 4270"
+        },
+        "HuoneInfo": {
+            "0": {
+                "0": {
+                    "kortti": 6384,
+                    "tunniste": "H6384#4270",
+                    "lyhenne": "4270",
+                    "nimi": "4270 Luokka",
+                    "sallittu": 1
+                }
+            }
+        },
+        "MuutRes": {},
+        "MuutResInfo": {},
+        "Vvt": "1 2/3 vvt",
+        "MuunGrid": "",
+        "MuunJakso": "",
+        "KouluId": "791831264",
+        "JJarjId": "50706",
+        "GridId": "14",
+        "ToisenKoulun": "Työjärjestys: Otaniemen lukio 2025-2026",
+        "Lisaaja": {
+            "KurreID": "4c2d56ba482e7241a6a29599ce2b3714",
+            "Nimi": "Varauksen tekijä: 09.04.2025 14:32  IIV Iivanainen Matti"
+        },
+        "Muokkaaja": {
+            "KurreID": "",
+            "Nimi": ""
+        },
+        "Lukittu": "",
+        "NotInGrid": 0
+    },
+    {
+        "Id": "84480",
+        "ViikonPaiva": "",
+        "SijId": "86523",
+        "Tyyppi": "Teaching",
+        "Date": "",
+        "Start": 680,
+        "End": 795,
+        "Text": {
+            "0": "3: MAA06.D2"
+        },
+        "LongText": {
+            "0": "MAA06 Derivaatta"
+        },
+        "MinuuttiSij": "0",
+        "X1": 20000,
+        "X2": 30000,
+        "Y1": 169,
+        "Y2": 284,
+        "ShowClasses": 0,
+        "Lk": "",
+        "Color": "#A6CAF0",
+        "AllowOverlap": 0,
+        "Lisatieto": {
+            "0": ""
+        },
+        "Muistiinpanot": {
+            "0": ""
+        },
+        "OppCount": {
+            "0": ""
+        },
+        "ArvKirjaNro": {
+            "0": 1755265
+        },
+        "Opet": {
+            "0": "O: SAV"
+        },
+        "OpeInfo": {
+            "0": {
+                "0": {
+                    "kortti": 10655,
+                    "tunniste": "df9966fc0e794a68f7643dc0477be03c",
+                    "lyhenne": "SAV",
+                    "nimi": "Saarikivi Ville",
+                    "sallittu": 1
+                }
+            }
+        },
+        "Henkilot": {
+            "0": ""
+        },
+        "HenkiloInfo": {
+            "0": {}
+        },
+        "Huoneet": {
+            "0": "H: 1315"
+        },
+        "HuoneInfo": {
+            "0": {
+                "0": {
+                    "kortti": 5366,
+                    "tunniste": "H5366#1315",
+                    "lyhenne": "1315",
+                    "nimi": "1315 Fysiikka",
+                    "sallittu": 1
+                }
+            }
+        },
+        "MuutRes": {},
+        "MuutResInfo": {},
+        "Vvt": "1 2/3 vvt",
+        "MuunGrid": "",
+        "MuunJakso": "",
+        "KouluId": "791831264",
+        "JJarjId": "50706",
+        "GridId": "14",
+        "ToisenKoulun": "Työjärjestys: Otaniemen lukio 2025-2026",
+        "Lisaaja": {
+            "KurreID": "4c2d56ba482e7241a6a29599ce2b3714",
+            "Nimi": "Varauksen tekijä: 09.04.2025 14:32  IIV Iivanainen Matti"
+        },
+        "Muokkaaja": {
+            "KurreID": "",
+            "Nimi": ""
+        },
+        "Lukittu": "",
+        "NotInGrid": 0
+    },
+    {
+        "Id": "84192",
+        "ViikonPaiva": "",
+        "SijId": "86532",
+        "Tyyppi": "Teaching",
+        "Date": "",
+        "Start": 810,
+        "End": 885,
+        "Text": {
+            "0": "6: GE01.10"
+        },
+        "LongText": {
+            "0": "GE01 Maailma muutoksessa"
+        },
+        "MinuuttiSij": "0",
+        "X1": 20000,
+        "X2": 30000,
+        "Y1": 299,
+        "Y2": 374,
+        "ShowClasses": 0,
+        "Lk": "",
+        "Color": "#A6CAF0",
+        "AllowOverlap": 0,
+        "Lisatieto": {
+            "0": ""
+        },
+        "Muistiinpanot": {
+            "0": ""
+        },
+        "OppCount": {
+            "0": ""
+        },
+        "ArvKirjaNro": {
+            "0": 1755340
+        },
+        "Opet": {
+            "0": "O: HAA"
+        },
+        "OpeInfo": {
+            "0": {
+                "0": {
+                    "kortti": 3951,
+                    "tunniste": "bc1d42e13764072fef93b020e38e2669",
+                    "lyhenne": "HAA",
+                    "nimi": "Haapamäki Kirsi",
+                    "sallittu": 1
+                }
+            }
+        },
+        "Henkilot": {
+            "0": ""
+        },
+        "HenkiloInfo": {
+            "0": {}
+        },
+        "Huoneet": {
+            "0": "H: 2240"
+        },
+        "HuoneInfo": {
+            "0": {
+                "0": {
+                    "kortti": 5373,
+                    "tunniste": "H5373#2240",
+                    "lyhenne": "2240",
+                    "nimi": "2240 Luokka Ge",
+                    "sallittu": 1
+                }
+            }
+        },
+        "MuutRes": {},
+        "MuutResInfo": {},
+        "Vvt": "1 2/3 vvt",
+        "MuunGrid": "",
+        "MuunJakso": "",
+        "KouluId": "791831264",
+        "JJarjId": "50706",
+        "GridId": "14",
+        "ToisenKoulun": "Työjärjestys: Otaniemen lukio 2025-2026",
+        "Lisaaja": {
+            "KurreID": "4c2d56ba482e7241a6a29599ce2b3714",
+            "Nimi": "Varauksen tekijä: 09.04.2025 14:32  IIV Iivanainen Matti"
+        },
+        "Muokkaaja": {
+            "KurreID": "",
+            "Nimi": ""
+        },
+        "Lukittu": "",
+        "NotInGrid": 0
+    },
+    {
+        "Id": "84134",
+        "ViikonPaiva": "",
+        "SijId": "86517",
+        "Tyyppi": "Teaching",
+        "Date": "",
+        "Start": 680,
+        "End": 795,
+        "Text": {
+            "0": "1: FY03.01"
+        },
+        "LongText": {
+            "0": "FY03 Energia ja lämpö"
+        },
+        "MinuuttiSij": "0",
+        "X1": 30000,
+        "X2": 40000,
+        "Y1": 169,
+        "Y2": 284,
+        "ShowClasses": 0,
+        "Lk": "",
+        "Color": "#A6CAF0",
+        "AllowOverlap": 0,
+        "Lisatieto": {
+            "0": ""
+        },
+        "Muistiinpanot": {
+            "0": ""
+        },
+        "OppCount": {
+            "0": ""
+        },
+        "ArvKirjaNro": {
+            "0": 1755326
+        },
+        "Opet": {
+            "0": "O: PIR"
+        },
+        "OpeInfo": {
+            "0": {
+                "0": {
+                    "kortti": 6185,
+                    "tunniste": "add6f31008536f877db9ebd6a7eb8f87",
+                    "lyhenne": "PIR",
+                    "nimi": "Pirkkalainen Sari",
+                    "sallittu": 1
+                }
+            }
+        },
+        "Henkilot": {
+            "0": ""
+        },
+        "HenkiloInfo": {
+            "0": {}
+        },
+        "Huoneet": {
+            "0": "H: 1317"
+        },
+        "HuoneInfo": {
+            "0": {
+                "0": {
+                    "kortti": 5367,
+                    "tunniste": "H5367#1317",
+                    "lyhenne": "1317",
+                    "nimi": "1317 Fysiikka",
+                    "sallittu": 1
+                }
+            }
+        },
+        "MuutRes": {},
+        "MuutResInfo": {},
+        "Vvt": "1 2/3 vvt",
+        "MuunGrid": "",
+        "MuunJakso": "",
+        "KouluId": "791831264",
+        "JJarjId": "50706",
+        "GridId": "14",
+        "ToisenKoulun": "Työjärjestys: Otaniemen lukio 2025-2026",
+        "Lisaaja": {
+            "KurreID": "4c2d56ba482e7241a6a29599ce2b3714",
+            "Nimi": "Varauksen tekijä: 09.04.2025 14:32  IIV Iivanainen Matti"
+        },
+        "Muokkaaja": {
+            "KurreID": "",
+            "Nimi": ""
+        },
+        "Lukittu": "",
+        "NotInGrid": 0
+    },
+    {
+        "Id": "83969",
+        "ViikonPaiva": "",
+        "SijId": "86521",
+        "Tyyppi": "Teaching",
+        "Date": "",
+        "Start": 810,
+        "End": 885,
+        "Text": {
+            "0": "2: ÄI06.03"
+        },
+        "LongText": {
+            "0": "ÄI06 Kirjoittaminen 1"
+        },
+        "MinuuttiSij": "0",
+        "X1": 30000,
+        "X2": 40000,
+        "Y1": 299,
+        "Y2": 374,
+        "ShowClasses": 0,
+        "Lk": "",
+        "Color": "#A6CAF0",
+        "AllowOverlap": 0,
+        "Lisatieto": {
+            "0": ""
+        },
+        "Muistiinpanot": {
+            "0": ""
+        },
+        "OppCount": {
+            "0": ""
+        },
+        "ArvKirjaNro": {
+            "0": 1755292
+        },
+        "Opet": {
+            "0": "O: ORR"
+        },
+        "OpeInfo": {
+            "0": {
+                "0": {
+                    "kortti": 9436,
+                    "tunniste": "850c001afa76265ec5297f1a5aeb2dc6",
+                    "lyhenne": "ORR",
+                    "nimi": "Orre Elisa",
+                    "sallittu": 1
+                }
+            }
+        },
+        "Henkilot": {
+            "0": ""
+        },
+        "HenkiloInfo": {
+            "0": {}
+        },
+        "Huoneet": {
+            "0": "H: 4270"
+        },
+        "HuoneInfo": {
+            "0": {
+                "0": {
+                    "kortti": 6384,
+                    "tunniste": "H6384#4270",
+                    "lyhenne": "4270",
+                    "nimi": "4270 Luokka",
+                    "sallittu": 1
+                }
+            }
+        },
+        "MuutRes": {},
+        "MuutResInfo": {},
+        "Vvt": "1 2/3 vvt",
+        "MuunGrid": "",
+        "MuunJakso": "",
+        "KouluId": "791831264",
+        "JJarjId": "50706",
+        "GridId": "14",
+        "ToisenKoulun": "Työjärjestys: Otaniemen lukio 2025-2026",
+        "Lisaaja": {
+            "KurreID": "4c2d56ba482e7241a6a29599ce2b3714",
+            "Nimi": "Varauksen tekijä: 09.04.2025 14:32  IIV Iivanainen Matti"
+        },
+        "Muokkaaja": {
+            "KurreID": "",
+            "Nimi": ""
+        },
+        "Lukittu": "",
+        "NotInGrid": 0
+    },
+    {
+        "Id": "84480",
+        "ViikonPaiva": "",
+        "SijId": "86524",
+        "Tyyppi": "Teaching",
+        "Date": "",
+        "Start": 900,
+        "End": 975,
+        "Text": {
+            "0": "3: MAA06.D2"
+        },
+        "LongText": {
+            "0": "MAA06 Derivaatta"
+        },
+        "MinuuttiSij": "0",
+        "X1": 30000,
+        "X2": 40000,
+        "Y1": 389,
+        "Y2": 464,
+        "ShowClasses": 0,
+        "Lk": "",
+        "Color": "#A6CAF0",
+        "AllowOverlap": 0,
+        "Lisatieto": {
+            "0": ""
+        },
+        "Muistiinpanot": {
+            "0": ""
+        },
+        "OppCount": {
+            "0": ""
+        },
+        "ArvKirjaNro": {
+            "0": 1755265
+        },
+        "Opet": {
+            "0": "O: SAV"
+        },
+        "OpeInfo": {
+            "0": {
+                "0": {
+                    "kortti": 10655,
+                    "tunniste": "df9966fc0e794a68f7643dc0477be03c",
+                    "lyhenne": "SAV",
+                    "nimi": "Saarikivi Ville",
+                    "sallittu": 1
+                }
+            }
+        },
+        "Henkilot": {
+            "0": ""
+        },
+        "HenkiloInfo": {
+            "0": {}
+        },
+        "Huoneet": {
+            "0": "H: 1315"
+        },
+        "HuoneInfo": {
+            "0": {
+                "0": {
+                    "kortti": 5366,
+                    "tunniste": "H5366#1315",
+                    "lyhenne": "1315",
+                    "nimi": "1315 Fysiikka",
+                    "sallittu": 1
+                }
+            }
+        },
+        "MuutRes": {},
+        "MuutResInfo": {},
+        "Vvt": "1 2/3 vvt",
+        "MuunGrid": "",
+        "MuunJakso": "",
+        "KouluId": "791831264",
+        "JJarjId": "50706",
+        "GridId": "14",
+        "ToisenKoulun": "Työjärjestys: Otaniemen lukio 2025-2026",
+        "Lisaaja": {
+            "KurreID": "4c2d56ba482e7241a6a29599ce2b3714",
+            "Nimi": "Varauksen tekijä: 09.04.2025 14:32  IIV Iivanainen Matti"
+        },
+        "Muokkaaja": {
+            "KurreID": "",
+            "Nimi": ""
+        },
+        "Lukittu": "",
+        "NotInGrid": 0
+    },
+    {
+        "Id": "84134",
+        "ViikonPaiva": "",
+        "SijId": "86518",
+        "Tyyppi": "Teaching",
+        "Date": "",
+        "Start": 510,
+        "End": 585,
+        "Text": {
+            "0": "1: FY03.01"
+        },
+        "LongText": {
+            "0": "FY03 Energia ja lämpö"
+        },
+        "MinuuttiSij": "0",
+        "X1": 40000,
+        "X2": 50000,
+        "Y1": 0,
+        "Y2": 74,
+        "ShowClasses": 0,
+        "Lk": "",
+        "Color": "#A6CAF0",
+        "AllowOverlap": 0,
+        "Lisatieto": {
+            "0": ""
+        },
+        "Muistiinpanot": {
+            "0": ""
+        },
+        "OppCount": {
+            "0": ""
+        },
+        "ArvKirjaNro": {
+            "0": 1755326
+        },
+        "Opet": {
+            "0": "O: PIR"
+        },
+        "OpeInfo": {
+            "0": {
+                "0": {
+                    "kortti": 6185,
+                    "tunniste": "add6f31008536f877db9ebd6a7eb8f87",
+                    "lyhenne": "PIR",
+                    "nimi": "Pirkkalainen Sari",
+                    "sallittu": 1
+                }
+            }
+        },
+        "Henkilot": {
+            "0": ""
+        },
+        "HenkiloInfo": {
+            "0": {}
+        },
+        "Huoneet": {
+            "0": "H: 1317"
+        },
+        "HuoneInfo": {
+            "0": {
+                "0": {
+                    "kortti": 5367,
+                    "tunniste": "H5367#1317",
+                    "lyhenne": "1317",
+                    "nimi": "1317 Fysiikka",
+                    "sallittu": 1
+                }
+            }
+        },
+        "MuutRes": {},
+        "MuutResInfo": {},
+        "Vvt": "1 2/3 vvt",
+        "MuunGrid": "",
+        "MuunJakso": "",
+        "KouluId": "791831264",
+        "JJarjId": "50706",
+        "GridId": "14",
+        "ToisenKoulun": "Työjärjestys: Otaniemen lukio 2025-2026",
+        "Lisaaja": {
+            "KurreID": "4c2d56ba482e7241a6a29599ce2b3714",
+            "Nimi": "Varauksen tekijä: 09.04.2025 14:32  IIV Iivanainen Matti"
+        },
+        "Muokkaaja": {
+            "KurreID": "",
+            "Nimi": ""
+        },
+        "Lukittu": "",
+        "NotInGrid": 0
+    },
+    {
+        "Id": "84662",
+        "ViikonPaiva": "",
+        "SijId": "86527",
+        "Tyyppi": "Teaching",
+        "Date": "",
+        "Start": 600,
+        "End": 675,
+        "Text": {
+            "0": "4: RAA05.01"
+        },
+        "LongText": {
+            "0": "RAA05 Kestävä tulevaisuus ja tiede"
+        },
+        "MinuuttiSij": "0",
+        "X1": 40000,
+        "X2": 50000,
+        "Y1": 89,
+        "Y2": 164,
+        "ShowClasses": 0,
+        "Lk": "",
+        "Color": "#A6CAF0",
+        "AllowOverlap": 0,
+        "Lisatieto": {
+            "0": ""
+        },
+        "Muistiinpanot": {
+            "0": ""
+        },
+        "OppCount": {
+            "0": ""
+        },
+        "ArvKirjaNro": {
+            "0": 1755405
+        },
+        "Opet": {
+            "0": "O: TEN"
+        },
+        "OpeInfo": {
+            "0": {
+                "0": {
+                    "kortti": 6912,
+                    "tunniste": "804f8cb753a2872c19998b56e119466f",
+                    "lyhenne": "TEN",
+                    "nimi": "Tenhunen Tytti",
+                    "sallittu": 1
+                }
+            }
+        },
+        "Henkilot": {
+            "0": ""
+        },
+        "HenkiloInfo": {
+            "0": {}
+        },
+        "Huoneet": {
+            "0": "H: 3147"
+        },
+        "HuoneInfo": {
+            "0": {
+                "0": {
+                    "kortti": 5391,
+                    "tunniste": "H5391#3147",
+                    "lyhenne": "3147",
+                    "nimi": "3147 Luokka",
+                    "sallittu": 1
+                }
+            }
+        },
+        "MuutRes": {},
+        "MuutResInfo": {},
+        "Vvt": "1 2/3 vvt",
+        "MuunGrid": "",
+        "MuunJakso": "",
+        "KouluId": "791831264",
+        "JJarjId": "50706",
+        "GridId": "14",
+        "ToisenKoulun": "Työjärjestys: Otaniemen lukio 2025-2026",
+        "Lisaaja": {
+            "KurreID": "4c2d56ba482e7241a6a29599ce2b3714",
+            "Nimi": "Varauksen tekijä: 09.04.2025 14:32  IIV Iivanainen Matti"
+        },
+        "Muokkaaja": {
+            "KurreID": "",
+            "Nimi": ""
+        },
+        "Lukittu": "",
+        "NotInGrid": 0
+    },
+    {
+        "Id": "84192",
+        "ViikonPaiva": "",
+        "SijId": "86533",
+        "Tyyppi": "Teaching",
+        "Date": "",
+        "Start": 680,
+        "End": 795,
+        "Text": {
+            "0": "6: GE01.10"
+        },
+        "LongText": {
+            "0": "GE01 Maailma muutoksessa"
+        },
+        "MinuuttiSij": "0",
+        "X1": 40000,
+        "X2": 50000,
+        "Y1": 169,
+        "Y2": 284,
+        "ShowClasses": 0,
+        "Lk": "",
+        "Color": "#A6CAF0",
+        "AllowOverlap": 0,
+        "Lisatieto": {
+            "0": ""
+        },
+        "Muistiinpanot": {
+            "0": ""
+        },
+        "OppCount": {
+            "0": ""
+        },
+        "ArvKirjaNro": {
+            "0": 1755340
+        },
+        "Opet": {
+            "0": "O: HAA"
+        },
+        "OpeInfo": {
+            "0": {
+                "0": {
+                    "kortti": 3951,
+                    "tunniste": "bc1d42e13764072fef93b020e38e2669",
+                    "lyhenne": "HAA",
+                    "nimi": "Haapamäki Kirsi",
+                    "sallittu": 1
+                }
+            }
+        },
+        "Henkilot": {
+            "0": ""
+        },
+        "HenkiloInfo": {
+            "0": {}
+        },
+        "Huoneet": {
+            "0": "H: 2240"
+        },
+        "HuoneInfo": {
+            "0": {
+                "0": {
+                    "kortti": 5373,
+                    "tunniste": "H5373#2240",
+                    "lyhenne": "2240",
+                    "nimi": "2240 Luokka Ge",
+                    "sallittu": 1
+                }
+            }
+        },
+        "MuutRes": {},
+        "MuutResInfo": {},
+        "Vvt": "1 2/3 vvt",
+        "MuunGrid": "",
+        "MuunJakso": "",
+        "KouluId": "791831264",
+        "JJarjId": "50706",
+        "GridId": "14",
+        "ToisenKoulun": "Työjärjestys: Otaniemen lukio 2025-2026",
+        "Lisaaja": {
+            "KurreID": "4c2d56ba482e7241a6a29599ce2b3714",
+            "Nimi": "Varauksen tekijä: 09.04.2025 14:32  IIV Iivanainen Matti"
+        },
+        "Muokkaaja": {
+            "KurreID": "",
+            "Nimi": ""
+        },
+        "Lukittu": "",
+        "NotInGrid": 0
+    }
+]

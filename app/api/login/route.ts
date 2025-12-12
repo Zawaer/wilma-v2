@@ -12,15 +12,18 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: false, message: "Login failed" }, { status: 401 });
   }
 
-  // store session ID securely
+  // store session ID and wilmaUrl securely
   const cookieStore = await cookies();
-  cookieStore.set("Wilma2SID", wilma.wilma2SID, {
+  const cookieOptions = {
     httpOnly: true,
-    secure: true,
-    sameSite: "strict",
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "strict" as const,
     path: "/",
     maxAge: 60 * 60 * 24 * 7, // 7 days
-  });
+  };
+  
+  cookieStore.set("Wilma2SID", wilma.wilma2SID, cookieOptions);
+  cookieStore.set("wilmaUrl", school, cookieOptions);
 
   return NextResponse.json({
     success: true,

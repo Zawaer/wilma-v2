@@ -6,6 +6,7 @@ export async function POST() {
 
   // delete the cookies you set during login
   cookieStore.delete("Wilma2SID");
+  cookieStore.delete("wilmaUrl");
 
   return NextResponse.json({ success: true });
 }

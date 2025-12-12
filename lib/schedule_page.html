@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="fi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--Estää yhteensopivuusnäkymät IE:llä-->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#0974b3">
+    <title>
+        Oma työjärjestys - Wilma</title>
+
+        
+            <link href="https://cdn.inschool.fi/2.35.40.1/nc3/css/bootstrap.min.css" rel="StyleSheet" type="text/css">
+            <link href="https://cdn.inschool.fi/2.35.40.1/nc3/css/nc.min.css" rel="StyleSheet" type="text/css">
+            <link href="https://cdn.inschool.fi/2.35.40.1/nc3/WIP/datepicker/datepicker.css" rel="StyleSheet" type="text/css">
+            <link href="https://cdn.inschool.fi/2.35.40.1/styles/vendor/bootstrap-slider.min.css" rel="StyleSheet" type="text/css">
+            <link href="https://cdn.inschool.fi/2.35.40.1/styles/wilma.css" rel="StyleSheet" type="text/css">
+            <link href="https://cdn.inschool.fi/2.35.40.1/styles/vendor/react-datepicker.min.css" rel="StyleSheet" type="text/css">
+
+            
+
+        
+
+        <link href="https://cdn.inschool.fi/2.35.40.1/styles/wilma-brand-renewal/img/wilma-favicon.png" rel="icon" type="image/png" sizes="any">
+        <link href="https://cdn.inschool.fi/2.35.40.1/styles/wilma-brand-renewal/img/wilma-favicon.svg" rel="icon" type="image/svg+xml">
+
+        
+
+        
+            <script src="https://cdn.inschool.fi/2.35.40.1/scripts/jquery/jquery.min.js" type="text/javascript" language="JavaScript"> </script>
+            <script src="https://cdn.inschool.fi/2.35.40.1/scripts/jquery/jquery-ui.min.js" type="text/javascript" language="JavaScript"> </script>
+            <script src="https://cdn.inschool.fi/2.35.40.1/scripts/jquery/jquery-ui-touch-punch.min.js" type="text/javascript" language="JavaScript"> </script>
+            
+            <script src="https://vohveli.links.wilma.fi/vohveli.v1.js" async onload="vohveli.prefix('wilma')"> </script>
+            
+
+            <script src="https://cdn.inschool.fi/2.35.40.1/nc3/js/bootstrap.min.js" type="text/javascript" language="JavaScript"></script>
+            <script src="https://cdn.inschool.fi/2.35.40.1/nc3/js/bootstrap-tabdrop.js" type="text/javascript" language="JavaScript"></script>
+            <script src="https://cdn.inschool.fi/2.35.40.1/nc3/js/hideVertMenu.js" type="text/javascript" language="JavaScript"></script>
+
+            <script src="https://cdn.inschool.fi/2.35.40.1/nc3/WIP/datepicker/js/jquery.plugin.js" type="text/javascript" language="JavaScript"> </script>
+            <script src="https://cdn.inschool.fi/2.35.40.1/nc3/WIP/datepicker/js/jquery.datepick.js" type="text/javascript" language="JavaScript"> </script>
+            <script src="https://cdn.inschool.fi/2.35.40.1/nc3/WIP/datepicker/js/jquery.datepick.ext.visma.js" type="text/javascript" language="JavaScript"> </script>
+
+            <script src="https://cdn.inschool.fi/2.35.40.1/scripts/jquery/typeahead.jquery.min.js" type="text/javascript" language="JavaScript"> </script>
+
+            <script src="https://cdn.inschool.fi/2.35.40.1/resources/locale-fi.js" type="text/javascript" language="JavaScript"></script>
+            <script src="https://cdn.inschool.fi/2.35.40.1/scripts/chunks/commons.bundle.js" type="text/javascript" language="JavaScript"></script>
+            
+            
+            
+            <script src="https://cdn.inschool.fi/2.35.40.1/scripts/chunks/fake.bundle.js" type="text/javascript" language="JavaScript"></script>
+            
+
+            
+ 
+            <script src="https://cdn.inschool.fi/2.35.40.1/scripts/addevent.js" type="text/javascript" language="JavaScript"> </script>
+            <script src="https://cdn.inschool.fi/2.35.40.1/scripts/navigation.js" type="text/javascript" language="JavaScript"> </script>
+            <script src="https://cdn.inschool.fi/2.35.40.1/scripts/dropdownfix.js" type="text/javascript" language="JavaScript"> </script>
+            <script src="https://cdn.inschool.fi/2.35.40.1/scripts/components.dock.js" type="text/javascript" language="JavaScript"> </script>
+            <script src="https://cdn.inschool.fi/2.35.40.1/scripts/components.sidepanel.js" type="text/javascript" language="JavaScript"> </script>
+            <script src="https://cdn.inschool.fi/2.35.40.1/scripts/components.js" type="text/javascript" language="JavaScript"> </script>
+            <script src="https://cdn.inschool.fi/2.35.40.1/scripts/menuitems.js" type="text/javascript" language="JavaScript"> </script>
+            <script src="https://cdn.inschool.fi/2.35.40.1/scripts/ordering.js" type="text/javascript" language="JavaScript"> </script>
+            <script src="https://cdn.inschool.fi/2.35.40.1/scripts/bootstrap-slider.min.js" type="text/javascript" language="JavaScript"> </script>
+            <script src="https://cdn.inschool.fi/2.35.40.1/scripts/wilma-slider.js" type="text/javascript" language="JavaScript"> </script>
+            <script src="https://cdn.inschool.fi/2.35.40.1/scripts/autotemplate.js" type="text/javascript" language="JavaScript"> </script>
+            <script src="https://cdn.inschool.fi/2.35.40.1/scripts/screenreader.js" type="text/javascript" language="JavaScript"> </script>
+
+
+            
+
+            <script src="https://cdn.inschool.fi/2.35.40.1/scripts/jquery/jquery.qrcode.min.js" type="text/javascript" language="JavaScript"></script>
+
+
+            
+
+            
+                <script type="text/javascript">
+                    var autoLogoutDelay = "1800";
+                    var absoluteURL = "https://espoo.inschool.fi";
+                    var userId = "0";
+                    window.trackingMode = "none";
+                    window.userType = "2";
+                </script>
+            
+            
+        
+    <script src="https://cdn.inschool.fi/2.35.40.1/scripts/xhconn.js" type="text/javascript" language="JavaScript"> </script>
+    <script src="https://cdn.inschool.fi/2.35.40.1/scripts/components.sidepanel.js" type="text/javascript" language="JavaScript"> </script>
+    <script src="https://cdn.inschool.fi/2.35.40.1/scripts/reservation.js" type="text/javascript" language="JavaScript"></script>
+    <script src="https://cdn.inschool.fi/2.35.40.1/scripts/reservation-settings.js" type="text/javascript" language="JavaScript"></script>
+    <script src="https://cdn.inschool.fi/2.35.40.1/scripts/components.sidepanel.js" type="text/javascript" language="JavaScript"></script>
+    <script src="https://cdn.inschool.fi/2.35.40.1/scripts/table-selection.js" type="text/javascript" language="JavaScript"></script>
+    <script src="https://cdn.inschool.fi/2.35.40.1/scripts/notifications.js" type="text/javascript" language="JavaScript"></script>
+
+    <script src="https://cdn.inschool.fi/2.35.40.1/scripts/hybridtextinput.js" type="text/javascript" language="JavaScript"> </script>
+
+    </head>
+
+    <body class="somebody">
+
+        
+            
+    <nav class="navbar navbar-default nav-wilma">
+
+        
+		
+            <div class="navbar-header">
+                <div class="pull-left" style="height: 42px; width: 42px; display:flex; place-content: center; place-items: center;"><wilma-vohveli></wilma-vohveli></div>
+                <a class="pull-left" id="skipnav" href="#main-content" autofocus>Siirry sivun pääsisältöön</a>
+                <a class="navbar-brand"
+                    style="padding-right: 40px" href="/"><img class="wilma-logo" src="https://cdn.inschool.fi/2.35.40.1/styles/wilma-brand-renewal/img/wilma_logo.svg" alt="Wilma Logo">
+                    
+                </a>
+                
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#wilma-navbar">
+                        <span class="sr-only">Avaa valikko</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="active-on-mobile"> </div>
+                
+            </div>
+			
+            <div class="collapse navbar-collapse" id="wilma-navbar">
+			
+			
+                    <ul class="nav navbar-nav nav-tabs first-level init">
+                        
+                            <li title="Viestit">
+                                <a class="" href="/messages" data-path="/messages">Viestit</a>
+                            </li>
+                        
+                            <li class="active" title="Työjärjestys">
+                                <a class="" href="/schedule" data-path="/schedule">Työjärjestys</a>
+                            </li>
+                        
+                            <li title="Opinnot">
+                                <a class="" href="/choices" data-path="/choices">Opinnot</a>
+                            </li>
+                        
+                            <li title="Kokeet">
+                                <a class="" href="/exams/calendar" data-path="/exams/calendar">Kokeet</a>
+                            </li>
+                        
+                            <li title="Tuntimerkinnät">
+                                <a class="" href="/attendance" data-path="/attendance">Tuntimerkinnät</a>
+                            </li>
+                        
+                            <li title="Tuki">
+                                <a class="" href="/specedu" data-path="/specedu">Tuki</a>
+                            </li>
+                        
+                            <li title="Hakemukset ja päätökset">
+                                <a class="" href="/decisions" data-path="/decisions">Hakemukset ja päätökset</a>
+                            </li>
+                        
+                            <li title="Tulosteet">
+                                <a class="" href="/printouts" data-path="/printouts">Tulosteet</a>
+                            </li>
+                        
+                            <li title="Kyselyt">
+                                <a class="" href="/feedback" data-path="/feedback">Kyselyt</a>
+                            </li>
+                        
+                            <li title="Kurssitarjotin">
+                                <a class="" href="/trays" data-path="/trays">Kurssitarjotin</a>
+                            </li>
+                        
+                            <li title="Tentit">
+                                <a class="" href="/exams" data-path="/exams">Tentit</a>
+                            </li>
+                        
+                            <li title="Tiedotteet">
+                                <a class="" href="/news" data-path="/news">Tiedotteet</a>
+                            </li>
+                        
+                            <li title="Opetussuunnitelma">
+                                <a class="" href="/catalog" data-path="/catalog">Opetussuunnitelma</a>
+                            </li>
+                        
+                            <li title="Opiskelijat">
+                                <a class="" href="/profiles/students" data-path="/profiles/students">Opiskelijat</a>
+                            </li>
+                        
+                            <li title="Opettajat">
+                                <a class="" href="/profiles/teachers" data-path="/profiles/teachers">Opettajat</a>
+                            </li>
+                        
+                            <li title="Henkilökunta">
+                                <a class="" href="/profiles/personnel" data-path="/profiles/personnel">Henkilökunta</a>
+                            </li>
+                        
+                            <li title="Huoneet">
+                                <a class="" href="/profiles/rooms" data-path="/profiles/rooms">Huoneet</a>
+                            </li>
+                        
+                            <li title="Lomakkeet">
+                                <a class="" href="/forms" data-path="/forms">Lomakkeet</a>
+                            </li>
+                        
+                            <li title="Ilmoitusasetukset">
+                                <a class="" href="/preferences/communication" data-path="/preferences/communication">Ilmoitusasetukset</a>
+                            </li>
+                        
+                            <li title="Käyttäjätilin asetukset">
+                                <a class="" href="/preferences/passwd" data-path="/preferences/passwd">Käyttäjätilin asetukset</a>
+                            </li>
+                        
+                    </ul>
+             
+
+             <ul class="nav navbar-nav navbar-right">
+
+                    
+                        <li class="icon dropdown dropdown-fix">
+                            <a
+                                href="#"
+                                id="qrcode-popover"
+                                class="dropdown-no-caret"
+                                role="button"
+                                title="Wilma-sovellus käyttöön QR-koodilla"
+                                aria-label="Avaa QR-koodi infolaatikkoon"
+                                data-toggle="popover"
+                                data-placement="bottom"
+                                data-content="<div id='qrcode-container'><div class='text-center'><img src='/shared/nc3/img/spinners/spinner_64x64_light.gif' alt=''></div></div>"
+                                data-qrcode="{&quot;url&quot;:&quot;https:\/\/espoo.inschool.fi&quot;,&quot;username&quot;:&quot;toivo.kallio&quot;}"
+                            >
+                                <span class="vismaicon vismaicon-qr-code"></span>
+                            </a>
+                        </li>
+                    
+			 
+                    
+                        <li class="icon dropdown dropdown-fix">
+                            <a aria-label="Avaa asetusvalikko" href="" class="dropdown-no-caret" data-toggle="dropdown" role="button" title="Asetukset">
+                                <span class="vismaicon vismaicon-menu vismaicon-user-settings"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="dropdown-header">Asetukset</li>
+                                <li role="presentation"><a href="/preferences/communication">Ilmoitusasetukset</a></li>
+                                <li role="presentation"><a href="/preferences/roles">Käyttöoikeudet</a></li>
+                                <li role="presentation"><a href="/preferences/passwd">Käyttäjätilin asetukset</a></li>
+                                <li><a href="/preferences/ui">Käyttöliittymä</a></li>
+                                <li class="dropdown-header">Kieli</li>
+                                <li role="presentation"><a href="?langid=1">Suomi</a></li>
+                                <li role="presentation"><a href="?langid=2">Svenska</a></li>
+                                <li role="presentation"><a href="?langid=3">English</a></li>
+                            </ul>
+                        </li>
+                    
+
+                    
+                        <li class="icon">
+                            <a aria-label="Kirjaudu ulos" href="#" id="logout-button" title="Kirjaudu ulos">      
+                                <span class="vismaicon vismaicon-menu vismaicon-logout"></span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li class="dropdown dropdown-fix">
+                            <a aria-label="Avaa käyttäjätunnusvalikko" href="#" class="dropdown-toggle profile" role="button">
+                                <div class="name-container">
+                                    <span class="teacher">Toivo Kallio</span>
+                                    <br>
+                                    <span class="school">Otaniemen lukio</span>
+                                </div>
+                                
+                            </a>
+                            
+                        </li>
+                    
+
+                    
+                </ul>
+            </div>
+        
+        
+            <form action="/logout" method="post" id="logout-form" style="display: none;">
+                <input type="hidden" name="formkey" value="student:313902:3b15f8d6bab6de0df282c73469acf806">
+            </form>
+        
+    </nav>
+
+
+        
+
+        
+
+        
+
+        
+
+        
+            
+                <ol
+                    
+                    class="breadcrumb"><li><a href="/">Oma&#160;etusivu</a></li><li class="active">Työjärjestys</li></ol>
+            
+        
+
+        
+
+        
+            <div id="alerts" class="container">
+                
+
+                
+
+                
+            </div>
+        
+
+        
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="action-buttons pull-right horizontal-link-container margin-last">
+                            
+
+
+    
+
+    
+    <a href="" class="icon-link" id="ical-trigger" title="Tilaa kalenteri">
+        <span class="vismaicon vismaicon-export"></span>
+        <span>Tilaa</span>
+    </a>
+    
+
+    
+    <div class="dropdown" title="Tulosta">
+        <a href="" class="icon-link" data-toggle="dropdown">
+            <span class="vismaicon vismaicon-print"></span>
+            <span>Tulosta</span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+            <li><a href="/schedule?printable&size=half&KouluID=791831264" target="preview" onclick="return openPreview(this.href);">Puolikorkea</a></li>
+            <li><a href="/schedule?printable&size=full&KouluID=791831264" target="preview" onclick="return openPreview(this.href);">Täyskorkea</a></li>
+            <li><a href="/schedule?printable&size=half&colorcode=1&KouluID=791831264" target="preview" onclick="return openPreview(this.href);">Puolikorkea väreissä</a></li>
+            <li><a href="/schedule?printable&size=full&colorcode=1&KouluID=791831264" target="preview" onclick="return openPreview(this.href);">Täyskorkea väreissä</a></li>
+        </ul>
+    </div>
+    
+
+
+
+                            
+                        </div>
+                        
+
+                        
+
+                        <div class="panel tab-content">
+                            <h1 class="sr-only">Oma työjärjestys</h1>
+                            <div id="page-content-area" class="panel-body">
+                                
+        
+
+        <!-- Sivukohtainen alue alkaa -->
+
+            
+            
+            <main id="main-content"
+                
+                >
+                
+ <!--EmptyPage-->
+    <input type="hidden" id="schedule-of-new-type">
+    <input type="hidden" id="disable-collapsemode">
+
+   
+
+        <div id="ical-container" class="hidden">
+            <div class="ical-title">Tilaa kalenteri</div>
+            <div class="ical-body">
+                <p>Tämän linkin avulla voit tuoda Wilman työjärjestyksen johonkin toiseen kalenteriohjelmaan, esim. Microsoft Outlookiin.</p>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="tokenURL">
+                    <p class="help-block">Kopioi linkki leikepöydälle näppäinyhdistelmällä Ctrl+C tai klikkaamalla linkkiä hiiren 2. painikkeella ja valitsemalla "Kopioi".</p>
+                </div>
+            </div>
+        </div>
+
+         
+    
+
+    <form action="/schedule" method="get" id="schedule-goto" class="viewonly  margin-bottom">
+        <div class="container-fluid">
+        <div class="row">
+        <div class="form-group col-lg-2-5 col-md-3 col-sm-4">
+            <label class="display-block">
+                Päivämäärä
+                
+                <div class="datepick-arrows-wrapper pull-right horizontal-link-container">
+                    <a href="?date=04.12.2025" class="icon-link" title="Edellinen viikko">
+                        <span class="vismaicon vismaicon-sm vismaicon-arrow-left-circle"></span>
+                    </a>
+                    <a href="?date=18.12.2025" class="icon-link" title="Seuraava viikko">
+                        <span class="vismaicon vismaicon-sm vismaicon-arrow-right-circle"></span>
+                    </a>
+                </div>
+                
+            </label>
+            <div class="datepick-wrapper col-fixer">
+                <input type="text" name="date" value="11.12.2025" class="date form-control" id="res-datepick">
+            </div>
+        </div>
+
+        
+        <div class="form-group col-lg-2-5 col-md-3 col-sm-4">
+            <label>Valitse jakso</label><br>
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="change-period-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    3A. periodi
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    
+                    <li role="presentation">
+                        <a href="/schedule?date=06.10.2025" title="30.9.&#8201;&#8211;&#8201;24.10.2025">2A. periodi (30.09. - 24.10.2025)</a>
+                    </li>
+                    
+                    <li role="presentation">
+                        <a href="/schedule?date=27.10.2025" title="27.&#8201;&#8211;&#8201;30.10.2025">2. periodin projektiviikko (27.10. - 30.10.2025)</a>
+                    </li>
+                    
+                    <li role="presentation">
+                        <a href="/schedule?date=03.11.2025" title="31.10.&#8201;&#8211;&#8201;17.11.2025">2B. periodi (31.10. - 17.11.2025)</a>
+                    </li>
+                    
+                    <li role="presentation">
+                        <a href="/schedule?date=18.11.2025" title="18.&#8201;&#8211;&#8201;21.11.2025">2. periodin päättöviikko 1/2 (18.11. - 21.11.2025)</a>
+                    </li>
+                    
+                    <li role="presentation">
+                        <a href="/schedule?date=24.11.2025" title="24.&#8201;&#8211;&#8201;26.11.2025">2. periodin päättöviikko 2/2 (24.11. - 26.11.2025)</a>
+                    </li>
+                    
+                    <li role="presentation active">
+                        <a href="/schedule?date=01.12.2025" title="27.11.&#8201;&#8211;&#8201;16.12.2025">3A. periodi (27.11. - 16.12.2025)</a>
+                    </li>
+                    
+                    <li role="presentation">
+                        <a href="/schedule?date=17.12.2025" title="17.&#8201;&#8211;&#8201;19.12.2025">3. periodin projektiviikko 1/2 (17.12. - 19.12.2025)</a>
+                    </li>
+                    
+                    <li role="presentation">
+                        <a href="/schedule?date=07.01.2026" title="7.1.2026">3. periodin projektiviikko 2/2 (07.01.2026)</a>
+                    </li>
+                    
+                    <li role="presentation">
+                        <a href="/schedule?date=12.01.2026" title="8.&#8201;&#8211;&#8201;23.1.2026">3B. periodi (08.01. - 23.01.2026)</a>
+                    </li>
+                    
+                    <li role="presentation">
+                        <a href="/schedule?date=26.01.2026" title="26.&#8201;&#8211;&#8201;30.1.2026">3. periodi päättöviikko 1/2 (26.01. - 30.01.2026)</a>
+                    </li>
+                    
+                    <li role="presentation">
+                        <a href="/schedule?date=02.02.2026" title="2.&#8201;&#8211;&#8201;3.2.2026">3. periodi päättöviiko 2/2 (02.02. - 03.02.2026)</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        
+        </div>
+        </div>
+    </form>
+
+   <!--not ViewOnly -->
+
+           <form id="schedule-form" action="" method="POST">
+        <input type="hidden" id="formid" name="formkey" value="student:313902:3b15f8d6bab6de0df282c73469acf806">
+        <div id="schedule-container" class="schedule">
+        <div id="weekdays" class="weekday-container" aria-hidden="true">
+            
+              
+              <div id="weekday-1" class="weekday" style="width:20%">
+                <span class="">Ma 08.12.</span>
+              </div>
+              
+              <div id="weekday-2" class="weekday" style="width:20%">
+                <span class="">Ti 09.12.</span>
+              </div>
+              
+              <div id="weekday-3" class="weekday" style="width:20%">
+                <span class="">Ke 10.12.</span>
+              </div>
+              
+              <div id="weekday-4" class="weekday selected" style="width:20%">
+                <span class="today" title="Tänään">To 11.12.</span>
+              </div>
+              
+              <div id="weekday-5" class="weekday" style="width:20%">
+                <span class="">Pe 12.12.</span>
+              </div>
+              
+            
+        </div>
+        <div id="container" class="block-area-container  viewonly">
+          <div class="hourlist hours-container">
+            
+              
+                <div aria-hidden=true style="top:0px">08:30</div>
+              
+                <div aria-hidden=true style="top:75px"></div>
+              
+                <div aria-hidden=true style="top:90px">10:00</div>
+              
+                <div aria-hidden=true style="top:165px"></div>
+              
+                <div aria-hidden=true style="top:170px">11:20</div>
+              
+                <div aria-hidden=true style="top:285px"></div>
+              
+                <div aria-hidden=true style="top:300px">13:30</div>
+              
+                <div aria-hidden=true style="top:375px"></div>
+              
+                <div aria-hidden=true style="top:390px">15:00</div>
+              
+            
+          </div>
+          <div id="schedule" class="schedule-container" style="height:465px">
+            
+              
+              <div class="hour" id="hour-0-0-75" style="height:75px; top:0px;"></div>
+              
+              <div class="hour pause" id="hour-1-75-15" style="height:15px; top:75px;"></div>
+              
+              <div class="hour" id="hour-2-90-75" style="height:75px; top:90px;"></div>
+              
+              <div class="hour pause" id="hour-3-165-5" style="height:5px; top:165px;"></div>
+              
+              <div class="hour" id="hour-4-170-115" style="height:115px; top:170px;"></div>
+              
+              <div class="hour pause" id="hour-5-285-15" style="height:15px; top:285px;"></div>
+              
+              <div class="hour" id="hour-6-300-75" style="height:75px; top:300px;"></div>
+              
+              <div class="hour pause" id="hour-7-375-15" style="height:15px; top:375px;"></div>
+              
+              <div class="hour" id="hour-8-390-75" style="height:75px; top:390px;"></div>
+              
+            
+            
+              
+              <div class="day-separator" id="day-45999" style="left:0%; height:465px"></div>
+              
+              <div class="day-separator" id="day-46000" style="left:20%; height:465px"></div>
+              
+              <div class="day-separator" id="day-46001" style="left:40%; height:465px"></div>
+              
+              <div class="day-separator" id="day-46002" style="left:60%; height:465px"></div>
+              
+              <div class="day-separator" id="day-46003" style="left:80%; height:465px"></div>
+              
+              <div class="day-separator" style="left:100%; height:465px"></div>
+            
+          </div>
+      <script type="text/javascript">
+        var eventsJSON = {ViewOnly:true,DayCount:5, DayStarts:510, DayEnds: 975, Events : [{"Id":"83969","ViikonPaiva":"","SijId":"86519","Tyyppi":"Teaching","Date":"","Start":510,"End":585,"Text":{"0":"2: ÄI06.03"},"LongText":{"0":"ÄI06 Kirjoittaminen 1"},"MinuuttiSij":"0","X1":0,"X2":10000,"Y1":0,"Y2":74,"ShowClasses":0,"Lk":"","Color":"#A6CAF0","AllowOverlap":0,"Lisatieto":{"0":""},"Muistiinpanot":{"0":""},"OppCount":{"0":""},"ArvKirjaNro":{"0":1755292},"Opet":{"0":"O: ORR"},"OpeInfo":{"0":{"0":{"kortti":9436,"tunniste":"850c001afa76265ec5297f1a5aeb2dc6","lyhenne":"ORR","nimi":"Orre Elisa","sallittu":1}}},"Henkilot":{"0":""},"HenkiloInfo":{"0":{}},"Huoneet":{"0":"H: 4270"},"HuoneInfo":{"0":{"0":{"kortti":6384,"tunniste":"H6384#4270","lyhenne":"4270","nimi":"4270 Luokka","sallittu":1}}},"MuutRes":{},"MuutResInfo":{},"Vvt":"1 2\/3 vvt","MuunGrid":"","MuunJakso":"","KouluId":"791831264","JJarjId":"50706","GridId":"14","ToisenKoulun":"Työjärjestys: Otaniemen lukio 2025-2026","Lisaaja":{"KurreID":"4c2d56ba482e7241a6a29599ce2b3714","Nimi":"Varauksen tekijä: 09.04.2025 14:32  IIV Iivanainen Matti"},"Muokkaaja":{"KurreID":"","Nimi":""},"Lukittu":"","NotInGrid":0},{"Id":"84480","ViikonPaiva":"","SijId":"86522","Tyyppi":"Teaching","Date":"","Start":600,"End":675,"Text":{"0":"3: MAA06.D2"},"LongText":{"0":"MAA06 Derivaatta"},"MinuuttiSij":"0","X1":0,"X2":10000,"Y1":89,"Y2":164,"ShowClasses":0,"Lk":"","Color":"#A6CAF0","AllowOverlap":0,"Lisatieto":{"0":""},"Muistiinpanot":{"0":""},"OppCount":{"0":""},"ArvKirjaNro":{"0":1755265},"Opet":{"0":"O: SAV"},"OpeInfo":{"0":{"0":{"kortti":10655,"tunniste":"df9966fc0e794a68f7643dc0477be03c","lyhenne":"SAV","nimi":"Saarikivi Ville","sallittu":1}}},"Henkilot":{"0":""},"HenkiloInfo":{"0":{}},"Huoneet":{"0":"H: 1315"},"HuoneInfo":{"0":{"0":{"kortti":5366,"tunniste":"H5366#1315","lyhenne":"1315","nimi":"1315 Fysiikka","sallittu":1}}},"MuutRes":{},"MuutResInfo":{},"Vvt":"1 2\/3 vvt","MuunGrid":"","MuunJakso":"","KouluId":"791831264","JJarjId":"50706","GridId":"14","ToisenKoulun":"Työjärjestys: Otaniemen lukio 2025-2026","Lisaaja":{"KurreID":"4c2d56ba482e7241a6a29599ce2b3714","Nimi":"Varauksen tekijä: 09.04.2025 14:32  IIV Iivanainen Matti"},"Muokkaaja":{"KurreID":"","Nimi":""},"Lukittu":"","NotInGrid":0},{"Id":"84192","ViikonPaiva":"","SijId":"86531","Tyyppi":"Teaching","Date":"","Start":810,"End":885,"Text":{"0":"6: GE01.10"},"LongText":{"0":"GE01 Maailma muutoksessa"},"MinuuttiSij":"0","X1":0,"X2":10000,"Y1":299,"Y2":374,"ShowClasses":0,"Lk":"","Color":"#A6CAF0","AllowOverlap":0,"Lisatieto":{"0":""},"Muistiinpanot":{"0":""},"OppCount":{"0":""},"ArvKirjaNro":{"0":1755340},"Opet":{"0":"O: HAA"},"OpeInfo":{"0":{"0":{"kortti":3951,"tunniste":"bc1d42e13764072fef93b020e38e2669","lyhenne":"HAA","nimi":"Haapamäki Kirsi","sallittu":1}}},"Henkilot":{"0":""},"HenkiloInfo":{"0":{}},"Huoneet":{"0":"H: 2240"},"HuoneInfo":{"0":{"0":{"kortti":5373,"tunniste":"H5373#2240","lyhenne":"2240","nimi":"2240 Luokka Ge","sallittu":1}}},"MuutRes":{},"MuutResInfo":{},"Vvt":"1 2\/3 vvt","MuunGrid":"","MuunJakso":"","KouluId":"791831264","JJarjId":"50706","GridId":"14","ToisenKoulun":"Työjärjestys: Otaniemen lukio 2025-2026","Lisaaja":{"KurreID":"4c2d56ba482e7241a6a29599ce2b3714","Nimi":"Varauksen tekijä: 09.04.2025 14:32  IIV Iivanainen Matti"},"Muokkaaja":{"KurreID":"","Nimi":""},"Lukittu":"","NotInGrid":0},{"Id":"84662","ViikonPaiva":"","SijId":"86525","Tyyppi":"Teaching","Date":"","Start":680,"End":795,"Text":{"0":"4: RAA05.01"},"LongText":{"0":"RAA05 Kestävä tulevaisuus ja tiede"},"MinuuttiSij":"0","X1":10000,"X2":15000,"Y1":169,"Y2":284,"ShowClasses":0,"Lk":"","Color":"#A6CAF0","AllowOverlap":0,"Lisatieto":{"0":""},"Muistiinpanot":{"0":""},"OppCount":{"0":""},"ArvKirjaNro":{"0":1755405},"Opet":{"0":"O: TEN"},"OpeInfo":{"0":{"0":{"kortti":6912,"tunniste":"804f8cb753a2872c19998b56e119466f","lyhenne":"TEN","nimi":"Tenhunen Tytti","sallittu":1}}},"Henkilot":{"0":""},"HenkiloInfo":{"0":{}},"Huoneet":{"0":"H: 3147"},"HuoneInfo":{"0":{"0":{"kortti":5391,"tunniste":"H5391#3147","lyhenne":"3147","nimi":"3147 Luokka","sallittu":1}}},"MuutRes":{},"MuutResInfo":{},"Vvt":"1 2\/3 vvt","MuunGrid":"","MuunJakso":"","KouluId":"791831264","JJarjId":"50706","GridId":"14","ToisenKoulun":"Työjärjestys: Otaniemen lukio 2025-2026","Lisaaja":{"KurreID":"4c2d56ba482e7241a6a29599ce2b3714","Nimi":"Varauksen tekijä: 09.04.2025 14:32  IIV Iivanainen Matti"},"Muokkaaja":{"KurreID":"","Nimi":""},"Lukittu":"","NotInGrid":0},{"Id":"88570","ViikonPaiva":"","SijId":"89886","Tyyppi":"Teaching","Date":"","Start":780,"End":840,"Text":{"0":"1: RO01.24K"},"LongText":{"0":"RO01 Ryhmänohjaus"},"MinuuttiSij":"1","X1":15000,"X2":20000,"Y1":269,"Y2":329,"ShowClasses":0,"Lk":"","Color":"#A6CAF0","AllowOverlap":0,"Lisatieto":{"0":""},"Muistiinpanot":{"0":""},"OppCount":{"0":""},"ArvKirjaNro":{"0":1743869},"Opet":{"0":"O: PAV"},"OpeInfo":{"0":{"0":{"kortti":11298,"tunniste":"f808a8308e1f646abc805993da975b18","lyhenne":"PAV","nimi":"Paavilainen Laura","sallittu":1}}},"Henkilot":{"0":""},"HenkiloInfo":{"0":{}},"Huoneet":{"0":"H: 2239"},"HuoneInfo":{"0":{"0":{"kortti":5372,"tunniste":"H5372#2239","lyhenne":"2239","nimi":"2239 Biologia (labra)","sallittu":1}}},"MuutRes":{},"MuutResInfo":{},"Vvt":"1 1\/3 vvt","MuunGrid":"","MuunJakso":"","KouluId":"791831264","JJarjId":"87410","GridId":"0","ToisenKoulun":"Työjärjestys: Otaniemen lukio 2025-2026","Lisaaja":{"KurreID":"3feeb09d4476cb010051257ce59f381f","Nimi":"Varauksen tekijä: 30.06.2025 18:03  INK Inkeroinen Mikael"},"Muokkaaja":{"KurreID":"","Nimi":""},"Lukittu":"","NotInGrid":0},{"Id":"84134","ViikonPaiva":"","SijId":"86516","Tyyppi":"Teaching","Date":"","Start":810,"End":885,"Text":{"0":"1: FY03.01"},"LongText":{"0":"FY03 Energia ja lämpö"},"MinuuttiSij":"0","X1":10000,"X2":15000,"Y1":299,"Y2":374,"ShowClasses":0,"Lk":"","Color":"#A6CAF0","AllowOverlap":0,"Lisatieto":{"0":""},"Muistiinpanot":{"0":""},"OppCount":{"0":""},"ArvKirjaNro":{"0":1755326},"Opet":{"0":"O: PIR"},"OpeInfo":{"0":{"0":{"kortti":6185,"tunniste":"add6f31008536f877db9ebd6a7eb8f87","lyhenne":"PIR","nimi":"Pirkkalainen Sari","sallittu":1}}},"Henkilot":{"0":""},"HenkiloInfo":{"0":{}},"Huoneet":{"0":"H: 1317"},"HuoneInfo":{"0":{"0":{"kortti":5367,"tunniste":"H5367#1317","lyhenne":"1317","nimi":"1317 Fysiikka","sallittu":1}}},"MuutRes":{},"MuutResInfo":{},"Vvt":"1 2\/3 vvt","MuunGrid":"","MuunJakso":"","KouluId":"791831264","JJarjId":"50706","GridId":"14","ToisenKoulun":"Työjärjestys: Otaniemen lukio 2025-2026","Lisaaja":{"KurreID":"4c2d56ba482e7241a6a29599ce2b3714","Nimi":"Varauksen tekijä: 09.04.2025 14:32  IIV Iivanainen Matti"},"Muokkaaja":{"KurreID":"","Nimi":""},"Lukittu":"","NotInGrid":0},{"Id":"84662","ViikonPaiva":"","SijId":"86526","Tyyppi":"Teaching","Date":"","Start":510,"End":585,"Text":{"0":"4: RAA05.01"},"LongText":{"0":"RAA05 Kestävä tulevaisuus ja tiede"},"MinuuttiSij":"0","X1":20000,"X2":30000,"Y1":0,"Y2":74,"ShowClasses":0,"Lk":"","Color":"#A6CAF0","AllowOverlap":0,"Lisatieto":{"0":""},"Muistiinpanot":{"0":""},"OppCount":{"0":""},"ArvKirjaNro":{"0":1755405},"Opet":{"0":"O: TEN"},"OpeInfo":{"0":{"0":{"kortti":6912,"tunniste":"804f8cb753a2872c19998b56e119466f","lyhenne":"TEN","nimi":"Tenhunen Tytti","sallittu":1}}},"Henkilot":{"0":""},"HenkiloInfo":{"0":{}},"Huoneet":{"0":"H: 3147"},"HuoneInfo":{"0":{"0":{"kortti":5391,"tunniste":"H5391#3147","lyhenne":"3147","nimi":"3147 Luokka","sallittu":1}}},"MuutRes":{},"MuutResInfo":{},"Vvt":"1 2\/3 vvt","MuunGrid":"","MuunJakso":"","KouluId":"791831264","JJarjId":"50706","GridId":"14","ToisenKoulun":"Työjärjestys: Otaniemen lukio 2025-2026","Lisaaja":{"KurreID":"4c2d56ba482e7241a6a29599ce2b3714","Nimi":"Varauksen tekijä: 09.04.2025 14:32  IIV Iivanainen Matti"},"Muokkaaja":{"KurreID":"","Nimi":""},"Lukittu":"","NotInGrid":0},{"Id":"83969","ViikonPaiva":"","SijId":"86520","Tyyppi":"Teaching","Date":"","Start":600,"End":675,"Text":{"0":"2: ÄI06.03"},"LongText":{"0":"ÄI06 Kirjoittaminen 1"},"MinuuttiSij":"0","X1":20000,"X2":30000,"Y1":89,"Y2":164,"ShowClasses":0,"Lk":"","Color":"#A6CAF0","AllowOverlap":0,"Lisatieto":{"0":""},"Muistiinpanot":{"0":""},"OppCount":{"0":""},"ArvKirjaNro":{"0":1755292},"Opet":{"0":"O: ORR"},"OpeInfo":{"0":{"0":{"kortti":9436,"tunniste":"850c001afa76265ec5297f1a5aeb2dc6","lyhenne":"ORR","nimi":"Orre Elisa","sallittu":1}}},"Henkilot":{"0":""},"HenkiloInfo":{"0":{}},"Huoneet":{"0":"H: 4270"},"HuoneInfo":{"0":{"0":{"kortti":6384,"tunniste":"H6384#4270","lyhenne":"4270","nimi":"4270 Luokka","sallittu":1}}},"MuutRes":{},"MuutResInfo":{},"Vvt":"1 2\/3 vvt","MuunGrid":"","MuunJakso":"","KouluId":"791831264","JJarjId":"50706","GridId":"14","ToisenKoulun":"Työjärjestys: Otaniemen lukio 2025-2026","Lisaaja":{"KurreID":"4c2d56ba482e7241a6a29599ce2b3714","Nimi":"Varauksen tekijä: 09.04.2025 14:32  IIV Iivanainen Matti"},"Muokkaaja":{"KurreID":"","Nimi":""},"Lukittu":"","NotInGrid":0},{"Id":"84480","ViikonPaiva":"","SijId":"86523","Tyyppi":"Teaching","Date":"","Start":680,"End":795,"Text":{"0":"3: MAA06.D2"},"LongText":{"0":"MAA06 Derivaatta"},"MinuuttiSij":"0","X1":20000,"X2":30000,"Y1":169,"Y2":284,"ShowClasses":0,"Lk":"","Color":"#A6CAF0","AllowOverlap":0,"Lisatieto":{"0":""},"Muistiinpanot":{"0":""},"OppCount":{"0":""},"ArvKirjaNro":{"0":1755265},"Opet":{"0":"O: SAV"},"OpeInfo":{"0":{"0":{"kortti":10655,"tunniste":"df9966fc0e794a68f7643dc0477be03c","lyhenne":"SAV","nimi":"Saarikivi Ville","sallittu":1}}},"Henkilot":{"0":""},"HenkiloInfo":{"0":{}},"Huoneet":{"0":"H: 1315"},"HuoneInfo":{"0":{"0":{"kortti":5366,"tunniste":"H5366#1315","lyhenne":"1315","nimi":"1315 Fysiikka","sallittu":1}}},"MuutRes":{},"MuutResInfo":{},"Vvt":"1 2\/3 vvt","MuunGrid":"","MuunJakso":"","KouluId":"791831264","JJarjId":"50706","GridId":"14","ToisenKoulun":"Työjärjestys: Otaniemen lukio 2025-2026","Lisaaja":{"KurreID":"4c2d56ba482e7241a6a29599ce2b3714","Nimi":"Varauksen tekijä: 09.04.2025 14:32  IIV Iivanainen Matti"},"Muokkaaja":{"KurreID":"","Nimi":""},"Lukittu":"","NotInGrid":0},{"Id":"84192","ViikonPaiva":"","SijId":"86532","Tyyppi":"Teaching","Date":"","Start":810,"End":885,"Text":{"0":"6: GE01.10"},"LongText":{"0":"GE01 Maailma muutoksessa"},"MinuuttiSij":"0","X1":20000,"X2":30000,"Y1":299,"Y2":374,"ShowClasses":0,"Lk":"","Color":"#A6CAF0","AllowOverlap":0,"Lisatieto":{"0":""},"Muistiinpanot":{"0":""},"OppCount":{"0":""},"ArvKirjaNro":{"0":1755340},"Opet":{"0":"O: HAA"},"OpeInfo":{"0":{"0":{"kortti":3951,"tunniste":"bc1d42e13764072fef93b020e38e2669","lyhenne":"HAA","nimi":"Haapamäki Kirsi","sallittu":1}}},"Henkilot":{"0":""},"HenkiloInfo":{"0":{}},"Huoneet":{"0":"H: 2240"},"HuoneInfo":{"0":{"0":{"kortti":5373,"tunniste":"H5373#2240","lyhenne":"2240","nimi":"2240 Luokka Ge","sallittu":1}}},"MuutRes":{},"MuutResInfo":{},"Vvt":"1 2\/3 vvt","MuunGrid":"","MuunJakso":"","KouluId":"791831264","JJarjId":"50706","GridId":"14","ToisenKoulun":"Työjärjestys: Otaniemen lukio 2025-2026","Lisaaja":{"KurreID":"4c2d56ba482e7241a6a29599ce2b3714","Nimi":"Varauksen tekijä: 09.04.2025 14:32  IIV Iivanainen Matti"},"Muokkaaja":{"KurreID":"","Nimi":""},"Lukittu":"","NotInGrid":0},{"Id":"84134","ViikonPaiva":"","SijId":"86517","Tyyppi":"Teaching","Date":"","Start":680,"End":795,"Text":{"0":"1: FY03.01"},"LongText":{"0":"FY03 Energia ja lämpö"},"MinuuttiSij":"0","X1":30000,"X2":40000,"Y1":169,"Y2":284,"ShowClasses":0,"Lk":"","Color":"#A6CAF0","AllowOverlap":0,"Lisatieto":{"0":""},"Muistiinpanot":{"0":""},"OppCount":{"0":""},"ArvKirjaNro":{"0":1755326},"Opet":{"0":"O: PIR"},"OpeInfo":{"0":{"0":{"kortti":6185,"tunniste":"add6f31008536f877db9ebd6a7eb8f87","lyhenne":"PIR","nimi":"Pirkkalainen Sari","sallittu":1}}},"Henkilot":{"0":""},"HenkiloInfo":{"0":{}},"Huoneet":{"0":"H: 1317"},"HuoneInfo":{"0":{"0":{"kortti":5367,"tunniste":"H5367#1317","lyhenne":"1317","nimi":"1317 Fysiikka","sallittu":1}}},"MuutRes":{},"MuutResInfo":{},"Vvt":"1 2\/3 vvt","MuunGrid":"","MuunJakso":"","KouluId":"791831264","JJarjId":"50706","GridId":"14","ToisenKoulun":"Työjärjestys: Otaniemen lukio 2025-2026","Lisaaja":{"KurreID":"4c2d56ba482e7241a6a29599ce2b3714","Nimi":"Varauksen tekijä: 09.04.2025 14:32  IIV Iivanainen Matti"},"Muokkaaja":{"KurreID":"","Nimi":""},"Lukittu":"","NotInGrid":0},{"Id":"83969","ViikonPaiva":"","SijId":"86521","Tyyppi":"Teaching","Date":"","Start":810,"End":885,"Text":{"0":"2: ÄI06.03"},"LongText":{"0":"ÄI06 Kirjoittaminen 1"},"MinuuttiSij":"0","X1":30000,"X2":40000,"Y1":299,"Y2":374,"ShowClasses":0,"Lk":"","Color":"#A6CAF0","AllowOverlap":0,"Lisatieto":{"0":""},"Muistiinpanot":{"0":""},"OppCount":{"0":""},"ArvKirjaNro":{"0":1755292},"Opet":{"0":"O: ORR"},"OpeInfo":{"0":{"0":{"kortti":9436,"tunniste":"850c001afa76265ec5297f1a5aeb2dc6","lyhenne":"ORR","nimi":"Orre Elisa","sallittu":1}}},"Henkilot":{"0":""},"HenkiloInfo":{"0":{}},"Huoneet":{"0":"H: 4270"},"HuoneInfo":{"0":{"0":{"kortti":6384,"tunniste":"H6384#4270","lyhenne":"4270","nimi":"4270 Luokka","sallittu":1}}},"MuutRes":{},"MuutResInfo":{},"Vvt":"1 2\/3 vvt","MuunGrid":"","MuunJakso":"","KouluId":"791831264","JJarjId":"50706","GridId":"14","ToisenKoulun":"Työjärjestys: Otaniemen lukio 2025-2026","Lisaaja":{"KurreID":"4c2d56ba482e7241a6a29599ce2b3714","Nimi":"Varauksen tekijä: 09.04.2025 14:32  IIV Iivanainen Matti"},"Muokkaaja":{"KurreID":"","Nimi":""},"Lukittu":"","NotInGrid":0},{"Id":"84480","ViikonPaiva":"","SijId":"86524","Tyyppi":"Teaching","Date":"","Start":900,"End":975,"Text":{"0":"3: MAA06.D2"},"LongText":{"0":"MAA06 Derivaatta"},"MinuuttiSij":"0","X1":30000,"X2":40000,"Y1":389,"Y2":464,"ShowClasses":0,"Lk":"","Color":"#A6CAF0","AllowOverlap":0,"Lisatieto":{"0":""},"Muistiinpanot":{"0":""},"OppCount":{"0":""},"ArvKirjaNro":{"0":1755265},"Opet":{"0":"O: SAV"},"OpeInfo":{"0":{"0":{"kortti":10655,"tunniste":"df9966fc0e794a68f7643dc0477be03c","lyhenne":"SAV","nimi":"Saarikivi Ville","sallittu":1}}},"Henkilot":{"0":""},"HenkiloInfo":{"0":{}},"Huoneet":{"0":"H: 1315"},"HuoneInfo":{"0":{"0":{"kortti":5366,"tunniste":"H5366#1315","lyhenne":"1315","nimi":"1315 Fysiikka","sallittu":1}}},"MuutRes":{},"MuutResInfo":{},"Vvt":"1 2\/3 vvt","MuunGrid":"","MuunJakso":"","KouluId":"791831264","JJarjId":"50706","GridId":"14","ToisenKoulun":"Työjärjestys: Otaniemen lukio 2025-2026","Lisaaja":{"KurreID":"4c2d56ba482e7241a6a29599ce2b3714","Nimi":"Varauksen tekijä: 09.04.2025 14:32  IIV Iivanainen Matti"},"Muokkaaja":{"KurreID":"","Nimi":""},"Lukittu":"","NotInGrid":0},{"Id":"84134","ViikonPaiva":"","SijId":"86518","Tyyppi":"Teaching","Date":"","Start":510,"End":585,"Text":{"0":"1: FY03.01"},"LongText":{"0":"FY03 Energia ja lämpö"},"MinuuttiSij":"0","X1":40000,"X2":50000,"Y1":0,"Y2":74,"ShowClasses":0,"Lk":"","Color":"#A6CAF0","AllowOverlap":0,"Lisatieto":{"0":""},"Muistiinpanot":{"0":""},"OppCount":{"0":""},"ArvKirjaNro":{"0":1755326},"Opet":{"0":"O: PIR"},"OpeInfo":{"0":{"0":{"kortti":6185,"tunniste":"add6f31008536f877db9ebd6a7eb8f87","lyhenne":"PIR","nimi":"Pirkkalainen Sari","sallittu":1}}},"Henkilot":{"0":""},"HenkiloInfo":{"0":{}},"Huoneet":{"0":"H: 1317"},"HuoneInfo":{"0":{"0":{"kortti":5367,"tunniste":"H5367#1317","lyhenne":"1317","nimi":"1317 Fysiikka","sallittu":1}}},"MuutRes":{},"MuutResInfo":{},"Vvt":"1 2\/3 vvt","MuunGrid":"","MuunJakso":"","KouluId":"791831264","JJarjId":"50706","GridId":"14","ToisenKoulun":"Työjärjestys: Otaniemen lukio 2025-2026","Lisaaja":{"KurreID":"4c2d56ba482e7241a6a29599ce2b3714","Nimi":"Varauksen tekijä: 09.04.2025 14:32  IIV Iivanainen Matti"},"Muokkaaja":{"KurreID":"","Nimi":""},"Lukittu":"","NotInGrid":0},{"Id":"84662","ViikonPaiva":"","SijId":"86527","Tyyppi":"Teaching","Date":"","Start":600,"End":675,"Text":{"0":"4: RAA05.01"},"LongText":{"0":"RAA05 Kestävä tulevaisuus ja tiede"},"MinuuttiSij":"0","X1":40000,"X2":50000,"Y1":89,"Y2":164,"ShowClasses":0,"Lk":"","Color":"#A6CAF0","AllowOverlap":0,"Lisatieto":{"0":""},"Muistiinpanot":{"0":""},"OppCount":{"0":""},"ArvKirjaNro":{"0":1755405},"Opet":{"0":"O: TEN"},"OpeInfo":{"0":{"0":{"kortti":6912,"tunniste":"804f8cb753a2872c19998b56e119466f","lyhenne":"TEN","nimi":"Tenhunen Tytti","sallittu":1}}},"Henkilot":{"0":""},"HenkiloInfo":{"0":{}},"Huoneet":{"0":"H: 3147"},"HuoneInfo":{"0":{"0":{"kortti":5391,"tunniste":"H5391#3147","lyhenne":"3147","nimi":"3147 Luokka","sallittu":1}}},"MuutRes":{},"MuutResInfo":{},"Vvt":"1 2\/3 vvt","MuunGrid":"","MuunJakso":"","KouluId":"791831264","JJarjId":"50706","GridId":"14","ToisenKoulun":"Työjärjestys: Otaniemen lukio 2025-2026","Lisaaja":{"KurreID":"4c2d56ba482e7241a6a29599ce2b3714","Nimi":"Varauksen tekijä: 09.04.2025 14:32  IIV Iivanainen Matti"},"Muokkaaja":{"KurreID":"","Nimi":""},"Lukittu":"","NotInGrid":0},{"Id":"84192","ViikonPaiva":"","SijId":"86533","Tyyppi":"Teaching","Date":"","Start":680,"End":795,"Text":{"0":"6: GE01.10"},"LongText":{"0":"GE01 Maailma muutoksessa"},"MinuuttiSij":"0","X1":40000,"X2":50000,"Y1":169,"Y2":284,"ShowClasses":0,"Lk":"","Color":"#A6CAF0","AllowOverlap":0,"Lisatieto":{"0":""},"Muistiinpanot":{"0":""},"OppCount":{"0":""},"ArvKirjaNro":{"0":1755340},"Opet":{"0":"O: HAA"},"OpeInfo":{"0":{"0":{"kortti":3951,"tunniste":"bc1d42e13764072fef93b020e38e2669","lyhenne":"HAA","nimi":"Haapamäki Kirsi","sallittu":1}}},"Henkilot":{"0":""},"HenkiloInfo":{"0":{}},"Huoneet":{"0":"H: 2240"},"HuoneInfo":{"0":{"0":{"kortti":5373,"tunniste":"H5373#2240","lyhenne":"2240","nimi":"2240 Luokka Ge","sallittu":1}}},"MuutRes":{},"MuutResInfo":{},"Vvt":"1 2\/3 vvt","MuunGrid":"","MuunJakso":"","KouluId":"791831264","JJarjId":"50706","GridId":"14","ToisenKoulun":"Työjärjestys: Otaniemen lukio 2025-2026","Lisaaja":{"KurreID":"4c2d56ba482e7241a6a29599ce2b3714","Nimi":"Varauksen tekijä: 09.04.2025 14:32  IIV Iivanainen Matti"},"Muokkaaja":{"KurreID":"","Nimi":""},"Lukittu":"","NotInGrid":0}], ActiveTyyppi: "", ActiveId: "", DialogEnabled: 0};
+        var weekdays = ["Maanantai","Tiistai","Keskiviikko","Torstai","Perjantai","Lauantai","Sunnuntai"];
+      </script>
+      </div>
+      </div>
+    </form>
+
+   
+
+    
+ <!--EmptyPage-->
+
+            </main>
+
+        <!-- Sivukohtainen alue loppuu -->
+
+        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+
+        
+            <footer class="margin-top-bottom">
+                <img src="https://cdn.inschool.fi/2.35.40.1/nc3/img/visma-logo.svg" alt="Visma Logo">
+            </footer>
+        
+
+        
+            <!-- Modals -->
+        
+
+
+        <div class="disclaimer-wrapper">
+            <div id="cookie-disclaimer" class="alert alert-sm disclaimer-alert" role="alert" hidden="true">
+            <div class="disclaimer-header">Käytämme evästeitä</div>
+            <div class="disclaimer-content">
+                <div class="disclaimer-description">
+                    <span class="vismaicon vismaicon-filled vismaicon-info" aria-hidden="true"></span>
+                    Valitsemalla “Hyväksy evästeet” hyväksyt evästeiden tallentamisen laitteellesi. Niiden avulla voimme parantaa sivuston toimivuutta ja analysoida sivuston käyttöä.
+                </div>
+                <div class="disclaimer-buttons">
+                    <a class="margin-left" target="_blank" rel="noopener" href="https://www.wilma.fi/tietosuojaseloste/wilma/">Evästeasetukset</a>
+                    <button id="approve-cookies" class="btn btn-primary margin-left" onclick="analyticUtils.setCookieTracking(true, userId);">Hyväksy evästeet</button>
+                    <button id="decline-cookies" class="btn btn-default margin-left" onclick="analyticUtils.setCookieTracking(false, userId);">Ohita</button>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hidden">
+            <p id="lok-10031">Sinulla on tallentamattomia muutoksia. Jos kirjaudut ulos, menetät tekemäsi muutokset.</p>
+            <p id="lok-5679">Tallentamattomia muutoksia</p>
+            <p id="lok-1175">Kirjaudu ulos</p>
+            <p id="lok-10032">Pysy tällä sivulla</p>
+            <p id="lok-10037">Viestitoiminnot</p>
+            <p id="lok-417">Jos poistut tallentamatta, menetät tekemäsi muutokset.</p>
+        </div>
+
+        <input type="hidden" id="___cachetag" value="https://cdn.inschool.fi/2.35.40.1/">
+        <input type="hidden" id="___sublangid" value="17">
+
+        
+
+        
+    </body>
+</html>
+

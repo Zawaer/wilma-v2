@@ -3,6 +3,7 @@ import { NextRequest } from "next/server";
 
 export async function middleware(request: NextRequest) {
     const wilma2SID = request.cookies.get("Wilma2SID");
+    const wilmaUrl = request.cookies.get("wilmaUrl");
     const { pathname } = request.nextUrl;
 
     // TODO: check that the Wilma2SID is valid
@@ -15,8 +16,8 @@ export async function middleware(request: NextRequest) {
 
     const url = request.nextUrl.clone();
 
-    // if no session (no Wilma2SID) and trying to access protected route, redirect to login
-    if (!wilma2SID && !isPublicRoute) {
+    // if no session (no Wilma2SID or wilmaUrl) and trying to access protected route, redirect to login
+    if ((!wilma2SID || !wilmaUrl) && !isPublicRoute) {
         url.pathname = "/login";
 
         if (pathname !== "/" && pathname !== "/home") {
@@ -28,7 +29,7 @@ export async function middleware(request: NextRequest) {
     }
 
     // If has session and trying to access login, redirect to home
-    if (wilma2SID && pathname.startsWith("/login")) {
+    if (wilma2SID && wilmaUrl && pathname.startsWith("/login")) {
         url.pathname = "/home";
         return NextResponse.redirect(url);
     }

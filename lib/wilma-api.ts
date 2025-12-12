@@ -70,6 +70,40 @@ export class WilmaSession {
     return studentID;
   }
 
+  async getSchedule(): Promise<any> {
+    const res: Response = await fetch(`${this.wilmaUrl}/schedule`, {
+      method: "GET",
+      headers: {
+        "Cookie": `Wilma2SID=${this.wilma2SID}`
+      }
+    });
+    
+    if (!res.ok) {
+      console.error(`${res.status} Failed to get schedule`);
+      return null;
+    }
+
+    const html = await res.text();
+    
+    // Extract the eventsJSON from the script tag
+    const eventsMatch = html.match(/var eventsJSON = ({[\s\S]*?});[\s\n]*var weekdays/);
+    if (!eventsMatch) {
+      console.error("Failed to extract events JSON from schedule page");
+      return null;
+    }
+
+    try {
+      // The object is in JavaScript format, not JSON, so we need to evaluate it safely
+      // We'll use a Function constructor to parse it in a safe context
+      const eventsJSON = new Function(`return ${eventsMatch[1]}`)();
+      return eventsJSON;
+    } catch (error) {
+      console.error("Failed to parse events JSON:", error);
+      console.error("Matched content:", eventsMatch[1].substring(0, 200));
+      return null;
+    }
+  }
+
   async login(userName: string, password: string): Promise<boolean> {
     // save username
     this.userName = userName;
