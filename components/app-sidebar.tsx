@@ -17,11 +17,6 @@ export async function AppSidebar() {
 
     const items = [
         {
-            title: t("home"),
-            url: "home",
-            icon: Home,
-        },
-        {
             title: t("messages"),
             url: "messages",
             icon: Inbox,

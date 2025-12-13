@@ -1,4 +1,5 @@
 import * as cheerio from 'cheerio';
+import { Message } from './message-types';
 
 export class WilmaSession {
   wilmaUrl: string;
@@ -85,7 +86,6 @@ export class WilmaSession {
 
     const html = await res.text();
     
-    // Extract the eventsJSON from the script tag
     const eventsMatch = html.match(/var eventsJSON = ({[\s\S]*?});[\s\n]*var weekdays/);
     if (!eventsMatch) {
       console.error("Failed to extract events JSON from schedule page");
@@ -93,8 +93,6 @@ export class WilmaSession {
     }
 
     try {
-      // The object is in JavaScript format, not JSON, so we need to evaluate it safely
-      // We'll use a Function constructor to parse it in a safe context
       const eventsJSON = new Function(`return ${eventsMatch[1]}`)();
       return eventsJSON;
     } catch (error) {
@@ -102,6 +100,93 @@ export class WilmaSession {
       console.error("Matched content:", eventsMatch[1].substring(0, 200));
       return null;
     }
+  }
+
+  async getMessages(): Promise<Message[]> {
+    const res: Response = await fetch(`${this.wilmaUrl}/messages`, {
+      method: "GET",
+      headers: {
+        "Cookie": `Wilma2SID=${this.wilma2SID}`
+      }
+    });
+    
+    if (!res.ok) {
+      console.error(`${res.status} Failed to get messages`);
+      return [];
+    }
+
+    const html = await res.text();
+    const $ = cheerio.load(html);
+    const messages: Message[] = [];
+
+    // try multiple selectors cuz i was lazy
+    const selectors = [
+      '#message-list-table tbody tr',
+      '#message-list-table tr[class*="message"]',
+      'table.dock tbody tr',
+      'tr[data-href]',
+      '.index-table tbody tr'
+    ];
+
+    for (const selector of selectors) {
+      const rows = $(selector);
+      console.log(`Selector "${selector}" found ${rows.length} rows`);
+      
+      if (rows.length > 0) {
+        rows.each((_, element) => {
+          const row = $(element);
+          const cells = row.find('td');
+          
+          if (cells.length < 3) return;
+
+          let subject = '';
+          let sender = '';
+          let sentAt = '';
+          let id = '';
+          let isUnread = false;
+
+          if (cells.length >= 3) {
+            const subjectCell = $(cells[2]);
+            const subjectLink = subjectCell.find('a');
+            subject = (subjectLink.length > 0 ? subjectLink.text() : subjectCell.text()).trim();
+            
+            const href = subjectLink.attr('href') || '';
+            const idMatch = href.match(/\/messages\/(\d+)/);
+            id = idMatch ? idMatch[1] : '';
+          }
+
+          if (cells.length >= 5) {
+            sender = $(cells[4]).text().trim();
+          }
+
+          if (cells.length >= 6) {
+            sentAt = $(cells[5]).text().trim();
+          }
+
+          // check if message is unread
+          isUnread = row.hasClass('unread') || row.hasClass('new') || 
+                     $(cells[1]).find('.vismaicon-envelope-closed').length > 0 ||
+                     $(cells[1]).find('[class*="unread"]').length > 0;
+
+          if (subject && sender) {
+            messages.push({
+              id: id || `msg-${messages.length}`,
+              subject,
+              sender,
+              sentAt,
+              isUnread
+            });
+          }
+        });
+
+        if (messages.length > 0) {
+          break; // we found messages with this selector, no need to try others
+        }
+      }
+    }
+
+    console.log(`Total messages found: ${messages.length}`);
+    return messages;
   }
 
   async login(userName: string, password: string): Promise<boolean> {
