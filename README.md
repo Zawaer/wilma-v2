@@ -6,6 +6,8 @@ This is a modern user interface for the school site [Wilma](https://espoo.inscho
 
 Live demo: [https://wilma-v2.vercel.app](https://wilma-v2.vercel.app)
 
+<img width="2327" height="1350" alt="Screenshot 2025-12-13 at 13-15-14 Wilma V2" src="https://github.com/user-attachments/assets/7324b7dc-d17a-48af-8819-026cba8b10e0" />
+
 ## Run locally
 
 First, run the development server:
