@@ -1,7 +1,8 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 import { ScheduleEvent } from "@/lib/schedule-types";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 interface ScheduleGridProps {
   events: ScheduleEvent[];
@@ -13,6 +14,29 @@ interface ScheduleGridProps {
 const WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
 export function ScheduleGrid({ events, dayStarts, dayEnds, dayCount }: ScheduleGridProps) {
+  const [selectedEvent, setSelectedEvent] = useState<ScheduleEvent | null>(null);
+
+  const eventsMatch = (a: ScheduleEvent | null, b: ScheduleEvent) => {
+    if (!a) {
+      return false;
+    }
+
+    return a.Id === b.Id && a.Start === b.Start && a.End === b.End && a.X1 === b.X1;
+  };
+
+  // Reset selection if refreshed data no longer includes the selected event.
+  useEffect(() => {
+    if (!selectedEvent) {
+      return;
+    }
+
+    const stillExists = events.some((event) => eventsMatch(selectedEvent, event));
+
+    if (!stillExists) {
+      setSelectedEvent(null);
+    }
+  }, [events, selectedEvent]);
+
   // Calculate the total duration in minutes
   const totalMinutes = dayEnds - dayStarts;
   
@@ -109,7 +133,7 @@ export function ScheduleGrid({ events, dayStarts, dayEnds, dayCount }: ScheduleG
         {/* Grid with events */}
         <div className="relative">
           {/* Day columns */}
-          <div className="absolute inset-0 grid z-0" style={{ gridTemplateColumns: `repeat(${dayCount}, 1fr)` }}>
+          <div className="absolute inset-0 grid" style={{ gridTemplateColumns: `repeat(${dayCount}, 1fr)` }}>
             {Array.from({ length: dayCount }).map((_, index) => (
               <div key={index} className="border-l"></div>
             ))}
@@ -121,7 +145,7 @@ export function ScheduleGrid({ events, dayStarts, dayEnds, dayCount }: ScheduleG
             return (
               <div
                 key={index}
-                className="absolute left-0 right-0 border-t border-gray-200 z-0"
+                className="absolute left-0 right-0 border-t border-gray-200"
                 style={{ top: `${topPercent}%` }}
               ></div>
             );
@@ -131,42 +155,81 @@ export function ScheduleGrid({ events, dayStarts, dayEnds, dayCount }: ScheduleG
           {events.map((event, index) => {
             const style = getEventStyle(event);
             const info = getLessonInfo(event);
+            const isSelected = eventsMatch(selectedEvent, event);
             
             return (
-              <Popover key={`${event.Id}-${event.Start}-${event.X1}-${index}`}>
-                <PopoverTrigger asChild>
-                  <div
-                    className="absolute px-2 py-1 bg-primary/10 border border-primary/20 rounded overflow-hidden cursor-pointer hover:bg-primary/20 transition-colors flex flex-col items-center justify-center z-10"
-                    style={style}
-                  >
-                    <div className="text-xs font-semibold truncate w-full text-center">{info.courseCode}</div>
-                    <div className="text-xs truncate text-muted-foreground w-full text-center">{info.room}</div>
+              <div
+                key={`${event.Id}-${event.Start}-${event.X1}-${index}`}
+                className={`absolute cursor-pointer rounded border px-2 py-1 text-white transition ${
+                  isSelected
+                    ? "z-30 bg-gray-800/95 border-gray-900 ring-2 ring-gray-500 shadow-lg"
+                    : "z-10 bg-gray-700/95 border-gray-800 hover:z-20 hover:shadow-md"
+                }`}
+                style={style}
+                onClick={() =>
+                  setSelectedEvent((current) => (eventsMatch(current, event) ? null : event))
+                }
+                role="button"
+                tabIndex={0}
+                onKeyDown={(eventKeyboard) => {
+                  if (eventKeyboard.key === "Enter" || eventKeyboard.key === " ") {
+                    eventKeyboard.preventDefault();
+                    setSelectedEvent((current) =>
+                      eventsMatch(current, event) ? null : event,
+                    );
+                  }
+                }}
+              >
+                <div className="space-y-0.5 overflow-hidden">
+                  <div className="text-xs font-semibold uppercase tracking-wide text-gray-50">
+                    {info.courseCode}
                   </div>
-                </PopoverTrigger>
-                <PopoverContent className="w-64" align="center" side="top">
-                  <div className="space-y-2">
-                    <div>
-                      <div className="font-semibold text-sm">{info.courseCode}</div>
-                      <div className="text-sm text-muted-foreground">{info.courseName}</div>
-                    </div>
-                    <div className="border-t pt-2 space-y-1">
-                      {info.teacher && (
-                        <div className="text-xs">
-                          <span className="font-medium">Teacher:</span> {info.teacher}
+                  <div className="text-xs truncate text-gray-200">{info.room || "–"}</div>
+                </div>
+
+                {isSelected && (
+                  <div className="absolute left-1/2 top-0 z-40 w-56 -translate-x-1/2 -translate-y-full rounded-lg border border-gray-200 bg-background p-3 text-xs text-foreground shadow-xl">
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <div className="text-xs uppercase tracking-wide text-muted-foreground">
+                          Lesson details
                         </div>
-                      )}
-                      {info.room && (
-                        <div className="text-xs">
-                          <span className="font-medium">Room:</span> {info.room}
-                        </div>
-                      )}
-                      <div className="text-xs">
-                        <span className="font-medium">Time:</span> {info.startTime} - {info.endTime}
+                        <div className="text-sm font-semibold">{info.courseCode}</div>
+                        {info.courseName && (
+                          <div className="text-muted-foreground">{info.courseName}</div>
+                        )}
                       </div>
+                      <button
+                        aria-label="Close lesson details"
+                        className="text-muted-foreground transition hover:text-foreground"
+                        onClick={(eventButton) => {
+                          eventButton.stopPropagation();
+                          setSelectedEvent(null);
+                        }}
+                        type="button"
+                      >
+                        &times;
+                      </button>
                     </div>
+                    <dl className="mt-3 space-y-2">
+                      <div className="flex items-start justify-between gap-4">
+                        <dt className="text-muted-foreground">Room</dt>
+                        <dd className="font-medium text-right">{info.room || "–"}</dd>
+                      </div>
+                      <div className="flex items-start justify-between gap-4">
+                        <dt className="text-muted-foreground">Teacher</dt>
+                        <dd className="font-medium text-right">{info.teacher || "–"}</dd>
+                      </div>
+                      <div className="flex items-start justify-between gap-4">
+                        <dt className="text-muted-foreground">Time</dt>
+                        <dd className="font-medium text-right">
+                          {info.startTime} – {info.endTime}
+                        </dd>
+                      </div>
+                    </dl>
                   </div>
-                </PopoverContent>
-              </Popover>
+                )}
+              </div>
             );
           })}
         </div>
