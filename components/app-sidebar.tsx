@@ -1,5 +1,5 @@
 import { getTranslations } from "next-intl/server";
-import { Calendar, Home, Inbox, Settings } from "lucide-react";
+import { Calendar, Inbox, Settings } from "lucide-react";
 import {
     Sidebar,
     SidebarContent,

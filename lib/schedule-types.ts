@@ -19,7 +19,7 @@ export interface ScheduleEvent {
   AllowOverlap: number;
   Opet: { [key: string]: string };
   Huoneet: { [key: string]: string };
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export interface ScheduleData {

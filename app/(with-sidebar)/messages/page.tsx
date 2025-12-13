@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { Message } from "@/lib/message-types";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export default function MessagesPage() {
@@ -58,7 +58,7 @@ export default function MessagesPage() {
                 <Card>
                     <CardHeader>
                         <CardTitle>No messages</CardTitle>
-                        <CardDescription>You don't have any messages yet.</CardDescription>
+                        <CardDescription>You don&apos;t have any messages yet.</CardDescription>
                     </CardHeader>
                 </Card>
             )}

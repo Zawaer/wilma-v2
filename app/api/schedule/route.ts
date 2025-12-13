@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { getWilmaSession } from "@/lib/session";
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   const session = await getWilmaSession();
 
   if (!session) {

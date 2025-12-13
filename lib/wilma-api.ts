@@ -71,7 +71,7 @@ export class WilmaSession {
     return studentID;
   }
 
-  async getSchedule(): Promise<any> {
+  async getSchedule(): Promise<unknown> {
     const res: Response = await fetch(`${this.wilmaUrl}/schedule`, {
       method: "GET",
       headers: {
